@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
     
     <!-- Vite Assets -->
-    <link rel="preload" as="style" href="https://samai-aseer.innozone.in/build/assets/app-_Z9BxLwA.css"><link rel="modulepreload" as="script" href="https://samai-aseer.innozone.in/build/assets/app-C0G0cght.js"><link rel="stylesheet" href="https://samai-aseer.innozone.in/build/assets/app-_Z9BxLwA.css"><script type="module" src="https://samai-aseer.innozone.in/build/assets/app-C0G0cght.js"></script>    
+
     <style>
         body {
             font-family: 'Cairo', sans-serif;
@@ -2897,4 +2897,45 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 </script>
+
+
+
+<script type="module" src="./app.js"></script>
+<script type="module" src="./utils.js"></script>
+<script type="module" src="./supabaseClient.js"></script>
+<script type="module">
+    import { registerCoordinator } from './utils.js';
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const registrationForm = document.getElementById('registration-form');
+        if (registrationForm) {
+            registrationForm.addEventListener('submit', async function (event) {
+                event.preventDefault();
+                const formData = new FormData(registration-form);
+                const result = await registerCoordinator(formData);
+                if (result.success) {
+                    alert(result.message);
+                    window.location.href = result.redirect_url;
+                } else {
+                    alert(result.message);
+                }
+            });
+        }
+    });
+</script>
+
+
+
+
+<div class="container mt-5">
+    <div class="card p-4">
+        <h2 class="card-title text-center mb-4">البحث عن مدرسة بالرقم الإحصائي</h2>
+        <div class="input-group mb-3">
+            <input type="text" id="statistical_number_input" class="form-control" placeholder="أدخل الرقم الإحصائي للمدرسة">
+            <button class="btn btn-primary" type="button" id="search-school-button">بحث</button>
+        </div>
+        <div id="school-search-result"></div>
+    </div>
+</div>
+
 
