@@ -16,7 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <!-- Vite Assets -->
-    <link rel="preload" as="style" href="https://samai-aseer.innozone.in/build/assets/app-_Z9BxLwA.css" /><link rel="modulepreload" as="script" href="https://samai-aseer.innozone.in/build/assets/app-C0G0cght.js" /><link rel="stylesheet" href="https://samai-aseer.innozone.in/build/assets/app-_Z9BxLwA.css" /><script type="module" src="https://samai-aseer.innozone.in/build/assets/app-C0G0cght.js"></script>    
+
     <style>
         body {
             font-family: 'Cairo', sans-serif;
@@ -2438,4 +2438,20 @@
         }
     });
 </script>
+
+
+
+<script type="module" src="./app.js"></script>
+<script type="module" src="./utils.js"></script>
+<script type="module" src="./supabaseClient.js"></script>
+<script type="module">
+    import { getAchievements } from './utils.js';
+
+    document.addEventListener('DOMContentLoaded', async () => {
+        const achievements = await getAchievements();
+        console.log('Achievements:', achievements);
+        // You can now dynamically display these achievements on the page
+    });
+</script>
+
 
