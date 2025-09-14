@@ -2470,16 +2470,18 @@ function searchEntity() {
     resultDiv.innerHTML = '<div class="text-center"><div class="spinner-border text-primary" role="status"></div><p class="mt-2">جاري البحث...</p></div>';
     resultDiv.style.display = 'block';
     
-    fetch('/entity/search', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-            },
-        body: JSON.stringify({
-            statistical_number: statisticalNumber
-        })
-    })
+   import { searchSchool } from './supabaseClient.js';
+
+async function handleSearch(statisticalNumber) {
+    const result = await searchSchool(statisticalNumber);
+    if (result.success) {
+        console.log("تم العثور على المدرسة:", result.entity);
+        // هنا اعرض النتيجة في الصفحة
+    } else {
+        console.log(result.message);
+        // هنا اعرض رسالة الخطأ للمستخدم
+    }
+})
     .then(response => response.json())
         .then(data => {
             if (data.success) {
@@ -2796,6 +2798,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 30000);
     });
     </script>
+
 
  </body></html>
 
