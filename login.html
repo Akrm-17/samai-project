@@ -1,0 +1,2900 @@
+<html lang="ar" dir="rtl"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="csrf-token" content="nsPZT7KBriDvOJOYBwMm4ryzWNLWyM3nMJgnYQ5X">
+    <title>تسجيل منسق جديد - مبادرة سماي</title>
+    
+    <!-- Bootstrap RTL CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+    
+    <!-- Vite Assets -->
+    <link rel="preload" as="style" href="https://samai-aseer.innozone.in/build/assets/app-_Z9BxLwA.css"><link rel="modulepreload" as="script" href="https://samai-aseer.innozone.in/build/assets/app-C0G0cght.js"><link rel="stylesheet" href="https://samai-aseer.innozone.in/build/assets/app-_Z9BxLwA.css"><script type="module" src="https://samai-aseer.innozone.in/build/assets/app-C0G0cght.js"></script>    
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .navbar {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1000;
+            padding: 0.8rem 0;
+        }
+        
+        .navbar .container-fluid {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        /* تحسينات للأجهزة المحمولة */
+        @media (max-width: 768px) {
+            .navbar .container-fluid {
+                padding: 0 1rem;
+            }
+            
+            .navbar-nav {
+                gap: 0.5rem;
+            }
+            
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+            
+            .nav-link {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.9rem;
+            }
+            
+                    /* إظهار زر القائمة المنسدلة */
+        .navbar-toggler {
+            display: block !important;
+        }
+        
+        /* إخفاء النافبار على الشاشات الصغيرة */
+        .navbar-collapse {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 10px;
+            margin-top: 1rem;
+            padding: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* تنسيق الروابط في القائمة المنسدلة */
+        .navbar-nav .nav-link {
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-nav .nav-link:hover {
+            background: rgba(102, 126, 234, 0.1);
+            transform: translateX(5px);
+        }
+        }
+        
+        /* تحسينات خاصة بـ iPhone */
+        @media (max-width: 414px) {
+            .navbar .container-fluid {
+                padding: 0 0.5rem;
+            }
+            
+            .navbar-brand {
+                font-size: 1rem;
+            }
+            
+            .nav-link {
+                padding: 0.4rem 0.5rem;
+                font-size: 0.8rem;
+            }
+        }
+        
+        /* إعدادات إضافية لضمان عدم التداخل مع الإشعارات */
+        .navbar-nav {
+            position: relative;
+            z-index: 1000;
+        }
+        
+        .navbar-collapse {
+            position: relative;
+            z-index: 1000;
+        }
+        
+        .dropdown-menu {
+            position: relative;
+            z-index: 1000;
+        }
+        
+        /* إعدادات إضافية لضمان عدم التداخل مع الإشعارات */
+        .main-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* إعدادات محسنة للنوافذ المنبثقة */
+        .modal {
+            z-index: 1055 !important;
+        }
+        .modal-dialog {
+            z-index: 1056 !important;
+            position: relative;
+        }
+        
+        .modal-content {
+            z-index: 1057 !important;
+            position: relative;
+            background: #fff;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .modal-backdrop {
+            z-index: 1050 !important;
+            background: transparent !important; /* عدم تعتيم الخلفية */
+        }
+        
+        .modal-backdrop.show {
+            opacity: 0 !important; /* تعطيل تأثير التعتيم بالكامل */
+        }
+        
+        /* إصلاح مشكلة التعتم */
+        .modal.fade .modal-dialog {
+            transition: transform 0.3s ease-out;
+            transform: translate(0, -50px);
+        }
+        
+        .modal.show .modal-dialog {
+            transform: none;
+        }
+        
+        /* إصلاح مشكلة body */
+        body.modal-open {
+            overflow: hidden !important;
+        }
+        
+        /* تنسيق أرقام الهاتف في الفوتر */
+        .footer-phone-number {
+            color: #ffffff !important;
+            font-weight: bold !important;
+            font-size: 16px !important;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            background: rgba(0,0,0,0.3);
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 0 10px;
+        }
+        
+        .footer-phone-number:hover {
+            background: rgba(0,0,0,0.5);
+            transform: scale(1.05);
+            transition: all 0.3s ease;
+        }
+            
+        
+        /* إعدادات إضافية للـ Bootstrap components */
+        .tooltip {
+            z-index: 1070;
+        }
+        
+        .popover {
+            z-index: 1060;
+        }
+        
+        /* إعدادات إضافية لضمان عدم التداخل مع الإشعارات */
+        .container,
+        .container-fluid {
+            position: static;
+        }
+        
+        .row {
+            position: static;
+        }
+        
+        .col,
+        .col-md-4,
+        .col-md-6,
+        .col-md-8,
+        .col-md-12 {
+            position: static;
+        }
+        
+        /* إعدادات Body و HTML */
+        body,
+        html {
+            position: relative;
+        }
+        
+        /* إعدادات إضافية لضمان ظهور الإشعارات */
+        .alert {
+            position: relative;
+            z-index: 9999;
+        }
+        
+        .alert-dismissible {
+            position: relative;
+            z-index: 9999;
+        }
+        
+        /* إعدادات خاصة لإشعارات المنسق */
+        .coordinator-alert,
+        .coordinator-success-alert,
+        .coordinator-error-alert,
+        .coordinator-warning-alert,
+        .coordinator-info-alert {
+            position: relative !important;
+            z-index: 9999 !important;
+            margin-bottom: 1rem !important;
+        }
+        
+        .coordinator-alert.show {
+            display: block !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        
+        /* إعدادات SweetAlert2 لضمان ظهورها فوق جميع العناصر */
+        .swal2-container {
+            z-index: 99999 !important;
+        }
+        
+        .swal2-popup {
+            z-index: 99999 !important;
+        }
+        
+        .swal2-backdrop {
+            z-index: 99998 !important;
+        }
+        
+        /* إعدادات Navbar لضمان عدم التداخل مع الإشعارات */
+        .navbar {
+            position: relative;
+            z-index: 1000;
+        }
+        
+        .navbar-nav {
+            position: relative;
+            z-index: 1000;
+        }
+        
+        .navbar-collapse {
+            position: relative;
+            z-index: 1000;
+        }
+        
+        .dropdown-menu {
+            position: relative;
+            z-index: 1000;
+        }
+        
+        .navbar-nav {
+            flex-direction: row !important;
+            flex-wrap: nowrap !important;
+        }
+        
+        .navbar-nav .nav-item {
+            white-space: nowrap;
+            margin-left: 0.75rem;
+            margin-right: 0.75rem;
+        }
+        
+        .navbar-nav .nav-link {
+            padding: 0.5rem 0.75rem !important;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        
+        .navbar-collapse {
+            flex-basis: auto !important;
+            position: relative;
+            z-index: 1000;
+        }
+
+        /* معالجة مشكلة ظهور جزء من روابط النافبار خارج الشاشة على الجوال
+           نجعل شريط الروابط نفسه قابلاً للتمرير أفقياً بدل تمرير الصفحة كاملة */
+        @media (max-width: 992px) {
+            .navbar { overflow-x: hidden; }
+            .navbar .container-fluid { max-width: 100% !important; }
+            .navbar .navbar-collapse { width: 100% !important; }
+            /* عند فتح زر الثلاثة خطوط تتحول الروابط إلى قائمة عمودية كاملة العرض */
+            .navbar .navbar-nav {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 0.25rem;
+                overflow: visible;
+                max-width: 100%;
+            }
+            .navbar .nav-item { margin-left: 0; margin-right: 0; }
+            .navbar .nav-link { white-space: nowrap; width: 100%; }
+        }
+        
+        @media (min-width: 992px) {
+            .navbar-expand-lg .navbar-nav {
+                flex-direction: row !important;
+            }
+            
+            .navbar-expand-lg .navbar-nav .nav-link {
+                padding-right: 0.5rem !important;
+                padding-left: 0.5rem !important;
+            }
+        }
+        
+        .navbar .container {
+            max-width: 100% !important;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .stat-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* تحسينات إضافية للوحة التحكم */
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .progress {
+            overflow: visible;
+        }
+        
+        .progress-bar {
+            position: relative;
+            overflow: visible;
+        }
+        
+        .badge {
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .display-1, .display-3, .display-4, .display-5 {
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        /* إصلاح شامل لأيقونات الترقيم - يطبق على جميع الصفحات */
+        .pagination .page-link i,
+        .pagination .page-link svg,
+        .pagination-arrow,
+        .pagination .fas,
+        .pagination .fa {
+            font-size: 0.7rem !important;
+            width: 0.7rem !important;
+            height: 0.7rem !important;
+            max-width: 0.7rem !important;
+            max-height: 0.7rem !important;
+            line-height: 0.7rem !important;
+        }
+        
+        /* إصلاح رموز الأسهم في الترقيم */
+        .pagination .page-link {
+            font-size: 0.9rem !important;
+            font-weight: bold !important;
+        }
+        
+        .pagination .page-link {
+            font-size: 0.8rem !important;
+            padding: 0.4rem 0.6rem !important;
+            line-height: 1.2 !important;
+        }
+        
+        .pagination .page-item:first-child .page-link,
+        .pagination .page-item:last-child .page-link {
+            font-size: 0.7rem !important;
+            padding: 0.3rem 0.5rem !important;
+            min-width: auto !important;
+            max-width: none !important;
+        }
+        
+        /* تحسينات الشريط السفلي */
+        footer {
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+        }
+        
+        footer h5 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        footer .text-muted {
+            opacity: 0.8;
+        }
+        
+        footer .btn {
+            transition: all 0.3s ease;
+        }
+        
+        footer .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        footer .badge {
+            font-size: 0.75rem;
+            padding: 0.5rem 0.75rem;
+        }
+        
+        /* أنماط الإشعارات */
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border-radius: 15px;
+        }
+        
+        .dropdown-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px 15px 0 0;
+            margin: -0.5rem -0.5rem 0.5rem -0.5rem;
+            padding: 1rem;
+        }
+        
+        .dropdown-item {
+            border-radius: 8px;
+            margin: 0.25rem 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown-item:hover {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            transform: translateX(5px);
+        }
+        
+        .dropdown-item .badge {
+            font-size: 0.7rem;
+            padding: 0.25rem 0.5rem;
+        }
+        
+        .dropdown-item i {
+            width: 20px;
+            text-align: center;
+        }
+        
+        .dropdown-divider {
+            margin: 0.5rem 0;
+            border-color: #e9ecef;
+        }
+        
+        /* تأثيرات الإشعارات */
+        @keyframes notificationPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .notification-badge {
+            animation: notificationPulse 2s infinite;
+        }
+        
+        .notification-item {
+            transition: all 0.3s ease;
+        }
+        
+        .notification-item:hover {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            transform: translateX(5px);
+        }
+        
+        .notification-item.unread {
+            background: rgba(255, 193, 7, 0.1);
+            border-left: 4px solid #ffc107;
+        }
+        
+        footer hr {
+            opacity: 0.3;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 10px;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .form-control {
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+            padding: 0.75rem 1rem;
+        }
+        
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+        
+        .table {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            font-weight: 600;
+        }
+        /* ضمان استقبال النقرات داخل المودال فقط */
+        .modal { pointer-events: auto !important; }
+        .modal * { pointer-events: auto; }
+        .modal-backdrop { pointer-events: none !important; }
+    </style>
+    
+    <style>
+    .target-card {
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .target-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+    
+    .target-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--bs-primary), var(--bs-success));
+    }
+    
+    .target-number {
+        font-size: 2.5rem;
+        font-weight: 800;
+        line-height: 1;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .entity-info {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        border-radius: 10px;
+        padding: 1rem;
+        border-left: 4px solid var(--bs-success);
+    }
+    
+    .entity-badge {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-weight: 600;
+    }
+    
+    .search-result-card {
+        border: 2px solid #28a745;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(40, 167, 69, 0.1);
+    }
+    
+    .search-result-card .card-header {
+        border-radius: 13px 13px 0 0;
+        background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    }
+    
+    .target-box {
+        border-radius: 12px;
+        padding: 1.5rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .target-box::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+        transform: translateX(-100%);
+        transition: transform 0.6s;
+    }
+    
+    .target-box:hover::after {
+        transform: translateX(100%);
+    }
+    
+    /* تصميم جديد للجدول */
+    .table th {
+        background-color: #007bff;
+        border-color: #0056b3;
+        font-weight: 600;
+        color: white;
+    }
+    
+    .table td {
+        vertical-align: middle;
+    }
+    
+    .badge.bg-pink {
+        background-color: #dc3545 !important;
+        color: white;
+    }
+    
+    .badge.bg-primary {
+        background-color: #0d6efd !important;
+        color: white;
+    }
+    
+    .badge.bg-dark {
+        background-color: #212529 !important;
+        color: white;
+    }
+    
+    .badge.bg-secondary {
+        background-color: #6c757d !important;
+        color: white;
+    }
+</style>
+<style>:root{--swal2-outline: 0 0 0 3px rgba(100, 150, 200, 0.5);--swal2-container-padding: 0.625em;--swal2-backdrop: rgba(0, 0, 0, 0.4);--swal2-backdrop-transition: background-color 0.1s;--swal2-width: 32em;--swal2-padding: 0 0 1.25em;--swal2-border: none;--swal2-border-radius: 0.3125rem;--swal2-background: white;--swal2-color: #545454;--swal2-show-animation: swal2-show 0.3s;--swal2-hide-animation: swal2-hide 0.15s forwards;--swal2-icon-zoom: 1;--swal2-icon-animations: true;--swal2-title-padding: 0.8em 1em 0;--swal2-html-container-padding: 1em 1.6em 0.3em;--swal2-input-border: 1px solid #d9d9d9;--swal2-input-border-radius: 0.1875em;--swal2-input-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.06), 0 0 0 3px transparent;--swal2-input-background: transparent;--swal2-input-transition: border-color 0.2s, box-shadow 0.2s;--swal2-input-hover-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.06), 0 0 0 3px transparent;--swal2-input-focus-border: 1px solid #b4dbed;--swal2-input-focus-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.06), 0 0 0 3px $swal2-outline-color;--swal2-progress-step-background: #add8e6;--swal2-validation-message-background: #f0f0f0;--swal2-validation-message-color: #666;--swal2-footer-border-color: #eee;--swal2-footer-background: transparent;--swal2-footer-color: inherit;--swal2-timer-progress-bar-background: rgba(0, 0, 0, 0.3);--swal2-close-button-position: initial;--swal2-close-button-inset: auto;--swal2-close-button-font-size: 2.5em;--swal2-close-button-color: #ccc;--swal2-close-button-transition: color 0.2s, box-shadow 0.2s;--swal2-close-button-outline: initial;--swal2-close-button-box-shadow: inset 0 0 0 3px transparent;--swal2-close-button-focus-box-shadow: inset var(--swal2-outline);--swal2-close-button-hover-transform: none;--swal2-actions-justify-content: center;--swal2-actions-width: auto;--swal2-actions-margin: 1.25em auto 0;--swal2-actions-padding: 0;--swal2-actions-border-radius: 0;--swal2-actions-background: transparent;--swal2-action-button-transition: background-color 0.2s, box-shadow 0.2s;--swal2-action-button-hover: black 10%;--swal2-action-button-active: black 10%;--swal2-confirm-button-box-shadow: none;--swal2-confirm-button-border-radius: 0.25em;--swal2-confirm-button-background-color: #7066e0;--swal2-confirm-button-color: #fff;--swal2-deny-button-box-shadow: none;--swal2-deny-button-border-radius: 0.25em;--swal2-deny-button-background-color: #dc3741;--swal2-deny-button-color: #fff;--swal2-cancel-button-box-shadow: none;--swal2-cancel-button-border-radius: 0.25em;--swal2-cancel-button-background-color: #6e7881;--swal2-cancel-button-color: #fff;--swal2-toast-show-animation: swal2-toast-show 0.5s;--swal2-toast-hide-animation: swal2-toast-hide 0.1s forwards;--swal2-toast-border: none;--swal2-toast-box-shadow: 0 0 1px hsl(0deg 0% 0% / 0.075), 0 1px 2px hsl(0deg 0% 0% / 0.075), 1px 2px 4px hsl(0deg 0% 0% / 0.075), 1px 3px 8px hsl(0deg 0% 0% / 0.075), 2px 4px 16px hsl(0deg 0% 0% / 0.075)}[data-swal2-theme=dark]{--swal2-dark-theme-black: #19191a;--swal2-dark-theme-white: #e1e1e1;--swal2-background: var(--swal2-dark-theme-black);--swal2-color: var(--swal2-dark-theme-white);--swal2-footer-border-color: #555;--swal2-input-background: color-mix(in srgb, var(--swal2-dark-theme-black), var(--swal2-dark-theme-white) 10%);--swal2-validation-message-background: color-mix( in srgb, var(--swal2-dark-theme-black), var(--swal2-dark-theme-white) 10% );--swal2-validation-message-color: var(--swal2-dark-theme-white);--swal2-timer-progress-bar-background: rgba(255, 255, 255, 0.7)}@media(prefers-color-scheme: dark){[data-swal2-theme=auto]{--swal2-dark-theme-black: #19191a;--swal2-dark-theme-white: #e1e1e1;--swal2-background: var(--swal2-dark-theme-black);--swal2-color: var(--swal2-dark-theme-white);--swal2-footer-border-color: #555;--swal2-input-background: color-mix(in srgb, var(--swal2-dark-theme-black), var(--swal2-dark-theme-white) 10%);--swal2-validation-message-background: color-mix( in srgb, var(--swal2-dark-theme-black), var(--swal2-dark-theme-white) 10% );--swal2-validation-message-color: var(--swal2-dark-theme-white);--swal2-timer-progress-bar-background: rgba(255, 255, 255, 0.7)}}body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body.swal2-height-auto{height:auto !important}body.swal2-no-backdrop .swal2-container{background-color:rgba(0,0,0,0) !important;pointer-events:none}body.swal2-no-backdrop .swal2-container .swal2-popup{pointer-events:all}body.swal2-no-backdrop .swal2-container .swal2-modal{box-shadow:0 0 10px var(--swal2-backdrop)}body.swal2-toast-shown .swal2-container{box-sizing:border-box;width:360px;max-width:100%;background-color:rgba(0,0,0,0);pointer-events:none}body.swal2-toast-shown .swal2-container.swal2-top{inset:0 auto auto 50%;transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-top-end,body.swal2-toast-shown .swal2-container.swal2-top-right{inset:0 0 auto auto}body.swal2-toast-shown .swal2-container.swal2-top-start,body.swal2-toast-shown .swal2-container.swal2-top-left{inset:0 auto auto 0}body.swal2-toast-shown .swal2-container.swal2-center-start,body.swal2-toast-shown .swal2-container.swal2-center-left{inset:50% auto auto 0;transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-center{inset:50% auto auto 50%;transform:translate(-50%, -50%)}body.swal2-toast-shown .swal2-container.swal2-center-end,body.swal2-toast-shown .swal2-container.swal2-center-right{inset:50% 0 auto auto;transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-start,body.swal2-toast-shown .swal2-container.swal2-bottom-left{inset:auto auto 0 0}body.swal2-toast-shown .swal2-container.swal2-bottom{inset:auto auto 0 50%;transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-end,body.swal2-toast-shown .swal2-container.swal2-bottom-right{inset:auto 0 0 auto}@media print{body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow-y:scroll !important}body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown)>[aria-hidden=true]{display:none}body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown) .swal2-container{position:static !important}}div:where(.swal2-container){display:grid;position:fixed;z-index:1060;inset:0;box-sizing:border-box;grid-template-areas:"top-start     top            top-end" "center-start  center         center-end" "bottom-start  bottom-center  bottom-end";grid-template-rows:minmax(min-content, auto) minmax(min-content, auto) minmax(min-content, auto);height:100%;padding:var(--swal2-container-padding);overflow-x:hidden;transition:var(--swal2-backdrop-transition);-webkit-overflow-scrolling:touch}div:where(.swal2-container).swal2-backdrop-show,div:where(.swal2-container).swal2-noanimation{background:var(--swal2-backdrop)}div:where(.swal2-container).swal2-backdrop-hide{background:rgba(0,0,0,0) !important}div:where(.swal2-container).swal2-top-start,div:where(.swal2-container).swal2-center-start,div:where(.swal2-container).swal2-bottom-start{grid-template-columns:minmax(0, 1fr) auto auto}div:where(.swal2-container).swal2-top,div:where(.swal2-container).swal2-center,div:where(.swal2-container).swal2-bottom{grid-template-columns:auto minmax(0, 1fr) auto}div:where(.swal2-container).swal2-top-end,div:where(.swal2-container).swal2-center-end,div:where(.swal2-container).swal2-bottom-end{grid-template-columns:auto auto minmax(0, 1fr)}div:where(.swal2-container).swal2-top-start>.swal2-popup{align-self:start}div:where(.swal2-container).swal2-top>.swal2-popup{grid-column:2;place-self:start center}div:where(.swal2-container).swal2-top-end>.swal2-popup,div:where(.swal2-container).swal2-top-right>.swal2-popup{grid-column:3;place-self:start end}div:where(.swal2-container).swal2-center-start>.swal2-popup,div:where(.swal2-container).swal2-center-left>.swal2-popup{grid-row:2;align-self:center}div:where(.swal2-container).swal2-center>.swal2-popup{grid-column:2;grid-row:2;place-self:center center}div:where(.swal2-container).swal2-center-end>.swal2-popup,div:where(.swal2-container).swal2-center-right>.swal2-popup{grid-column:3;grid-row:2;place-self:center end}div:where(.swal2-container).swal2-bottom-start>.swal2-popup,div:where(.swal2-container).swal2-bottom-left>.swal2-popup{grid-column:1;grid-row:3;align-self:end}div:where(.swal2-container).swal2-bottom>.swal2-popup{grid-column:2;grid-row:3;place-self:end center}div:where(.swal2-container).swal2-bottom-end>.swal2-popup,div:where(.swal2-container).swal2-bottom-right>.swal2-popup{grid-column:3;grid-row:3;place-self:end end}div:where(.swal2-container).swal2-grow-row>.swal2-popup,div:where(.swal2-container).swal2-grow-fullscreen>.swal2-popup{grid-column:1/4;width:100%}div:where(.swal2-container).swal2-grow-column>.swal2-popup,div:where(.swal2-container).swal2-grow-fullscreen>.swal2-popup{grid-row:1/4;align-self:stretch}div:where(.swal2-container).swal2-no-transition{transition:none !important}div:where(.swal2-container)[popover]{width:auto;border:0}div:where(.swal2-container) div:where(.swal2-popup){display:none;position:relative;box-sizing:border-box;grid-template-columns:minmax(0, 100%);width:var(--swal2-width);max-width:100%;padding:var(--swal2-padding);border:var(--swal2-border);border-radius:var(--swal2-border-radius);background:var(--swal2-background);color:var(--swal2-color);font-family:inherit;font-size:1rem;container-name:swal2-popup}div:where(.swal2-container) div:where(.swal2-popup):focus{outline:none}div:where(.swal2-container) div:where(.swal2-popup).swal2-loading{overflow-y:hidden}div:where(.swal2-container) div:where(.swal2-popup).swal2-draggable{cursor:grab}div:where(.swal2-container) div:where(.swal2-popup).swal2-draggable div:where(.swal2-icon){cursor:grab}div:where(.swal2-container) div:where(.swal2-popup).swal2-dragging{cursor:grabbing}div:where(.swal2-container) div:where(.swal2-popup).swal2-dragging div:where(.swal2-icon){cursor:grabbing}div:where(.swal2-container) h2:where(.swal2-title){position:relative;max-width:100%;margin:0;padding:var(--swal2-title-padding);color:inherit;font-size:1.875em;font-weight:600;text-align:center;text-transform:none;overflow-wrap:break-word;cursor:initial}div:where(.swal2-container) div:where(.swal2-actions){display:flex;z-index:1;box-sizing:border-box;flex-wrap:wrap;align-items:center;justify-content:var(--swal2-actions-justify-content);width:var(--swal2-actions-width);margin:var(--swal2-actions-margin);padding:var(--swal2-actions-padding);border-radius:var(--swal2-actions-border-radius);background:var(--swal2-actions-background)}div:where(.swal2-container) div:where(.swal2-loader){display:none;align-items:center;justify-content:center;width:2.2em;height:2.2em;margin:0 1.875em;animation:swal2-rotate-loading 1.5s linear 0s infinite normal;border-width:.25em;border-style:solid;border-radius:100%;border-color:#2778c4 rgba(0,0,0,0) #2778c4 rgba(0,0,0,0)}div:where(.swal2-container) button:where(.swal2-styled){margin:.3125em;padding:.625em 1.1em;transition:var(--swal2-action-button-transition);border:none;box-shadow:0 0 0 3px rgba(0,0,0,0);font-weight:500}div:where(.swal2-container) button:where(.swal2-styled):not([disabled]){cursor:pointer}div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm){border-radius:var(--swal2-confirm-button-border-radius);background:initial;background-color:var(--swal2-confirm-button-background-color);box-shadow:var(--swal2-confirm-button-box-shadow);color:var(--swal2-confirm-button-color);font-size:1em}div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm):hover{background-color:color-mix(in srgb, var(--swal2-confirm-button-background-color), var(--swal2-action-button-hover))}div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm):active{background-color:color-mix(in srgb, var(--swal2-confirm-button-background-color), var(--swal2-action-button-active))}div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-deny){border-radius:var(--swal2-deny-button-border-radius);background:initial;background-color:var(--swal2-deny-button-background-color);box-shadow:var(--swal2-deny-button-box-shadow);color:var(--swal2-deny-button-color);font-size:1em}div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-deny):hover{background-color:color-mix(in srgb, var(--swal2-deny-button-background-color), var(--swal2-action-button-hover))}div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-deny):active{background-color:color-mix(in srgb, var(--swal2-deny-button-background-color), var(--swal2-action-button-active))}div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-cancel){border-radius:var(--swal2-cancel-button-border-radius);background:initial;background-color:var(--swal2-cancel-button-background-color);box-shadow:var(--swal2-cancel-button-box-shadow);color:var(--swal2-cancel-button-color);font-size:1em}div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-cancel):hover{background-color:color-mix(in srgb, var(--swal2-cancel-button-background-color), var(--swal2-action-button-hover))}div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-cancel):active{background-color:color-mix(in srgb, var(--swal2-cancel-button-background-color), var(--swal2-action-button-active))}div:where(.swal2-container) button:where(.swal2-styled):focus-visible{outline:none;box-shadow:var(--swal2-action-button-focus-box-shadow)}div:where(.swal2-container) button:where(.swal2-styled)[disabled]:not(.swal2-loading){opacity:.4}div:where(.swal2-container) button:where(.swal2-styled)::-moz-focus-inner{border:0}div:where(.swal2-container) div:where(.swal2-footer){margin:1em 0 0;padding:1em 1em 0;border-top:1px solid var(--swal2-footer-border-color);background:var(--swal2-footer-background);color:var(--swal2-footer-color);font-size:1em;text-align:center;cursor:initial}div:where(.swal2-container) .swal2-timer-progress-bar-container{position:absolute;right:0;bottom:0;left:0;grid-column:auto !important;overflow:hidden;border-bottom-right-radius:var(--swal2-border-radius);border-bottom-left-radius:var(--swal2-border-radius)}div:where(.swal2-container) div:where(.swal2-timer-progress-bar){width:100%;height:.25em;background:var(--swal2-timer-progress-bar-background)}div:where(.swal2-container) img:where(.swal2-image){max-width:100%;margin:2em auto 1em;cursor:initial}div:where(.swal2-container) button:where(.swal2-close){position:var(--swal2-close-button-position);inset:var(--swal2-close-button-inset);z-index:2;align-items:center;justify-content:center;width:1.2em;height:1.2em;margin-top:0;margin-right:0;margin-bottom:-1.2em;padding:0;overflow:hidden;transition:var(--swal2-close-button-transition);border:none;border-radius:var(--swal2-border-radius);outline:var(--swal2-close-button-outline);background:rgba(0,0,0,0);color:var(--swal2-close-button-color);font-family:monospace;font-size:var(--swal2-close-button-font-size);cursor:pointer;justify-self:end}div:where(.swal2-container) button:where(.swal2-close):hover{transform:var(--swal2-close-button-hover-transform);background:rgba(0,0,0,0);color:#f27474}div:where(.swal2-container) button:where(.swal2-close):focus-visible{outline:none;box-shadow:var(--swal2-close-button-focus-box-shadow)}div:where(.swal2-container) button:where(.swal2-close)::-moz-focus-inner{border:0}div:where(.swal2-container) div:where(.swal2-html-container){z-index:1;justify-content:center;margin:0;padding:var(--swal2-html-container-padding);overflow:auto;color:inherit;font-size:1.125em;font-weight:normal;line-height:normal;text-align:center;overflow-wrap:break-word;word-break:break-word;cursor:initial}div:where(.swal2-container) input:where(.swal2-input),div:where(.swal2-container) input:where(.swal2-file),div:where(.swal2-container) textarea:where(.swal2-textarea),div:where(.swal2-container) select:where(.swal2-select),div:where(.swal2-container) div:where(.swal2-radio),div:where(.swal2-container) label:where(.swal2-checkbox){margin:1em 2em 3px}div:where(.swal2-container) input:where(.swal2-input),div:where(.swal2-container) input:where(.swal2-file),div:where(.swal2-container) textarea:where(.swal2-textarea){box-sizing:border-box;width:auto;transition:var(--swal2-input-transition);border:var(--swal2-input-border);border-radius:var(--swal2-input-border-radius);background:var(--swal2-input-background);box-shadow:var(--swal2-input-box-shadow);color:inherit;font-size:1.125em}div:where(.swal2-container) input:where(.swal2-input).swal2-inputerror,div:where(.swal2-container) input:where(.swal2-file).swal2-inputerror,div:where(.swal2-container) textarea:where(.swal2-textarea).swal2-inputerror{border-color:#f27474 !important;box-shadow:0 0 2px #f27474 !important}div:where(.swal2-container) input:where(.swal2-input):hover,div:where(.swal2-container) input:where(.swal2-file):hover,div:where(.swal2-container) textarea:where(.swal2-textarea):hover{box-shadow:var(--swal2-input-hover-box-shadow)}div:where(.swal2-container) input:where(.swal2-input):focus,div:where(.swal2-container) input:where(.swal2-file):focus,div:where(.swal2-container) textarea:where(.swal2-textarea):focus{border:var(--swal2-input-focus-border);outline:none;box-shadow:var(--swal2-input-focus-box-shadow)}div:where(.swal2-container) input:where(.swal2-input)::placeholder,div:where(.swal2-container) input:where(.swal2-file)::placeholder,div:where(.swal2-container) textarea:where(.swal2-textarea)::placeholder{color:#ccc}div:where(.swal2-container) .swal2-range{margin:1em 2em 3px;background:var(--swal2-background)}div:where(.swal2-container) .swal2-range input{width:80%}div:where(.swal2-container) .swal2-range output{width:20%;color:inherit;font-weight:600;text-align:center}div:where(.swal2-container) .swal2-range input,div:where(.swal2-container) .swal2-range output{height:2.625em;padding:0;font-size:1.125em;line-height:2.625em}div:where(.swal2-container) .swal2-input{height:2.625em;padding:0 .75em}div:where(.swal2-container) .swal2-file{width:75%;margin-right:auto;margin-left:auto;background:var(--swal2-input-background);font-size:1.125em}div:where(.swal2-container) .swal2-textarea{height:6.75em;padding:.75em}div:where(.swal2-container) .swal2-select{min-width:50%;max-width:100%;padding:.375em .625em;background:var(--swal2-input-background);color:inherit;font-size:1.125em}div:where(.swal2-container) .swal2-radio,div:where(.swal2-container) .swal2-checkbox{align-items:center;justify-content:center;background:var(--swal2-background);color:inherit}div:where(.swal2-container) .swal2-radio label,div:where(.swal2-container) .swal2-checkbox label{margin:0 .6em;font-size:1.125em}div:where(.swal2-container) .swal2-radio input,div:where(.swal2-container) .swal2-checkbox input{flex-shrink:0;margin:0 .4em}div:where(.swal2-container) label:where(.swal2-input-label){display:flex;justify-content:center;margin:1em auto 0}div:where(.swal2-container) div:where(.swal2-validation-message){align-items:center;justify-content:center;margin:1em 0 0;padding:.625em;overflow:hidden;background:var(--swal2-validation-message-background);color:var(--swal2-validation-message-color);font-size:1em;font-weight:300}div:where(.swal2-container) div:where(.swal2-validation-message)::before{content:"!";display:inline-block;width:1.5em;min-width:1.5em;height:1.5em;margin:0 .625em;border-radius:50%;background-color:#f27474;color:#fff;font-weight:600;line-height:1.5em;text-align:center}div:where(.swal2-container) .swal2-progress-steps{flex-wrap:wrap;align-items:center;max-width:100%;margin:1.25em auto;padding:0;background:rgba(0,0,0,0);font-weight:600}div:where(.swal2-container) .swal2-progress-steps li{display:inline-block;position:relative}div:where(.swal2-container) .swal2-progress-steps .swal2-progress-step{z-index:20;flex-shrink:0;width:2em;height:2em;border-radius:2em;background:#2778c4;color:#fff;line-height:2em;text-align:center}div:where(.swal2-container) .swal2-progress-steps .swal2-progress-step.swal2-active-progress-step{background:#2778c4}div:where(.swal2-container) .swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step{background:var(--swal2-progress-step-background);color:#fff}div:where(.swal2-container) .swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step-line{background:var(--swal2-progress-step-background)}div:where(.swal2-container) .swal2-progress-steps .swal2-progress-step-line{z-index:10;flex-shrink:0;width:2.5em;height:.4em;margin:0 -1px;background:#2778c4}div:where(.swal2-icon){position:relative;box-sizing:content-box;justify-content:center;width:5em;height:5em;margin:2.5em auto .6em;zoom:var(--swal2-icon-zoom);border:.25em solid rgba(0,0,0,0);border-radius:50%;border-color:#000;font-family:inherit;line-height:5em;cursor:default;user-select:none}div:where(.swal2-icon) .swal2-icon-content{display:flex;align-items:center;font-size:3.75em}div:where(.swal2-icon).swal2-error{border-color:#f27474;color:#f27474}div:where(.swal2-icon).swal2-error .swal2-x-mark{position:relative;flex-grow:1}div:where(.swal2-icon).swal2-error [class^=swal2-x-mark-line]{display:block;position:absolute;top:2.3125em;width:2.9375em;height:.3125em;border-radius:.125em;background-color:#f27474}div:where(.swal2-icon).swal2-error [class^=swal2-x-mark-line][class$=left]{left:1.0625em;transform:rotate(45deg)}div:where(.swal2-icon).swal2-error [class^=swal2-x-mark-line][class$=right]{right:1em;transform:rotate(-45deg)}@container swal2-popup style(--swal2-icon-animations:true){div:where(.swal2-icon).swal2-error.swal2-icon-show{animation:swal2-animate-error-icon .5s}div:where(.swal2-icon).swal2-error.swal2-icon-show .swal2-x-mark{animation:swal2-animate-error-x-mark .5s}}div:where(.swal2-icon).swal2-warning{border-color:#f8bb86;color:#f8bb86}@container swal2-popup style(--swal2-icon-animations:true){div:where(.swal2-icon).swal2-warning.swal2-icon-show{animation:swal2-animate-error-icon .5s}div:where(.swal2-icon).swal2-warning.swal2-icon-show .swal2-icon-content{animation:swal2-animate-i-mark .5s}}div:where(.swal2-icon).swal2-info{border-color:#3fc3ee;color:#3fc3ee}@container swal2-popup style(--swal2-icon-animations:true){div:where(.swal2-icon).swal2-info.swal2-icon-show{animation:swal2-animate-error-icon .5s}div:where(.swal2-icon).swal2-info.swal2-icon-show .swal2-icon-content{animation:swal2-animate-i-mark .8s}}div:where(.swal2-icon).swal2-question{border-color:#87adbd;color:#87adbd}@container swal2-popup style(--swal2-icon-animations:true){div:where(.swal2-icon).swal2-question.swal2-icon-show{animation:swal2-animate-error-icon .5s}div:where(.swal2-icon).swal2-question.swal2-icon-show .swal2-icon-content{animation:swal2-animate-question-mark .8s}}div:where(.swal2-icon).swal2-success{border-color:#a5dc86;color:#a5dc86}div:where(.swal2-icon).swal2-success [class^=swal2-success-circular-line]{position:absolute;width:3.75em;height:7.5em;border-radius:50%}div:where(.swal2-icon).swal2-success [class^=swal2-success-circular-line][class$=left]{top:-0.4375em;left:-2.0635em;transform:rotate(-45deg);transform-origin:3.75em 3.75em;border-radius:7.5em 0 0 7.5em}div:where(.swal2-icon).swal2-success [class^=swal2-success-circular-line][class$=right]{top:-0.6875em;left:1.875em;transform:rotate(-45deg);transform-origin:0 3.75em;border-radius:0 7.5em 7.5em 0}div:where(.swal2-icon).swal2-success .swal2-success-ring{position:absolute;z-index:2;top:-0.25em;left:-0.25em;box-sizing:content-box;width:100%;height:100%;border:.25em solid rgba(165,220,134,.3);border-radius:50%}div:where(.swal2-icon).swal2-success .swal2-success-fix{position:absolute;z-index:1;top:.5em;left:1.625em;width:.4375em;height:5.625em;transform:rotate(-45deg)}div:where(.swal2-icon).swal2-success [class^=swal2-success-line]{display:block;position:absolute;z-index:2;height:.3125em;border-radius:.125em;background-color:#a5dc86}div:where(.swal2-icon).swal2-success [class^=swal2-success-line][class$=tip]{top:2.875em;left:.8125em;width:1.5625em;transform:rotate(45deg)}div:where(.swal2-icon).swal2-success [class^=swal2-success-line][class$=long]{top:2.375em;right:.5em;width:2.9375em;transform:rotate(-45deg)}@container swal2-popup style(--swal2-icon-animations:true){div:where(.swal2-icon).swal2-success.swal2-icon-show .swal2-success-line-tip{animation:swal2-animate-success-line-tip .75s}div:where(.swal2-icon).swal2-success.swal2-icon-show .swal2-success-line-long{animation:swal2-animate-success-line-long .75s}div:where(.swal2-icon).swal2-success.swal2-icon-show .swal2-success-circular-line-right{animation:swal2-rotate-success-circular-line 4.25s ease-in}}[class^=swal2]{-webkit-tap-highlight-color:rgba(0,0,0,0)}.swal2-show{animation:var(--swal2-show-animation)}.swal2-hide{animation:var(--swal2-hide-animation)}.swal2-noanimation{transition:none}.swal2-scrollbar-measure{position:absolute;top:-9999px;width:50px;height:50px;overflow:scroll}.swal2-rtl .swal2-close{margin-right:initial;margin-left:0}.swal2-rtl .swal2-timer-progress-bar{right:0;left:auto}.swal2-toast{box-sizing:border-box;grid-column:1/4 !important;grid-row:1/4 !important;grid-template-columns:min-content auto min-content;padding:1em;overflow-y:hidden;border:var(--swal2-toast-border);background:var(--swal2-background);box-shadow:var(--swal2-toast-box-shadow);pointer-events:all}.swal2-toast>*{grid-column:2}.swal2-toast h2:where(.swal2-title){margin:.5em 1em;padding:0;font-size:1em;text-align:initial}.swal2-toast .swal2-loading{justify-content:center}.swal2-toast input:where(.swal2-input){height:2em;margin:.5em;font-size:1em}.swal2-toast .swal2-validation-message{font-size:1em}.swal2-toast div:where(.swal2-footer){margin:.5em 0 0;padding:.5em 0 0;font-size:.8em}.swal2-toast button:where(.swal2-close){grid-column:3/3;grid-row:1/99;align-self:center;width:.8em;height:.8em;margin:0;font-size:2em}.swal2-toast div:where(.swal2-html-container){margin:.5em 1em;padding:0;overflow:initial;font-size:1em;text-align:initial}.swal2-toast div:where(.swal2-html-container):empty{padding:0}.swal2-toast .swal2-loader{grid-column:1;grid-row:1/99;align-self:center;width:2em;height:2em;margin:.25em}.swal2-toast .swal2-icon{grid-column:1;grid-row:1/99;align-self:center;width:2em;min-width:2em;height:2em;margin:0 .5em 0 0}.swal2-toast .swal2-icon .swal2-icon-content{display:flex;align-items:center;font-size:1.8em;font-weight:bold}.swal2-toast .swal2-icon.swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line]{top:.875em;width:1.375em}.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:.3125em}.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:.3125em}.swal2-toast div:where(.swal2-actions){justify-content:flex-start;height:auto;margin:0;margin-top:.5em;padding:0 .5em}.swal2-toast button:where(.swal2-styled){margin:.25em .5em;padding:.4em .6em;font-size:1em}.swal2-toast .swal2-success{border-color:#a5dc86}.swal2-toast .swal2-success [class^=swal2-success-circular-line]{position:absolute;width:1.6em;height:3em;border-radius:50%}.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=left]{top:-0.8em;left:-0.5em;transform:rotate(-45deg);transform-origin:2em 2em;border-radius:4em 0 0 4em}.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=right]{top:-0.25em;left:.9375em;transform-origin:0 1.5em;border-radius:0 4em 4em 0}.swal2-toast .swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-toast .swal2-success .swal2-success-fix{top:0;left:.4375em;width:.4375em;height:2.6875em}.swal2-toast .swal2-success [class^=swal2-success-line]{height:.3125em}.swal2-toast .swal2-success [class^=swal2-success-line][class$=tip]{top:1.125em;left:.1875em;width:.75em}.swal2-toast .swal2-success [class^=swal2-success-line][class$=long]{top:.9375em;right:.1875em;width:1.375em}@container swal2-popup style(--swal2-icon-animations:true){.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-tip{animation:swal2-toast-animate-success-line-tip .75s}.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-long{animation:swal2-toast-animate-success-line-long .75s}}.swal2-toast.swal2-show{animation:var(--swal2-toast-show-animation)}.swal2-toast.swal2-hide{animation:var(--swal2-toast-hide-animation)}@keyframes swal2-show{0%{transform:scale(0.7)}45%{transform:scale(1.05)}80%{transform:scale(0.95)}100%{transform:scale(1)}}@keyframes swal2-hide{0%{transform:scale(1);opacity:1}100%{transform:scale(0.5);opacity:0}}@keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-0.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.8125em;width:1.5625em}}@keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@keyframes swal2-rotate-success-circular-line{0%{transform:rotate(-45deg)}5%{transform:rotate(-45deg)}12%{transform:rotate(-405deg)}100%{transform:rotate(-405deg)}}@keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;transform:scale(0.4);opacity:0}50%{margin-top:1.625em;transform:scale(0.4);opacity:0}80%{margin-top:-0.375em;transform:scale(1.15)}100%{margin-top:0;transform:scale(1);opacity:1}}@keyframes swal2-animate-error-icon{0%{transform:rotateX(100deg);opacity:0}100%{transform:rotateX(0deg);opacity:1}}@keyframes swal2-rotate-loading{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}@keyframes swal2-animate-question-mark{0%{transform:rotateY(-360deg)}100%{transform:rotateY(0)}}@keyframes swal2-animate-i-mark{0%{transform:rotateZ(45deg);opacity:0}25%{transform:rotateZ(-25deg);opacity:.4}50%{transform:rotateZ(15deg);opacity:.8}75%{transform:rotateZ(-5deg);opacity:1}100%{transform:rotateX(0);opacity:1}}@keyframes swal2-toast-show{0%{transform:translateY(-0.625em) rotateZ(2deg)}33%{transform:translateY(0) rotateZ(-2deg)}66%{transform:translateY(0.3125em) rotateZ(2deg)}100%{transform:translateY(0) rotateZ(0deg)}}@keyframes swal2-toast-hide{100%{transform:rotateZ(1deg);opacity:0}}@keyframes swal2-toast-animate-success-line-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-0.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@keyframes swal2-toast-animate-success-line-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}</style></head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid" style="max-width: 1400px; margin: 0 auto; padding: 0 2rem;">
+            <a class="navbar-brand fw-bold" href="https://samai-aseer.innozone.in">
+                <i class="fas fa-chart-line me-2"></i>
+                مبادرة سماي
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto" style="margin-left: 2rem;">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home me-1"></i>
+                            الرئيسية
+                        </a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="login.html">
+                            <i class="fas fa-user-plus me-1"></i>
+                            تسجيل منسق
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="Achievement.html">
+                            <i class="fas fa-trophy me-1"></i>
+                            الأوسمة والإنجازات
+                        </a>
+                    </li>
+                                    </ul>
+                
+                <ul class="navbar-nav" style="margin-right: 2rem;">
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="py-4">
+        <div class="container">
+            
+            
+            <div class="row justify-content-center">
+    <div class="col-md-10">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <div class="">
+                    <h5 class="mb-0">
+                    <i class="fas fa-user-plus me-2"></i>
+                    </h5>
+                    <a href="index.html" class="">
+                        <i class="fas fa-arrow-right me-1"></i>
+                        العودة للصفحة الرئيسية
+                    </a>
+                </div>
+            </div>
+            
+            <div class="card-body">
+                <form action="index.html" method="POST" id="coordinatorForm">
+                    <input type="hidden" name="_token" value="nsPZT7KBriDvOJOYBwMm4ryzWNLWyM3nMJgnYQ5X" autocomplete="off">                    
+                    <!-- البيانات الشخصية -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <h6 class="text-primary mb-3">
+                                <i class="fas fa-user me-2"></i>
+                                البيانات الشخصية
+                            </h6>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="civil_record" class="form-label fw-bold">السجل المدني <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control " id="civil_record" name="civil_record" value="" placeholder="مثال: 1234567890" maxlength="10" pattern="[0-9]{10}" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10)" required="">
+                                                        <div class="form-text">أدخل السجل المدني المكون من 10 أرقام</div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="name" class="form-label fw-bold">الاسم الكامل <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control " id="name" name="name" value="" placeholder="مثال: أحمد محمد علي" required="">
+                                                </div>
+                    
+                        <div class="col-md-6 mb-3">
+                            <label for="phone_number" class="form-label fw-bold">رقم الجوال <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control " id="phone_number" name="phone_number" value="" placeholder="مثال: 0551234567" maxlength="10" pattern="05[0-9]{8}" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10)" required="">
+                                                        <div class="form-text">يجب أن يكون 10 أرقام تبدأ بـ 05</div>
+                        </div>
+                    </div>
+                    
+                    <!-- نوع المنسق -->
+                    <div class="row mb-4" style="display: block;">
+                        <div class="col-12">
+                            <h6 class="text-primary mb-3">
+                                <i class="fas fa-user-tag me-2"></i>
+                                نوع المنسق
+                            </h6>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="coordinator_type" class="form-label fw-bold">نوع المنسق <span class="text-danger">*</span></label>
+                            <select class="form-select " id="coordinator_type" name="coordinator_type" required="">
+                                <option value="">اختر نوع المنسق</option>
+                                <option value="school">منسق مدرسة</option>
+                                <option value="department">منسق قسم</option>
+                            </select>
+                                                        <div class="form-text">اختر نوع المنسق لتحديد طريقة ربط الجهات</div>
+                        </div>
+                    </div>
+                    
+                    <!-- اختيار القسم -->
+                    <div class="row mb-4" id="department_selection" style="display: none;">
+                        <div class="col-12">
+                            <h6 class="text-primary mb-3">
+                                <i class="fas fa-sitemap me-2"></i>
+                                اختيار القسم
+                            </h6>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="department_id" class="form-label fw-bold">اختيار القسم <span class="text-danger">*</span></label>
+                            <select class="form-select " id="department_id" name="department_id"><option value="">اختر القسم</option><optgroup label="الأقسام المتاحة للربط"><option value="45" class="text-success">الإدارة العامة للتعليم بمنطقة تبوك - الموارد البشرية - متابعة دوام الموظفين</option><option value="30" class="text-success">الإدارة العامة للتعليم بمنطقة تبوك - المساعد للخدمات - مكتب المساعد للخدمات</option><option value="38" class="text-success">الإدارة العامة للتعليم بمنطقة تبوك - المساعد للخدمات - الخدمات المشتركة - مراقبة المخزون</option><option value="36" class="text-success">الإدارة العامة للتعليم بمنطقة تبوك - المساعد للخدمات - الخدمات المشتركة - المستودعات</option><option value="32" class="text-success">الإدارة العامة للتعليم بمنطقة تبوك - المساعد للخدمات - جودة الخدمات</option><option value="26" class="text-success">الإدارة العامة للتعليم بمنطقة تبوك - المساعد للشؤون التعليمية - تنمية القدرات</option><option value="6" class="text-success">الإدارة العامة للتعليم بمنطقة تبوك - مدير عام التعليم - المخاطر والالتزام</option><option value="1" class="text-success">الإدارة العامة للتعليم بمنطقة تبوك - مدير عام التعليم - مكتب مدير عام التعليم</option><option value="3" class="text-success">الإدارة العامة للتعليم بمنطقة تبوك - مدير عام التعليم - الشؤون القانونية</option></optgroup><optgroup label="الأقسام المرفوضة (يمكن إعادة طلبها)"><option value="50" class="text-warning">الإدارة العامة للتعليم بمنطقة تبوك - التطوير والتحول - المشاريع والتحول المؤسسي</option><option value="43" class="text-warning">الإدارة العامة للتعليم بمنطقة تبوك - الموارد البشرية - شؤون المعلمين</option><option value="39" class="text-warning">الإدارة العامة للتعليم بمنطقة تبوك - المساعد للخدمات - الخدمات المشتركة - النقل والخدمات</option></optgroup><optgroup label="الأقسام المرتبطة بمنسقين آخرين (غير متاحة)"><option value="51" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - الموارد البشرية - مراكز التطوير المهني</option><option value="46" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - التطوير والتحول</option><option value="47" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - التطوير والتحول - التخطيط</option><option value="49" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - التطوير والتحول - تقنية المعلومات</option><option value="48" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك  - التطوير والتحول - قياس الأداء المؤسسي</option><option value="41" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - الموارد البشرية</option><option value="44" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - الموارد البشرية - تخطيط وتطوير الموارد البشرية</option><option value="42" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - الموارد البشرية - خدمات الموارد البشرية</option><option value="31" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - المساعد للخدمات - الأمن والسلامة والمرافق</option><option value="33" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - المساعد للخدمات - الخدمات المشتركة</option><option value="40" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - المساعد للخدمات - الخدمات المشتركة - الرقابة المالية</option><option value="34" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - المساعد للخدمات - الخدمات المشتركة - المالية والمشتريات</option><option value="35" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - المساعد للخدمات - الخدمات المشتركة - الميزانية</option><option value="37" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - المساعد للخدمات - الخدمات المشتركة - الوثائق والاتصالات الإدارية</option><option value="13" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - المساعد للشؤون التعليمية - دعم التميز المدرسي</option><option value="12" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - المساعد للشؤون التعليمية - مكتب المساعد للشؤون التعليمية</option><option value="14" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - المساعد للشؤون التعليمية - أداء التعليم</option><option value="19" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - المساعد للشؤون التعليمية - أداء التعليم - الإدارة المدرسية</option><option value="20" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - المساعد للشؤون التعليمية - أداء التعليم - الإدارة المدرسية - الابتدائية</option><option value="22" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - المساعد للشؤون التعليمية - أداء التعليم - الإدارة المدرسية - الثانوية</option><option value="21" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - المساعد للشؤون التعليمية - أداء التعليم - الإدارة المدرسية - المتوسطة</option><option value="15" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - المساعد للشؤون التعليمية - أداء التعليم - الإشراف التربوي</option><option value="18" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - المساعد للشؤون التعليمية - أداء التعليم - التعليم المستمر</option><option value="16" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - المساعد للشؤون التعليمية - أداء التعليم - التوجيه الطلابي</option><option value="17" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - المساعد للشؤون التعليمية - أداء التعليم - النشاط الطلابي</option><option value="23" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - المساعد للشؤون التعليمية - الطفولة المبكرة</option><option value="24" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - المساعد للشؤون التعليمية - الطفولة المبكرة - الحضانة</option><option value="25" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - المساعد للشؤون التعليمية - الطفولة المبكرة - رياض الأطفال</option><option value="29" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - المساعد للشؤون التعليمية - تنمية القدرات - الشؤون الصحية المدرسية</option><option value="28" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - المساعد للشؤون التعليمية - تنمية القدرات - الموهوبين</option><option value="27" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - المساعد للشؤون التعليمية - تنمية القدرات - ذوي الإعاقة</option><option value="11" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - مدير عام التعليم - مكتب المستشارين</option><option value="7" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - مدير عام التعليم - الاتصال المؤسسي</option><option value="8" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - مدير عام التعليم - المسؤولية المجتمعية والعمل التطوعي</option><option value="9" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - مدير عام التعليم - الوعي الفكري</option><option value="5" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - مدير عام التعليم - الاستثمار والشراكات</option><option value="2" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - مدير عام التعليم - المراجعة الداخلية</option><option value="4" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - مدير عام التعليم - تقويم الأداء المعرفي والمهاري</option><option value="10" disabled="" class="text-danger">الإدارة العامة للتعليم بمنطقة تبوك - مدير عام التعليم - مكتب التعليم الخاص</option></optgroup></select>
+                                                        <div class="form-text">اختر القسم المراد ربطه بالمنسق</div>
+                        </div>
+                    </div>
+                    
+                    <!-- الجهات المرتبطة -->
+                    <div class="row mb-4" id="entities_section" style="display: none;">
+                        <div class="col-12">
+                            <h6 class="text-primary mb-3">
+                                <i class="fas fa-building me-2"></i>
+                                الجهات المرتبطة
+                                <span class="badge bg-info ms-2" id="entityCount">0/4</span>
+                            </h6>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3" id="school_search" style="display: none;">
+                            <label for="statistical_number" class="form-label fw-bold">
+                                الرقم الإحصائي
+                                <i class="fas fa-question-circle text-info ms-1" style="cursor: pointer;" onclick="toggleInstructions()" title="انقر لعرض التعليمات الإرشادية"></i>
+                            </label>
+                            <div class="input-group">
+                                <input type="text" class="form-control " id="statistical_number" name="statistical_number" value="" placeholder="مثال: 123456 أو M123456" autocomplete="off">
+                                <button type="button" class="btn btn-outline-primary" onclick="searchEntity()">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                                                        <div class="form-text">
+                                <i class="fas fa-info-circle me-1"></i>
+                                يمكن للمنسق الارتباط بحد أقصى 4 جهات (مدارس أو أقسام)
+                            </div>
+                            
+                            <!-- تعليمات إرشادية للبحث عن الرقم الإحصائيه-->
+                            <!---<div class="alert alert-info mt-2 notification-item" role="alert" id="searchInstructions" style="display: none;">
+                                <div class="d-flex justify-content-between align-items-center" style="cursor: pointer;" onclick="toggleInstructions()">
+                                    <h6 class="alert-heading mb-0">
+                                        <i class="fas fa-search me-2"></i>
+                                        تعليمات إرشادية للبحث عن الرقم الإحصائي
+                                    </h6>
+                                    <i class="fas fa-chevron-down" id="toggleIcon"></i>
+                                </div>
+                                <div id="instructionsContent" class="mt-3">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h6 class="text-primary mb-2">
+                                                <i class="fas fa-school me-2"></i>
+                                                كيفية كتابة الرقم الإحصائي
+                                            </h6>
+                                            <ul class="mb-3 small">
+                                                <li><strong>المدارس الابتدائية والمتوسطة:</strong> اكتب الرقم الإحصائي كما هو (مثال: 123456)</li>
+                                                <li><strong>المدارس الثانوية (مسارات):</strong> أضف حرف <strong>M</strong> قبل الرقم (مثال: M123456)</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <hr class="my-2">
+                                    <div class="small">
+                                        <strong>أمثلة عملية:</strong>
+                                        <div class="row mt-2">
+                                            <div class="col-md-4">
+                                                <div class="bg-light p-2 rounded">
+                                                    <strong>مدرسة ابتدائية:</strong> <code>123456</code>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="bg-light p-2 rounded">
+                                                    <strong>مدرسة متوسطة:</strong> <code>789012</code>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="bg-light p-2 rounded">
+                                                    <strong>مدرسة ثانوية:</strong> <code>M123456</code>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    ----->
+                    <!-- نتيجة البحث -->
+                    <div id="searchResult" class="mb-3" style="display: none;"></div>
+                    
+                    <!-- الجهات المربوطة -->
+                    <div id="linkedEntities" class="mb-4"><div class="text-center text-muted py-3">لا توجد جهات مربوطة</div></div>
+                    
+                    <!-- أزرار الإجراءات -->
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <div class="d-flex justify-content-between">
+                                <a href="index.html" class="btn btn-secondary">
+                                    <i class="fas fa-arrow-right me-1"></i>
+                                    العودة للصفحة الرئيسية
+                                </a>
+                                <button type="submit" class="btn btn-secondary" id="submitBtn" disabled=""><i class="fas fa-user-plus me-1"></i> تسجيل المنسق</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-5" style="background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); border-top: 3px solid #667eea;">
+        <div class="container py-3">
+            <!-- القسم العلوي -->
+            <div class="row mb-3 align-items-center">
+                <div class="col-12 mb-2">
+                    <div class="text-center text-white">
+                        <h6 class="mb-2 fw-bold text-warning">
+                            <i class="fas fa-cogs me-2"></i>
+                            تطوير
+                        </h6>
+                        <p class="mb-1 text-white">
+                            اداره الموارد البشرية - الإدارة العامة للتعليم بمنطقة تبوك
+                        </p>
+                    </div>
+                </div>
+                
+              
+            
+            <!-- الخط الفاصل -->
+            <hr class="border-secondary my-2">
+            
+            <!-- القسم السفلي -->
+            <div class="row align-items-center">
+                <div class="col-12 text-center">
+                    <p class="mb-0 text-white">
+                        جميع الحقوق محفوظة © 2025 مبادرة سماي
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Modal Fix Script -->
+    <script src="https://samai-aseer.innozone.in/js/modal-fix.js"></script>
+    
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+        <script>
+let linkedEntities = [];
+let currentSearchResult = null;
+let firstEntityType = null;
+let firstGovernorate = null;
+let firstGender = null;
+let departments = [];
+
+// تحميل الأقسام عند تحميل الصفحة
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Page loaded, initializing...');
+    
+    // تحميل الأقسام
+    loadDepartments();
+    
+    // إضافة event listener لتغيير نوع المنسق
+    const coordinatorTypeSelect = document.getElementById('coordinator_type');
+    if (coordinatorTypeSelect) {
+        coordinatorTypeSelect.addEventListener('change', function() {
+            console.log('Coordinator type changed to:', this.value);
+            handleCoordinatorTypeChange();
+        });
+    }
+    
+    // إضافة event listener لاختيار القسم
+    const departmentSelect = document.getElementById('department_id');
+    if (departmentSelect) {
+        departmentSelect.addEventListener('change', function() {
+            console.log('Department selected:', this.value);
+            handleDepartmentSelection();
+        });
+    }
+    
+    // تحديث إظهار/إخفاء قسم اختيار نوع المنسق عند تحميل الصفحة
+    updateCoordinatorTypeVisibility();
+    
+    // تهيئة التعليمات الإرشادية إذا كان نوع المنسق محدد مسبقاً
+    initializeInstructions();
+    
+    console.log('Page initialization completed');
+});
+
+// دالة تهيئة التعليمات الإرشادية عند تحميل الصفحة
+function initializeInstructions() {
+    const coordinatorType = document.getElementById('coordinator_type').value;
+    const searchInstructions = document.getElementById('searchInstructions');
+    
+    // مسح جميع الرسائل السابقة عند التهيئة
+    clearAllMessages();
+    
+    if (coordinatorType === 'school' && searchInstructions) {
+        searchInstructions.style.display = 'block';
+        console.log('Instructions initialized for school coordinator');
+    } else if (searchInstructions) {
+        searchInstructions.style.display = 'none';
+        console.log('Instructions hidden for non-school coordinator');
+    }
+}
+
+// دالة تبديل عرض التعليمات الإرشادية
+function toggleInstructions() {
+    const content = document.getElementById('instructionsContent');
+    const icon = document.getElementById('toggleIcon');
+    
+    if (content.style.display === 'none') {
+        content.style.display = 'block';
+        icon.className = 'fas fa-chevron-down';
+    } else {
+        content.style.display = 'none';
+        icon.className = 'fas fa-chevron-right';
+    }
+}
+
+// تحميل قائمة الأقسام
+function loadDepartments() {
+    console.log('Loading departments...');
+    fetch('/departments/list', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Departments response:', data);
+        
+        if (data.success && data.departments) {
+            // تنسيق getDepartmentsList() الجديد
+            departments = data.departments;
+            console.log(`Loaded ${departments.length} departments from getDepartmentsList()`);
+        } else if (Array.isArray(data)) {
+            // تنسيق قديم (للتوافق)
+            departments = data.map(dept => ({
+                id: dept.id,
+                name: dept.full_name || dept.name,
+                administration: dept.administration,
+                general_administration: dept.general_administration || null,
+                department: dept.department || null,
+                section: dept.section || null,
+                unit: dept.unit || null
+            }));
+            console.log(`Loaded ${departments.length} departments from legacy format`);
+        } else {
+            console.error('Unexpected data format:', data);
+            departments = [];
+        }
+        
+        populateDepartmentSelect();
+    })
+    .catch(error => {
+        console.error('Error loading departments:', error);
+        departments = [];
+        populateDepartmentSelect();
+    });
+}
+
+// ملء قائمة الأقسام
+function populateDepartmentSelect() {
+    const select = document.getElementById('department_id');
+    if (!select) {
+        console.error('Department select element not found');
+        return;
+    }
+    
+    const renderOptions = (list) => {
+        select.innerHTML = '<option value="">اختر القسم</option>';
+        
+        // تصنيف الأقسام
+        const availableDepartments = [];
+        const linkedDepartments = [];
+        const rejectedDepartments = [];
+        
+        list.forEach(dept => {
+            if (dept.can_link) {
+                if (dept.coordinator_status === 'rejected') {
+                    rejectedDepartments.push(dept);
+                } else {
+                    availableDepartments.push(dept);
+                }
+            } else {
+                linkedDepartments.push(dept);
+            }
+        });
+        
+        // إضافة الأقسام المتاحة أولاً
+        if (availableDepartments.length > 0) {
+            const optgroup = document.createElement('optgroup');
+            optgroup.label = 'الأقسام المتاحة للربط';
+            availableDepartments.forEach(dept => {
+                const option = document.createElement('option');
+                option.value = dept.id;
+                option.textContent = dept.name || dept.full_name || 'قسم بدون اسم';
+                option.className = 'text-success';
+                optgroup.appendChild(option);
+            });
+            select.appendChild(optgroup);
+        }
+        
+        // إضافة الأقسام المرفوضة (يمكن إعادة طلبها)
+        if (rejectedDepartments.length > 0) {
+            const optgroup = document.createElement('optgroup');
+            optgroup.label = 'الأقسام المرفوضة (يمكن إعادة طلبها)';
+            rejectedDepartments.forEach(dept => {
+                const option = document.createElement('option');
+                option.value = dept.id;
+                option.textContent = dept.name || dept.full_name || 'قسم بدون اسم';
+                option.className = 'text-warning';
+                optgroup.appendChild(option);
+            });
+            select.appendChild(optgroup);
+        }
+        
+        // إضافة الأقسام المرتبطة (غير متاحة) - بدون معلومات المنسق
+        if (linkedDepartments.length > 0) {
+            const optgroup = document.createElement('optgroup');
+            optgroup.label = 'الأقسام المرتبطة بمنسقين آخرين (غير متاحة)';
+            linkedDepartments.forEach(dept => {
+                const option = document.createElement('option');
+                option.value = dept.id;
+                option.textContent = dept.name || dept.full_name || 'قسم بدون اسم';
+                option.disabled = true;
+                option.className = 'text-danger';
+                optgroup.appendChild(option);
+            });
+            select.appendChild(optgroup);
+        }
+        
+        console.log(`Populated ${list.length} departments in dropdown (${availableDepartments.length} available, ${rejectedDepartments.length} rejected, ${linkedDepartments.length} linked)`);
+    };
+    
+    if (departments && departments.length > 0) {
+        // إذا كان هناك قسم مرتبط سابقاً، صفِّ القائمة على نفس الإدارة
+        const firstDepartmentEntity = linkedEntities.find(e => e.type === 'department');
+        if (firstDepartmentEntity) {
+            const base = departments.find(d => d.id == firstDepartmentEntity.id) || firstDepartmentEntity;
+            const filtered = filterDepartmentsByBase(base);
+            renderOptions(filtered);
+            return;
+        }
+        
+        renderOptions(departments);
+    } else {
+        console.warn('No departments available');
+        select.innerHTML = '<option value="" disabled>لا توجد أقسام متاحة</option>';
+    }
+}
+
+
+
+// دالة مساعدة: ترجع الأقسام التابعة لنفس الإدارة/الإدارة العامة/الإدارة الفرعية
+function filterDepartmentsByBase(baseDepartment) {
+    return departments.filter(d => {
+        // تجنب إظهار الأقسام المربوطة بالفعل
+        if (linkedEntities.some(e => e.id === d.id && e.type === 'department')) {
+            return false;
+        }
+        
+        // التحقق من الانتماء لنفس الإدارة
+        if (baseDepartment.general_administration && d.general_administration) {
+            return d.general_administration === baseDepartment.general_administration;
+        }
+        if (baseDepartment.department && d.department) {
+            return d.department === baseDepartment.department;
+        }
+        return d.administration === baseDepartment.administration;
+    });
+}
+
+// التعامل مع تغيير نوع المنسق
+function handleCoordinatorTypeChange() {
+    const coordinatorType = document.getElementById('coordinator_type').value;
+    const departmentSelection = document.getElementById('department_selection');
+    const entitiesSection = document.getElementById('entities_section');
+    const schoolSearch = document.getElementById('school_search');
+    
+    console.log('Coordinator type changed to:', coordinatorType);
+    
+    // مسح جميع الرسائل والتنبيهات السابقة أولاً
+    clearAllMessages();
+    
+    // إخفاء جميع الأقسام أولاً
+    departmentSelection.style.display = 'none';
+    entitiesSection.style.display = 'none';
+    schoolSearch.style.display = 'none';
+    
+    console.log('All sections hidden initially');
+    
+    // مسح نتائج البحث السابقة
+    const searchResult = document.getElementById('searchResult');
+    if (searchResult) {
+        searchResult.innerHTML = '';
+        searchResult.style.display = 'none';
+    }
+    
+    // مسح حقل البحث
+    const statisticalNumberInput = document.getElementById('statistical_number');
+    if (statisticalNumberInput) {
+        statisticalNumberInput.value = '';
+    }
+    
+    // إزالة الرسائل السابقة مع استثناء تعليمات البحث
+    const existingAlerts = document.querySelectorAll('.alert');
+    existingAlerts.forEach(alert => {
+        const isSearchInstructions = alert.id === 'searchInstructions';
+        if (isSearchInstructions) {
+            return;
+        }
+        // إزالة الرسائل التي تم إنشاؤها ديناميكياً فقط
+        if (
+            alert.classList.contains('alert-dismissible') ||
+            alert.parentNode === entitiesSection ||
+            alert.parentNode === schoolSearch ||
+            alert.parentNode === departmentSelection
+        ) {
+            console.log('Removing alert:', alert.textContent);
+            alert.remove();
+        }
+    });
+    
+    // إخفاء رسائل التعليمات الإرشادية مؤقتاً (سيتم إظهارها لاحقاً إذا كان منسق مدرسة)
+    const searchInstructions = document.getElementById('searchInstructions');
+    if (searchInstructions) {
+        searchInstructions.style.display = 'none';
+    }
+    
+    // إزالة رسائل التصفية (تم إزالتها من واجهة المستخدم)
+    // const filterAlerts = document.querySelectorAll('.alert');
+    // filterAlerts.forEach(alert => {
+    //     if (alert.textContent.includes('تم تصفية الأقسام')) {
+    //         alert.remove();
+    //     }
+    // });
+    
+    // إعادة تعيين القيم
+    document.getElementById('department_id').value = '';
+    linkedEntities = [];
+    updateEntityCount();
+    
+    // مسح جميع الرسائل والتنبيهات السابقة
+    clearAllMessages();
+    
+    if (coordinatorType === 'department') {
+        // إظهار قسم الجهات المرتبطة
+        entitiesSection.style.display = 'block';
+        
+        // إظهار قسم اختيار القسم
+        const departmentSelection = document.getElementById('department_selection');
+        if (departmentSelection) {
+            departmentSelection.style.display = 'block';
+            console.log('Department selection section shown');
+            
+                    // إضافة رسالة توضيحية للمنسق قسم
+        const alertDiv = document.createElement('div');
+        alertDiv.className = 'alert alert-info alert-dismissible fade show';
+        alertDiv.innerHTML = `
+            <i class="fas fa-info-circle me-2"></i>
+            <strong>منسق قسم:</strong> اختر القسم المراد ربطه بالمنسق من القائمة المنسدلة أدناه.
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        `;
+        entitiesSection.insertBefore(alertDiv, entitiesSection.firstChild);
+        
+        // إخفاء التعليمات الإرشادية للبحث عن الرقم الإحصائي (لأنها خاصة بالمدارس فقط)
+        const searchInstructions = document.getElementById('searchInstructions');
+        if (searchInstructions) {
+            searchInstructions.style.display = 'none';
+            console.log('Instructions hidden for department coordinator');
+        }
+        }
+        
+        // تحديث إظهار/إخفاء قسم اختيار نوع المنسق بناءً على الجهات المربوطة
+        updateCoordinatorTypeVisibility();
+        
+    } else if (coordinatorType === 'school') {
+        // إظهار البحث عن المدارس
+        entitiesSection.style.display = 'block';
+        schoolSearch.style.display = 'block';
+        
+        // إخفاء قسم اختيار القسم
+        const departmentSelection = document.getElementById('department_selection');
+        if (departmentSelection) {
+            departmentSelection.style.display = 'none';
+            console.log('Department selection section hidden');
+        }
+        
+        // إظهار رسالة تأكيد
+        const alertDiv = document.createElement('div');
+        alertDiv.className = 'alert alert-info alert-dismissible fade show';
+        alertDiv.innerHTML = `
+            <i class="fas fa-info-circle me-2"></i>
+            <strong>منسق مدرسة:</strong> ابحث عن المدرسة باستخدام الرقم الإحصائي واربطها بالمنسق.
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        `;
+        schoolSearch.parentNode.insertBefore(alertDiv, schoolSearch);
+        
+        // إظهار التعليمات الإرشادية للبحث عن الرقم الإحصائي
+        const searchInstructions = document.getElementById('searchInstructions');
+        if (searchInstructions) {
+            searchInstructions.style.display = 'block';
+            console.log('Instructions shown for school coordinator');
+        }
+        
+        // تحديث إظهار/إخفاء قسم اختيار نوع المنسق
+        updateCoordinatorTypeVisibility();
+    }
+    
+    updateSubmitButton();
+}
+
+// دالة مسح جميع الرسائل والتنبيهات
+function clearAllMessages() {
+    // مسح نتائج البحث
+    const searchResult = document.getElementById('searchResult');
+    if (searchResult) {
+        searchResult.innerHTML = '';
+        searchResult.style.display = 'none';
+    }
+    
+    // مسح الرسائل التحذيرية
+    const warningAlerts = document.querySelectorAll('.alert-warning, .alert-danger, .alert-info');
+    warningAlerts.forEach(alert => {
+        if (alert.id !== 'searchInstructions') {
+            alert.remove();
+        }
+    });
+    
+    // مسح رسائل النجاح
+    const successAlerts = document.querySelectorAll('.alert-success');
+    successAlerts.forEach(alert => {
+        alert.remove();
+    });
+    
+    // مسح رسائل الخطأ
+    const errorAlerts = document.querySelectorAll('.alert-danger');
+    errorAlerts.forEach(alert => {
+        alert.remove();
+    });
+    
+    // مسح رسائل المعلومات (باستثناء تعليمات البحث)
+    const infoAlerts = document.querySelectorAll('.alert-info');
+    infoAlerts.forEach(alert => {
+        if (alert.id !== 'searchInstructions') {
+            alert.remove();
+        }
+    });
+    
+    console.log('All messages cleared');
+}
+
+// دالة جديدة للتحقق من إظهار/إخفاء قسم اختيار نوع المنسق
+function updateCoordinatorTypeVisibility() {
+    // البحث عن قسم نوع المنسق (الصف الذي يحتوي على coordinator_type)
+    const coordinatorTypeRow = document.querySelector('.row.mb-4');
+    let coordinatorTypeSection = null;
+    
+    // البحث عن الصف الذي يحتوي على coordinator_type
+    const rows = document.querySelectorAll('.row.mb-4');
+    rows.forEach(row => {
+        if (row.querySelector('#coordinator_type')) {
+            coordinatorTypeSection = row;
+        }
+    });
+    
+    console.log('updateCoordinatorTypeVisibility called');
+    console.log('linkedEntities.length:', linkedEntities.length);
+    
+    // مسح الرسائل إذا لم تكن هناك جهات مربوطة
+    if (linkedEntities.length === 0) {
+        clearAllMessages();
+    }
+    
+    if (coordinatorTypeSection) {
+        if (linkedEntities.length > 0) {
+            // إذا كان هناك جهات مربوطة، إخفاء قسم اختيار نوع المنسق
+            console.log('Hiding coordinator type selection - entities exist');
+            coordinatorTypeSection.style.display = 'none';
+        } else {
+            // إذا لم تكن هناك جهات مربوطة، إظهار قسم اختيار نوع المنسق
+            console.log('Showing coordinator type selection - no entities');
+            coordinatorTypeSection.style.display = 'block';
+        }
+    }
+}
+
+// التعامل مع اختيار القسم
+function handleDepartmentSelection() {
+    const departmentId = document.getElementById('department_id').value;
+    
+    // مسح الرسائل السابقة عند اختيار قسم جديد
+    clearAllMessages();
+    
+    if (departmentId) {
+        const selectedDepartment = departments.find(dept => dept.id == departmentId);
+        
+        if (selectedDepartment) {
+            // التحقق من إمكانية الربط
+            if (!selectedDepartment.can_link) {
+                alert('لا يمكن ربط هذا القسم لأنه مربوط بمنسق آخر');
+                document.getElementById('department_id').value = '';
+                return;
+            }
+            
+            // التحقق من الحد الأقصى للجهات المربوطة
+            if (linkedEntities.length >= 4) {
+                alert('لا يمكن ربط أكثر من 4 جهات بالمنسق الواحد.');
+                return;
+            }
+            
+            // التحقق من أن القسم ينتمي لنفس الإدارة إذا كان هناك جهات مربوطة
+            if (linkedEntities.length > 0) {
+                const firstEntity = linkedEntities[0];
+                const firstDepartment = departments.find(dept => dept.id == firstEntity.id);
+                
+                // التحقق من أن القسم الجديد ينتمي لنفس الإدارة العامة أو الإدارة
+                let isSameAdministration = false;
+                
+                // إذا كانت الجهة الأولى لها إدارة عامة
+                if (firstDepartment.general_administration && selectedDepartment.general_administration) {
+                    isSameAdministration = firstDepartment.general_administration === selectedDepartment.general_administration;
+                }
+                // إذا كانت الجهة الأولى لها إدارة (department)
+                else if (firstDepartment.department && selectedDepartment.department) {
+                    isSameAdministration = firstDepartment.department === selectedDepartment.department;
+                }
+                // إذا كانت الجهة الأولى لها إدارة عامة (administration)
+                else {
+                    isSameAdministration = firstDepartment.administration === selectedDepartment.administration;
+                }
+                
+                if (!isSameAdministration) {
+                    alert('لا يمكن اختيار قسم من إدارة مختلفة. يجب أن تكون جميع الأقسام من نفس الإدارة.');
+                    return;
+                }
+            } else {
+                // بعد اختيار أول قسم: صفِّ قائمة الأقسام لعرض ما يتبع نفس الإدارة
+                const baseDepartment = selectedDepartment;
+                const select = document.getElementById('department_id');
+                if (select) {
+                    const filtered = filterDepartmentsByBase(baseDepartment);
+                    select.innerHTML = '<option value="">اختر القسم</option>';
+                    
+                    // تصنيف الأقسام المصفاة
+                    const availableDepartments = [];
+                    const linkedDepartments = [];
+                    const rejectedDepartments = [];
+                    
+                    filtered.forEach(dept => {
+                        if (dept.can_link) {
+                            if (dept.coordinator_status === 'rejected') {
+                                rejectedDepartments.push(dept);
+                            } else {
+                                availableDepartments.push(dept);
+                            }
+                        } else {
+                            linkedDepartments.push(dept);
+                        }
+                    });
+                    
+                    // إضافة الأقسام المتاحة أولاً
+                    if (availableDepartments.length > 0) {
+                        const optgroup = document.createElement('optgroup');
+                        optgroup.label = 'الأقسام المتاحة للربط';
+                        availableDepartments.forEach(dept => {
+                            const option = document.createElement('option');
+                            option.value = dept.id;
+                            option.textContent = dept.name || dept.full_name || 'قسم بدون اسم';
+                            option.className = 'text-success';
+                            optgroup.appendChild(option);
+                        });
+                        select.appendChild(optgroup);
+                    }
+                    
+                    // إضافة الأقسام المرفوضة (يمكن إعادة طلبها)
+                    if (rejectedDepartments.length > 0) {
+                        const optgroup = document.createElement('optgroup');
+                        optgroup.label = 'الأقسام المرفوضة (يمكن إعادة طلبها)';
+                        rejectedDepartments.forEach(dept => {
+                            const option = document.createElement('option');
+                            option.value = dept.id;
+                            option.textContent = dept.name || dept.full_name || 'قسم بدون اسم';
+                            option.className = 'text-warning';
+                            optgroup.appendChild(option);
+                        });
+                        select.appendChild(optgroup);
+                    }
+                    
+                    // إضافة الأقسام المرتبطة (غير متاحة) - بدون معلومات المنسق
+                    if (linkedDepartments.length > 0) {
+                        const optgroup = document.createElement('optgroup');
+                        optgroup.label = 'الأقسام المرتبطة بمنسقين آخرين (غير متاحة)';
+                        linkedDepartments.forEach(dept => {
+                            const option = document.createElement('option');
+                            option.value = dept.id;
+                            option.textContent = dept.name || dept.full_name || 'قسم بدون اسم';
+                            option.disabled = true;
+                            option.className = 'text-danger';
+                            optgroup.appendChild(option);
+                        });
+                        select.appendChild(optgroup);
+                    }
+                    
+                    console.log(`Dropdown filtered to ${filtered.length} departments under same administration (${availableDepartments.length} available, ${rejectedDepartments.length} rejected, ${linkedDepartments.length} linked)`);
+                }
+            }
+            
+            // إضافة القسم كجهة مربوطة
+            const entity = {
+                id: selectedDepartment.id,
+                type: 'department',
+                name: selectedDepartment.name,
+                administration: selectedDepartment.administration,
+                general_administration: selectedDepartment.general_administration,
+                department: selectedDepartment.department,
+                section: selectedDepartment.section,
+                unit: selectedDepartment.unit,
+                targets: {
+                    administrators: 5, // قيمة افتراضية
+                    teachers: 2, // قيمة افتراضية
+                    students: 0
+                }
+            };
+            
+            // التحقق من عدم التكرار
+            if (!linkedEntities.some(e => e.id === entity.id && e.type === entity.type)) {
+                linkedEntities.push(entity);
+                updateEntityCount();
+                displayLinkedEntities();
+                updateSubmitButton();
+                
+                // إعادة تعيين القائمة
+                document.getElementById('department_id').value = '';
+                
+                // تصفية الأقسام بناءً على الإدارة المختارة
+                filterDepartmentsBySelectedAdministration();
+                
+                // تحديث إظهار/إخفاء قسم اختيار نوع المنسق
+                updateCoordinatorTypeVisibility();
+            } else {
+                alert('هذا القسم مربوط بالفعل');
+            }
+        }
+    }
+}
+
+// تصفية الأقسام بناءً على الإدارة المختارة
+function filterDepartmentsBySelectedAdministration() {
+    if (linkedEntities.length === 0) {
+        // إذا لم تكن هناك جهات مربوطة، إظهار جميع الأقسام
+        populateDepartmentSelect();
+        return;
+    }
+    
+    // البحث عن الإدارة المختارة من الجهات المربوطة
+    const firstEntity = linkedEntities[0];
+    const firstDepartment = departments.find(dept => dept.id == firstEntity.id);
+    
+    if (!firstDepartment) {
+        console.error('First department not found');
+        return;
+    }
+    
+    // تصفية الأقسام التي تنتمي لنفس الإدارة
+    const filteredDepartments = departments.filter(dept => {
+        // تجنب إظهار الأقسام المربوطة بالفعل
+        if (linkedEntities.some(e => e.id === dept.id && e.type === 'department')) {
+            return false;
+        }
+        
+        // إذا كانت الجهة الأولى لها إدارة عامة
+        if (firstDepartment.general_administration && dept.general_administration) {
+            return firstDepartment.general_administration === dept.general_administration;
+        }
+        // إذا كانت الجهة الأولى لها إدارة (department)
+        else if (firstDepartment.department && dept.department) {
+            return firstDepartment.department === dept.department;
+        }
+        // إذا كانت الجهة الأولى لها إدارة عامة (administration)
+        else {
+            return firstDepartment.administration === dept.administration;
+        }
+    });
+    
+    // ملء القائمة المنسدلة بالأقسام المصفاة
+    const select = document.getElementById('department_id');
+    if (!select) {
+        console.error('Department select element not found');
+        return;
+    }
+    
+    select.innerHTML = '<option value="">اختر القسم</option>';
+    
+    if (filteredDepartments.length > 0) {
+        // تصنيف الأقسام المصفاة
+        const availableDepartments = [];
+        const linkedDepartments = [];
+        const rejectedDepartments = [];
+        
+        filteredDepartments.forEach(dept => {
+            if (dept.can_link) {
+                if (dept.coordinator_status === 'rejected') {
+                    rejectedDepartments.push(dept);
+                } else {
+                    availableDepartments.push(dept);
+                }
+            } else {
+                linkedDepartments.push(dept);
+            }
+        });
+        
+        // إضافة الأقسام المتاحة أولاً
+        if (availableDepartments.length > 0) {
+            const optgroup = document.createElement('optgroup');
+            optgroup.label = 'الأقسام المتاحة للربط';
+            availableDepartments.forEach(dept => {
+                const option = document.createElement('option');
+                option.value = dept.id;
+                option.textContent = dept.name || dept.full_name || 'قسم بدون اسم';
+                option.className = 'text-success';
+                optgroup.appendChild(option);
+            });
+            select.appendChild(optgroup);
+        }
+        
+        // إضافة الأقسام المرفوضة (يمكن إعادة طلبها)
+        if (rejectedDepartments.length > 0) {
+            const optgroup = document.createElement('optgroup');
+            optgroup.label = 'الأقسام المرفوضة (يمكن إعادة طلبها)';
+            rejectedDepartments.forEach(dept => {
+                const option = document.createElement('option');
+                option.value = dept.id;
+                option.textContent = dept.name || dept.full_name || 'قسم بدون اسم';
+                option.className = 'text-warning';
+                optgroup.appendChild(option);
+            });
+            select.appendChild(optgroup);
+        }
+        
+        // إضافة الأقسام المرتبطة (غير متاحة) - بدون معلومات المنسق
+        if (linkedDepartments.length > 0) {
+            const optgroup = document.createElement('optgroup');
+            optgroup.label = 'الأقسام المرتبطة بمنسقين آخرين (غير متاحة)';
+            linkedDepartments.forEach(dept => {
+                const option = document.createElement('option');
+                option.value = dept.id;
+                option.textContent = dept.name || dept.full_name || 'قسم بدون اسم';
+                option.disabled = true;
+                option.className = 'text-danger';
+                optgroup.appendChild(option);
+            });
+            select.appendChild(optgroup);
+        }
+        
+        console.log(`Filtered to ${filteredDepartments.length} departments for same administration (${availableDepartments.length} available, ${rejectedDepartments.length} rejected, ${linkedDepartments.length} linked)`);
+        
+        // إضافة رسالة توضيحية
+        const departmentSelection = document.getElementById('department_selection');
+        if (departmentSelection) {
+            // إزالة الرسائل السابقة
+            const existingAlerts = departmentSelection.querySelectorAll('.alert');
+            existingAlerts.forEach(alert => {
+                if (alert.textContent.includes('تم تصفية الأقسام')) {
+                    alert.remove();
+                }
+            });
+            
+            if (availableDepartments.length === 0 && rejectedDepartments.length === 0) {
+                const noAvailableAlert = document.createElement('div');
+                noAvailableAlert.className = 'alert alert-warning alert-dismissible fade show';
+                noAvailableAlert.innerHTML = `
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    <strong>تنبيه:</strong> لا توجد أقسام متاحة للربط في هذه الإدارة. جميع الأقسام إما مربوطة بمنسقين آخرين أو غير متاحة.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                `;
+                departmentSelection.insertBefore(noAvailableAlert, departmentSelection.firstChild);
+            } else {
+                const filterAlert = document.createElement('div');
+                filterAlert.className = 'alert alert-info alert-dismissible fade show';
+                filterAlert.innerHTML = `
+                    <i class="fas fa-filter me-2"></i>
+                    تم تصفية الأقسام لتعرض فقط الأقسام التابعة لإدارة: <strong>${firstDepartment.administration}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                `;
+                departmentSelection.insertBefore(filterAlert, departmentSelection.firstChild);
+            }
+        }
+    } else {
+        const option = document.createElement('option');
+        option.value = '';
+        option.textContent = 'لا توجد أقسام متاحة لهذه الإدارة';
+        option.disabled = true;
+        select.appendChild(option);
+        
+        // إضافة رسالة تحذير
+        const departmentSelection = document.getElementById('department_selection');
+        if (departmentSelection) {
+            const noDepartmentsAlert = document.createElement('div');
+            noDepartmentsAlert.className = 'alert alert-warning alert-dismissible fade show';
+            noDepartmentsAlert.innerHTML = `
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                <strong>تنبيه:</strong> لا توجد أقسام متاحة للربط في هذه الإدارة.
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            departmentSelection.insertBefore(noDepartmentsAlert, departmentSelection.firstChild);
+        }
+    }
+}
+
+// تحديث عدد الجهات المربوطة
+function updateEntityCount() {
+    const count = linkedEntities.length;
+    document.getElementById('entityCount').textContent = `${count}/4`;
+}
+
+// تحديث زر الإرسال
+function updateSubmitButton() {
+    const submitBtn = document.getElementById('submitBtn');
+    const coordinatorType = document.getElementById('coordinator_type').value;
+    const civilRecord = document.getElementById('civil_record').value.trim();
+    const name = document.getElementById('name').value.trim();
+    const phoneNumber = document.getElementById('phone_number').value.trim();
+    
+    // التحقق من الحقول الأساسية
+    let isValid = civilRecord && name && phoneNumber && coordinatorType;
+    
+    // التحقق من صحة رقم الجوال
+    if (phoneNumber) {
+        const phonePattern = /^05[0-9]{8}$/;
+        isValid = isValid && phonePattern.test(phoneNumber);
+    }
+    
+    // التحقق من صحة السجل المدني
+    if (civilRecord) {
+        const civilPattern = /^[0-9]{10}$/;
+        isValid = isValid && civilPattern.test(civilRecord);
+    }
+    
+    // التحقق من وجود جهات مربوطة
+    if (coordinatorType === 'department' || coordinatorType === 'school') {
+        isValid = isValid && linkedEntities.length > 0;
+    }
+    
+    // تحديث حالة الزر
+    if (submitBtn) {
+    submitBtn.disabled = !isValid;
+    
+    if (isValid) {
+        submitBtn.innerHTML = '<i class="fas fa-user-plus me-1"></i> تسجيل المنسق';
+            submitBtn.className = 'btn btn-primary';
+    } else {
+            submitBtn.innerHTML = '<i class="fas fa-user-plus me-1"></i> تسجيل المنسق';
+            submitBtn.className = 'btn btn-secondary';
+        }
+    }
+    
+    console.log('Submit button state updated:', {
+        isValid,
+        coordinatorType,
+        civilRecord: !!civilRecord,
+        name: !!name,
+        phoneNumber: !!phoneNumber,
+        linkedEntitiesCount: linkedEntities.length
+    });
+}
+
+// عرض الجهات المربوطة
+function displayLinkedEntities() {
+    const container = document.getElementById('linkedEntities');
+    
+    if (linkedEntities.length === 0) {
+        container.innerHTML = '<div class="text-center text-muted py-3">لا توجد جهات مربوطة</div>';
+        
+        // تحديث إظهار/إخفاء قسم اختيار نوع المنسق
+        updateCoordinatorTypeVisibility();
+        return;
+    }
+    
+    let html = '';
+    linkedEntities.forEach((entity, index) => {
+        const typeName = entity.type === 'institution' ? 'مدرسة' : 'قسم';
+        const typeClass = entity.type === 'institution' ? 'bg-info' : 'bg-warning';
+        const typeIcon = entity.type === 'institution' ? 'school' : 'sitemap';
+        
+        // تحديد الصفة الحقيقية للقسم
+        let entityTitle = '';
+        let displayName = entity.name;
+        
+        if (entity.type === 'department') {
+            if (entity.unit) {
+                entityTitle = 'وحدة';
+                displayName = entity.unit;
+            } else if (entity.section) {
+                entityTitle = 'قسم';
+                displayName = entity.section;
+            } else if (entity.department) {
+                entityTitle = 'إدارة';
+                displayName = entity.department;
+            } else if (entity.general_administration) {
+                entityTitle = 'إدارة عامة';
+                displayName = entity.general_administration;
+            } else if (entity.administration) {
+                entityTitle = 'إدارة';
+                displayName = entity.administration;
+            } else {
+                entityTitle = 'قسم';
+                displayName = entity.name;
+            }
+        } else {
+            entityTitle = typeName;
+            displayName = entity.name;
+        }
+        
+        html += `
+            <div class="card mb-3 entity-card">
+                <div class="card-header ${typeClass} text-white d-flex justify-content-between align-items-center">
+                    <h6 class="mb-0">
+                        <i class="fas fa-${typeIcon} me-2"></i>
+                        <span class="fw-bold">${entityTitle}:</span> ${displayName}
+                    </h6>
+                    <button type="button" class="btn btn-light btn-sm" onclick="removeEntity(${index})">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h6 class="mb-2">${entity.name}</h6>
+                            <div class="text-muted small">
+                                <div><strong>الإدارة:</strong> ${entity.administration}</div>
+                                ${entity.general_administration ? `<div><strong>الإدارة العامة:</strong> ${entity.general_administration}</div>` : ''}
+                                ${entity.department ? `<div><strong>القسم:</strong> ${entity.department}</div>` : ''}
+                                ${entity.section ? `<div><strong>القسم الفرعي:</strong> ${entity.section}</div>` : ''}
+                                ${entity.unit ? `<div><strong>الوحدة:</strong> ${entity.unit}</div>` : ''}
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row text-center">
+                                ${entity.targets.administrators ? `
+                                    <div class="col-6 mb-2">
+                                        <div class="target-box bg-primary text-white">
+                                            <div class="target-number">${entity.targets.administrators}</div>
+                                            <small>إداريين</small>
+                                        </div>
+                                    </div>
+                                ` : ''}
+                                ${entity.targets.teachers ? `
+                                    <div class="col-6 mb-2">
+                                        <div class="target-box bg-success text-white">
+                                            <div class="target-number">${entity.targets.teachers}</div>
+                                            <small>معلمين</small>
+                                        </div>
+                                    </div>
+                                ` : ''}
+                                ${entity.targets.students ? `
+                                    <div class="col-6 mb-2">
+                                        <div class="target-box bg-info text-white">
+                                            <div class="target-number">${entity.targets.students}</div>
+                                            <small>طلاب</small>
+                                        </div>
+                                    </div>
+                                ` : ''}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+    
+    container.innerHTML = html;
+    
+    // تحديث إظهار/إخفاء قسم اختيار نوع المنسق
+    updateCoordinatorTypeVisibility();
+}
+
+// البحث عن الجهة
+function searchEntity() {
+    const statisticalNumber = document.getElementById('statistical_number').value.trim();
+    
+    if (!statisticalNumber) {
+        alert('يرجى إدخال الرقم الإحصائي');
+        return;
+    }
+    
+    // التحقق من عدم تكرار الجهة
+    if (linkedEntities.some(entity => entity.statistical_number === statisticalNumber)) {
+        alert('هذه الجهة مربوطة بالفعل');
+        return;
+    }
+    
+    const resultDiv = document.getElementById('searchResult');
+    resultDiv.innerHTML = '<div class="text-center"><div class="spinner-border text-primary" role="status"></div><p class="mt-2">جاري البحث...</p></div>';
+    resultDiv.style.display = 'block';
+    
+    fetch('/entity/search', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            },
+        body: JSON.stringify({
+            statistical_number: statisticalNumber
+        })
+    })
+    .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+            currentSearchResult = data;
+        const entity = data.entity;
+        const type = data.type;
+            const displayName = data.display_name;
+            
+            // التحقق من نوع الجهة والمحافظة والنوع إذا كانت هناك جهات مربوطة
+            if (linkedEntities.length > 0) {
+                if (type !== firstEntityType) {
+                    const typeName = type === 'institution' ? 'مدرسة' : 'قسم';
+                    const firstTypeName = firstEntityType === 'institution' ? 'مدرسة' : 'قسم';
+                    resultDiv.innerHTML = `
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            لا يمكن ربط ${typeName} مع ${firstTypeName}. يجب ربط نفس نوع الجهة.
+                        </div>
+                    `;
+            return;
+        }
+        
+                if (data.governorate !== firstGovernorate) {
+                    resultDiv.innerHTML = `
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            لا يمكن ربط جهة من محافظة مختلفة. الجهة الأولى من محافظة: ${firstGovernorate}
+                        </div>
+                    `;
+                    return;
+                }
+                
+                if (data.gender !== firstGender) {
+                    resultDiv.innerHTML = `
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            لا يمكن ربط جهة من نوع مختلف. الجهة الأولى من نوع: ${firstGender}
+                        </div>
+                    `;
+                    return;
+                }
+            }
+            
+            resultDiv.innerHTML = `
+                <div class="card search-result-card">
+                    <div class="card-header text-white d-flex justify-content-between align-items-center">
+                        <h6 class="mb-0">
+                            <i class="fas fa-check-circle me-2"></i>
+                            تم العثور على الجهة
+                        </h6>
+                        <button type="button" class="btn btn-light btn-sm" onclick="linkEntity()">
+                            <i class="fas fa-link me-1"></i>
+                            ربط الجهة
+                        </button>
+                    </div>
+                    
+                    <div class="card-body">
+                        <!-- معلومات الجهة -->
+                        <div class="entity-info mb-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <span class="entity-badge ${type === 'institution' ? 'bg-info' : 'bg-warning'} me-3">
+                                    <i class="fas fa-${type === 'institution' ? 'school' : 'sitemap'} me-1"></i>
+                                    ${type === 'institution' ? 'مدرسة' : 'قسم'}
+                                </span>
+                                <h5 class="mb-0 text-dark">${displayName}</h5>
+                            </div>
+                            <div class="text-muted">
+                                <i class="fas fa-hashtag me-1"></i>
+                                <strong>الرقم الإحصائي:</strong> ${entity.statistical_number} | 
+                                <i class="fas fa-map-marker-alt me-1"></i>
+                                <strong>الموقع:</strong> ${data.governorate}
+                            </div>
+                        </div>
+                        
+                        <!-- المستهدفين -->
+                        <div class="row mb-3">
+                            <div class="col-12">
+                                <h6 class="text-dark mb-3">
+                                    <i class="fas fa-users me-2"></i>
+                                    المستهدفين
+                                </h6>
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <div class="target-box target-card bg-primary bg-opacity-10 border border-primary">
+                                            <div class="target-number text-primary">${data.targets.administrators}</div>
+                                            <div class="text-primary fw-semibold fs-5">إداريين</div>
+                                            <small class="text-muted">الكادر الإداري</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="target-box target-card bg-success bg-opacity-10 border border-success">
+                                            <div class="target-number text-success">${data.targets.teachers}</div>
+                                            <div class="text-success fw-semibold fs-5">معلمين</div>
+                                            <small class="text-muted">هيئة التدريس</small>
+                                        </div>
+                                    </div>
+                                    ${data.targets.students !== null ? `
+                                    <div class="col-md-4">
+                                        <div class="target-box target-card bg-info bg-opacity-10 border border-info">
+                                            <div class="target-number text-info">${data.targets.students}</div>
+                                            <div class="text-info fw-semibold fs-5">طلاب</div>
+                                            <small class="text-muted">الطلاب المستهدفين</small>
+                                        </div>
+                                    </div>
+                                    ` : `
+                                    <div class="col-md-4">
+                                        <div class="target-box target-card bg-secondary bg-opacity-10 border border-secondary">
+                                            <div class="target-number text-secondary">-</div>
+                                            <div class="text-secondary fw-semibold fs-5">لا يوجد</div>
+                                            <small class="text-muted">طلاب</small>
+                                        </div>
+                                    </div>
+                                    `}
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- رسالة معلومات -->
+                        <div class="alert alert-info mb-0">
+                            <div class="d-flex align-items-start">
+                                <i class="fas fa-info-circle me-2 mt-1 text-info"></i>
+                                <div>
+                                    <strong>معلومة مهمة:</strong>
+                                    <br>
+                                    يمكنك تحديث أعداد المستهدفين لاحقاً من صفحتك الخاصة بالتنسيق بعد اعتمادها من الإدارة.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else {
+            resultDiv.innerHTML = `
+                <div class="alert alert-warning">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    ${data.message}
+                    <div class="mt-2">
+                        <small class="text-muted">
+                            <i class="fas fa-info-circle me-1"></i>
+                        </small>
+                    </div>
+                </div>
+            `;
+        }
+    })
+    .catch(error => {
+        resultDiv.innerHTML = `
+            <div class="alert alert-danger">
+                <i class="fas fa-times-circle me-2"></i>
+                حدث خطأ أثناء البحث
+            </div>
+        `;
+    });
+    }
+    
+    // ربط الجهة
+    function linkEntity() {
+    if (!currentSearchResult) {
+        alert('لا توجد جهة للربط');
+            return;
+        }
+        
+    const entity = currentSearchResult.entity;
+    const type = currentSearchResult.type;
+    
+    // التحقق من الحد الأقصى للجهات المربوطة
+    if (linkedEntities.length >= 4) {
+        alert('لا يمكن ربط أكثر من 4 جهات بالمنسق الواحد.');
+        return;
+    }
+    
+    // التحقق من عدم التكرار
+    if (linkedEntities.some(e => e.id === entity.id && e.type === type)) {
+        alert('هذه الجهة مربوطة بالفعل');
+        return;
+    }
+    
+    // إضافة الجهة للقائمة
+    const linkedEntity = {
+        id: entity.id,
+        type: type,
+        name: currentSearchResult.display_name,
+        administration: entity.administration,
+        stage: entity.stage,
+        gender: entity.gender,
+        governorate: entity.governorate,
+        statistical_number: entity.statistical_number,
+        targets: currentSearchResult.targets
+    };
+    
+    linkedEntities.push(linkedEntity);
+    
+    // تحديث أول جهة إذا كانت الأولى
+    if (linkedEntities.length === 1) {
+        firstEntityType = type;
+        firstGovernorate = entity.governorate;
+        firstGender = entity.gender;
+    }
+    
+    // تحديث العرض
+    updateEntityCount();
+    displayLinkedEntities();
+    updateSubmitButton();
+    
+    // إخفاء نتيجة البحث
+    document.getElementById('searchResult').style.display = 'none';
+    document.getElementById('statistical_number').value = '';
+    currentSearchResult = null;
+    
+    // تحديث إظهار/إخفاء قسم اختيار نوع المنسق
+    updateCoordinatorTypeVisibility();
+}
+
+// إزالة جهة مربوطة
+function removeEntity(index) {
+    if (confirm('هل أنت متأكد من إزالة هذه الجهة؟')) {
+        linkedEntities.splice(index, 1);
+        
+        // إعادة تعيين نوع الجهة الأولى والمحافظة والنوع إذا تم حذف جميع الجهات
+        if (linkedEntities.length === 0) {
+            firstEntityType = null;
+            firstGovernorate = null;
+            firstGender = null;
+            
+            // إعادة تحميل جميع الأقسام إذا لم تكن هناك جهات مربوطة
+            populateDepartmentSelect();
+        } else {
+            // تصفية الأقسام بناءً على الإدارة المتبقية
+            filterDepartmentsBySelectedAdministration();
+        }
+        
+        // إعادة تفعيل حقل البحث
+        const searchField = document.getElementById('statistical_number');
+        if (searchField) {
+            searchField.disabled = false;
+            searchField.placeholder = 'مثال: 12345';
+        }
+        
+        updateLinkedEntitiesDisplay();
+        
+        // تحديث إظهار/إخفاء قسم اختيار نوع المنسق
+        updateCoordinatorTypeVisibility();
+    }
+}
+
+// معالجة إرسال النموذج
+document.getElementById('coordinatorForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // التحقق من صحة البيانات
+    const coordinatorType = document.getElementById('coordinator_type').value;
+    const civilRecord = document.getElementById('civil_record').value;
+    const name = document.getElementById('name').value;
+    const phoneNumber = document.getElementById('phone_number').value;
+    
+    if (!coordinatorType || !civilRecord || !name || !phoneNumber) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'بيانات مفقودة',
+            text: 'يرجى ملء جميع الحقول المطلوبة',
+            confirmButtonText: 'حسناً'
+        });
+        return;
+    }
+    
+    if (linkedEntities.length === 0) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'لا توجد جهات مربوطة',
+            text: 'يجب ربط جهة واحدة على الأقل',
+            confirmButtonText: 'حسناً'
+        });
+        return;
+    }
+    
+    // التحقق من صحة رقم الجوال
+    const phonePattern = /^05[0-9]{8}$/;
+    if (!phonePattern.test(phoneNumber)) {
+        Swal.fire({
+            icon: 'error',
+            title: 'رقم جوال غير صحيح',
+            text: 'رقم الجوال يجب أن يكون 10 أرقام تبدأ بـ 05',
+            confirmButtonText: 'حسناً'
+        });
+        return;
+    }
+    
+    // التحقق من صحة السجل المدني
+    const civilPattern = /^[0-9]{10}$/;
+    if (!civilPattern.test(civilRecord)) {
+        Swal.fire({
+            icon: 'error',
+            title: 'سجل مدني غير صحيح',
+            text: 'السجل المدني يجب أن يكون 10 أرقام',
+            confirmButtonText: 'حسناً'
+        });
+        return;
+    }
+    
+    // تعطيل زر الإرسال لمنع الإرسال المضاعف
+    const submitBtn = document.getElementById('submitBtn');
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i> جاري التسجيل...';
+    
+    // تحضير البيانات للإرسال
+    const formData = new FormData(this);
+    
+    // إضافة الجهات المربوطة
+    linkedEntities.forEach((entity, index) => {
+        formData.append(`linked_entities[${index}][type]`, entity.type);
+        formData.append(`linked_entities[${index}][entity_id]`, entity.id);
+        
+        if (entity.type === 'institution' && entity.statistical_number) {
+            formData.append(`linked_entities[${index}][statistical_number]`, entity.statistical_number);
+        }
+    });
+    
+    // إرسال الطلب باستخدام AJAX
+    fetch(this.action, {
+        method: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+            'Accept': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: formData
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(errorData => {
+                // إنشاء كائن خطأ مع المعلومات الكاملة
+                const error = new Error(errorData.message || 'حدث خطأ أثناء التسجيل');
+                error.errorData = errorData;
+                throw error;
+            });
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.success) {
+            // عرض رسالة نجاح باستخدام SweetAlert2
+            Swal.fire({
+                icon: 'success',
+                title: data.title || 'نجح التسجيل!',
+                text: data.message + ' يرجى معاودة الزيارة لاحقاً لتسجيل الدخول من صفحة دخول المنسقين سيتم مراجعة الطلب من قبل الإدارة.',
+                confirmButtonText: 'العودة للرئيسية',
+                confirmButtonColor: '#28a745',
+                allowOutsideClick: false,
+                allowEscapeKey: false
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // العودة للصفحة الرئيسية
+                    window.location.href = data.redirect_url || '/';
+                }
+            });
+        } else {
+            // التحقق من نوع الخطأ المرجع من الخادم
+            const errorMessage = data.message || 'حدث خطأ أثناء التسجيل، يرجى المحاولة مرة أخرى';
+            
+            // التحقق إذا كان الخطأ متعلق بتكرار السجل المدني
+            if (errorMessage.includes('السجل المدني مسجل سابقاً') || errorMessage.includes('مسجل سابقاً في النظام')) {
+                // عرض رسالة خطأ مخصصة للسجل المدني المكرر
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'السجل المدني مسجل سابقاً',
+                    html: `
+                        <p class="mb-3">${errorMessage}</p>
+                        <div class="alert alert-info text-start" style="font-size: 14px;">
+                            <strong>خيارات متاحة:</strong><br>
+                            • إذا كنت منسقاً مسجلاً مسبقاً، استخدم صفحة دخول المنسقين<br>
+                            • تأكد من إدخال السجل المدني الصحيح
+                        </div>
+                    `,
+                    showDenyButton: true,
+                    showCancelButton: true,
+                    confirmButtonText: 'دخول المنسقين',
+                    cancelButtonText: 'المحاولة مرة أخرى',
+                    confirmButtonColor: '#007bff',
+                    denyButtonColor: '#28a745',
+                    cancelButtonColor: '#6c757d'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // توجيه لصفحة دخول المنسقين
+                        window.location.href = '/coordinator/login';
+                    } else if (result.isDenied) {
+                        // توجيه لصفحة التواصل أو عرض معلومات الدعم
+                        Swal.fire({
+                            icon: 'info',
+                            //title: 'تواصل معنا',
+                            html: `
+                                <p>للدعم والاستفسارات:</p>
+                                <div class="d-flex justify-content-center gap-2 mt-3">
+                                    <a href="https://wa.me/966507172224" target="_blank" class="btn btn-success btn-sm">
+                                        <i class="fab fa-whatsapp me-1"></i> واتساب
+                                    </a>
+                                </div>
+                            `,
+                            confirmButtonText: 'حسناً'
+                        });
+                    }
+                });
+            } else {
+                // عرض رسالة خطأ عامة
+                Swal.fire({
+                    icon: 'error',
+                    title: 'حدث خطأ',
+                    text: errorMessage,
+                    confirmButtonText: 'حسناً'
+                });
+            }
+            
+            // إعادة تفعيل الزر
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fas fa-user-plus me-1"></i> تسجيل المنسق';
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        
+        // التحقق من نوع الخطأ
+        const errorMessage = error.message || 'حدث خطأ أثناء التسجيل، يرجى المحاولة مرة أخرى';
+        
+        // التحقق إذا كان الخطأ متعلق بتكرار السجل المدني
+        if (errorMessage.includes('السجل المدني مسجل سابقاً') || errorMessage.includes('مسجل سابقاً في النظام')) {
+            // عرض رسالة خطأ مخصصة للسجل المدني المكرر
+            Swal.fire({
+                icon: 'warning',
+                title: 'السجل المدني مسجل سابقاً',
+                html: `
+                    <p class="mb-3">${errorMessage}</p>
+                    <div class="alert alert-info text-start" style="font-size: 14px;">
+                        <strong>خيارات متاحة:</strong><br>
+                        • إذا كنت منسقاً مسجلاً مسبقاً، استخدم صفحة دخول المنسقين<br>
+                        • إذا نسيت بياناتك، تواصل مع الدعم عبر الواتساب<br>
+                        • تأكد من إدخال السجل المدني الصحيح
+                    </div>
+                `,
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: 'دخول المنسقين',
+                denyButtonText: 'تواصل مع الدعم',
+                cancelButtonText: 'المحاولة مرة أخرى',
+                confirmButtonColor: '#007bff',
+                denyButtonColor: '#28a745',
+                cancelButtonColor: '#6c757d'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // توجيه لصفحة دخول المنسقين
+                    window.location.href = '/coordinator/login';
+                } else if (result.isDenied) {
+                    // توجيه لصفحة التواصل أو عرض معلومات الدعم
+                    Swal.fire({
+                        icon: 'info',
+                       // title: 'تواصل معنا',
+                        html: `
+                            <p>للدعم والاستفسارات:</p>
+                            <div class="d-flex justify-content-center gap-2 mt-3">
+                                <a href="https://wa.me/966507172224" target="_blank" class="btn btn-success btn-sm">
+                                    <i class="fab fa-whatsapp me-1"></i> واتساب
+                                </a>
+                            </div>
+                        `,
+                        confirmButtonText: 'حسناً'
+                    });
+                }
+            });
+        } else {
+            // عرض رسالة خطأ عامة
+            Swal.fire({
+                icon: 'error',
+                title: 'حدث خطأ',
+                text: errorMessage,
+                confirmButtonText: 'حسناً'
+            });
+        }
+        
+        // إعادة تفعيل الزر
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fas fa-user-plus me-1"></i> تسجيل المنسق';
+    });
+});
+
+// تحديث عرض الجهات المربوطة (للتوافق مع الكود القديم)
+function updateLinkedEntitiesDisplay() {
+    updateEntityCount();
+    displayLinkedEntities();
+    updateSubmitButton();
+    
+    // تحديث إظهار/إخفاء قسم اختيار نوع المنسق
+    updateCoordinatorTypeVisibility();
+    
+    // إعادة تعيين قائمة الأقسام إذا لم تكن هناك جهات مربوطة
+    if (linkedEntities.length === 0) {
+        const departmentSelect = document.getElementById('department_id');
+        if (departmentSelect) {
+            departmentSelect.value = '';
+        }
+        // إعادة تحميل جميع الأقسام
+        populateDepartmentSelect();
+    } else {
+        // تصفية الأقسام بناءً على الإدارة المختارة
+        filterDepartmentsBySelectedAdministration();
+    }
+}
+
+// البحث عن الجهة
+function searchEntity() {
+    const statisticalNumber = document.getElementById('statistical_number').value.trim();
+    
+    if (!statisticalNumber) {
+        alert('يرجى إدخال الرقم الإحصائي');
+        return;
+    }
+    
+    // التحقق من عدم تكرار الجهة
+    if (linkedEntities.some(entity => entity.statistical_number === statisticalNumber)) {
+        alert('هذه الجهة مربوطة بالفعل');
+        return;
+    }
+    
+    const resultDiv = document.getElementById('searchResult');
+    resultDiv.innerHTML = '<div class="text-center"><div class="spinner-border text-primary" role="status"></div><p class="mt-2">جاري البحث...</p></div>';
+    resultDiv.style.display = 'block';
+    
+    fetch('/entity/search', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            },
+        body: JSON.stringify({
+            statistical_number: statisticalNumber
+        })
+    })
+    .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+            currentSearchResult = data;
+        const entity = data.entity;
+        const type = data.type;
+            const displayName = data.display_name;
+            
+            // التحقق من نوع الجهة والمحافظة والنوع إذا كانت هناك جهات مربوطة
+            if (linkedEntities.length > 0) {
+                if (type !== firstEntityType) {
+                    const typeName = type === 'institution' ? 'مدرسة' : 'قسم';
+                    const firstTypeName = firstEntityType === 'institution' ? 'مدرسة' : 'قسم';
+                    resultDiv.innerHTML = `
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            لا يمكن ربط ${typeName} مع ${firstTypeName}. يجب ربط نفس نوع الجهة.
+                        </div>
+                    `;
+            return;
+        }
+        
+                if (data.governorate !== firstGovernorate) {
+                    resultDiv.innerHTML = `
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            لا يمكن ربط جهة من محافظة مختلفة. الجهة الأولى من محافظة: ${firstGovernorate}
+                        </div>
+                    `;
+                    return;
+                }
+                
+                if (data.gender !== firstGender) {
+                    resultDiv.innerHTML = `
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            لا يمكن ربط جهة من نوع مختلف. الجهة الأولى من نوع: ${firstGender}
+                        </div>
+                    `;
+                    return;
+                }
+            }
+            
+            resultDiv.innerHTML = `
+                <div class="card search-result-card">
+                    <div class="card-header text-white d-flex justify-content-between align-items-center">
+                        <h6 class="mb-0">
+                            <i class="fas fa-check-circle me-2"></i>
+                            تم العثور على الجهة
+                        </h6>
+                        <button type="button" class="btn btn-light btn-sm" onclick="linkEntity()">
+                            <i class="fas fa-link me-1"></i>
+                            ربط الجهة
+                        </button>
+                    </div>
+                    
+                    <div class="card-body">
+                        <!-- معلومات الجهة -->
+                        <div class="entity-info mb-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <span class="entity-badge ${type === 'institution' ? 'bg-info' : 'bg-warning'} me-3">
+                                    <i class="fas fa-${type === 'institution' ? 'school' : 'sitemap'} me-1"></i>
+                                    ${type === 'institution' ? 'مدرسة' : 'قسم'}
+                                </span>
+                                <h5 class="mb-0 text-dark">${displayName}</h5>
+                            </div>
+                            <div class="text-muted">
+                                <i class="fas fa-hashtag me-1"></i>
+                                <strong>الرقم الإحصائي:</strong> ${entity.statistical_number} | 
+                                <i class="fas fa-map-marker-alt me-1"></i>
+                                <strong>الموقع:</strong> ${data.governorate}
+                            </div>
+                        </div>
+                        
+                        <!-- المستهدفين -->
+                        <div class="row mb-3">
+                            <div class="col-12">
+                                <h6 class="text-dark mb-3">
+                                    <i class="fas fa-users me-2"></i>
+                                    المستهدفين
+                                </h6>
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <div class="target-box target-card bg-primary bg-opacity-10 border border-primary">
+                                            <div class="target-number text-primary">${data.targets.administrators}</div>
+                                            <div class="text-primary fw-semibold fs-5">إداريين</div>
+                                            <small class="text-muted">الكادر الإداري</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="target-box target-card bg-success bg-opacity-10 border border-success">
+                                            <div class="target-number text-success">${data.targets.teachers}</div>
+                                            <div class="text-success fw-semibold fs-5">معلمين</div>
+                                            <small class="text-muted">هيئة التدريس</small>
+                                        </div>
+                                    </div>
+                                    ${data.targets.students !== null ? `
+                                    <div class="col-md-4">
+                                        <div class="target-box target-card bg-info bg-opacity-10 border border-info">
+                                            <div class="target-number text-info">${data.targets.students}</div>
+                                            <div class="text-info fw-semibold fs-5">طلاب</div>
+                                            <small class="text-muted">الطلاب المستهدفين</small>
+                                        </div>
+                                    </div>
+                                    ` : `
+                                    <div class="col-md-4">
+                                        <div class="target-box target-card bg-secondary bg-opacity-10 border border-secondary">
+                                            <div class="target-number text-secondary">-</div>
+                                            <div class="text-secondary fw-semibold fs-5">لا يوجد</div>
+                                            <small class="text-muted">طلاب</small>
+                                        </div>
+                                    </div>
+                                    `}
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- رسالة معلومات -->
+                        <div class="alert alert-info mb-0">
+                            <div class="d-flex align-items-start">
+                                <i class="fas fa-info-circle me-2 mt-1 text-info"></i>
+                                <div>
+                                    <strong>معلومة مهمة:</strong>
+                                    <br>
+                                    يمكنك تحديث أعداد المستهدفين لاحقاً من صفحتك الخاصة بالتنسيق بعد اعتمادها من الإدارة.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else {
+            resultDiv.innerHTML = `
+                <div class="alert alert-warning">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    ${data.message}
+                    <div class="mt-2">
+                        <small class="text-muted">
+                            <i class="fas fa-info-circle me-1"></i>
+                        </small>
+                    </div>
+                </div>
+            `;
+        }
+    })
+    .catch(error => {
+        resultDiv.innerHTML = `
+            <div class="alert alert-danger">
+                <i class="fas fa-times-circle me-2"></i>
+                حدث خطأ أثناء البحث
+            </div>
+        `;
+    });
+    }
+
+
+
+// إضافة event listeners للتحقق من صحة النموذج
+document.addEventListener('DOMContentLoaded', function() {
+    // إضافة event listeners للحقول المطلوبة
+    const requiredFields = ['civil_record', 'name', 'phone_number', 'coordinator_type'];
+    requiredFields.forEach(fieldId => {
+        const field = document.getElementById(fieldId);
+        if (field) {
+            field.addEventListener('input', function() {
+                updateSubmitButton();
+            });
+            field.addEventListener('change', function() {
+                updateSubmitButton();
+            });
+        }
+    });
+
+// التحقق من صحة رقم الجوال
+    const phoneField = document.getElementById('phone_number');
+    if (phoneField) {
+        phoneField.addEventListener('input', function() {
+            const phone = this.value;
+            const alertDiv = this.parentNode.querySelector('.phone-alert');
+            
+            if (alertDiv) {
+                alertDiv.remove();
+            }
+            
+        if (phone.length >= 2 && !phone.startsWith('05')) {
+            const alertDiv = document.createElement('div');
+            alertDiv.className = 'alert alert-warning phone-alert mt-2';
+            alertDiv.innerHTML = `
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                <small>رقم الجوال يجب أن يبدأ بـ 05</small>
+            `;
+            this.parentNode.appendChild(alertDiv);
+            }
+            
+            // تحديث زر الإرسال
+            updateSubmitButton();
+        });
+    }
+    
+    // تحديث حالة الزر عند تحميل الصفحة
+    updateSubmitButton();
+});
+
+// التحقق من صحة السجل المدني
+document.getElementById('civil_record').addEventListener('input', function(e) {
+    const civilRecord = e.target.value;
+    const civilPattern = /^[0-9]{10}$/;
+    
+    // إزالة أي رسائل تنبيه سابقة
+    const existingAlert = this.parentNode.querySelector('.civil-alert');
+    if (existingAlert) {
+        existingAlert.remove();
+    }
+    
+    if (civilRecord && !civilPattern.test(civilRecord)) {
+        e.target.setCustomValidity('السجل المدني يجب أن يكون 10 أرقام');
+        
+        // إضافة رسالة تنبيه فورية
+        if (civilRecord.length > 0 && !/^[0-9]+$/.test(civilRecord)) {
+            const alertDiv = document.createElement('div');
+            alertDiv.className = 'alert alert-danger civil-alert mt-2';
+            alertDiv.innerHTML = `
+                <i class="fas fa-times-circle me-2"></i>
+                <small>السجل المدني يجب أن يحتوي على أرقام فقط</small>
+            `;
+            this.parentNode.appendChild(alertDiv);
+        } else if (civilRecord.length > 0 && civilRecord.length < 10) {
+            const alertDiv = document.createElement('div');
+            alertDiv.className = 'alert alert-warning civil-alert mt-2';
+            alertDiv.innerHTML = `
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                <small>السجل المدني يجب أن يكون 10 أرقام (المدخل: ${civilRecord.length} أرقام)</small>
+            `;
+            this.parentNode.appendChild(alertDiv);
+        } else if (civilRecord.length === 10 && !civilPattern.test(civilRecord)) {
+            const alertDiv = document.createElement('div');
+            alertDiv.className = 'alert alert-danger civil-alert mt-2';
+            alertDiv.innerHTML = `
+                <i class="fas fa-times-circle me-2"></i>
+                <small>السجل المدني يجب أن يكون 10 أرقام بالضبط</small>
+            `;
+            this.parentNode.appendChild(alertDiv);
+        }
+    } else if (civilRecord.length === 10 && civilPattern.test(civilRecord)) {
+        // إظهار رسالة نجاح عند إدخال رقم صحيح
+        const alertDiv = document.createElement('div');
+        alertDiv.className = 'alert alert-success civil-alert mt-2';
+        alertDiv.innerHTML = `
+            <i class="fas fa-check-circle me-2"></i>
+            <small>السجل المدني صحيح ✓</small>
+        `;
+        this.parentNode.appendChild(alertDiv);
+        e.target.setCustomValidity('');
+    } else {
+        e.target.setCustomValidity('');
+    }
+});
+
+// تهيئة الصفحة
+document.addEventListener('DOMContentLoaded', function() {
+    updateLinkedEntitiesDisplay();
+});
+</script>
+    
+    <!-- JavaScript للإشعارات -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // تفعيل tooltips
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+        // إضافة تأثير النبض للإشعارات
+        const notificationBadge = document.querySelector('.position-relative .badge');
+        if (notificationBadge) {
+            notificationBadge.classList.add('notification-badge');
+        }
+        
+        // إضافة تأثيرات للإشعارات في القائمة المنسدلة
+        const notificationItems = document.querySelectorAll('.dropdown-item');
+        notificationItems.forEach(item => {
+            item.classList.add('notification-item');
+        });
+        
+        // إغلاق الإشعارات عند النقر عليها
+        const notificationLinks = document.querySelectorAll('.dropdown-item[href]');
+        notificationLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                // إغلاق القائمة المنسدلة
+                const dropdown = document.querySelector('.dropdown-menu');
+                if (dropdown) {
+                    const bsDropdown = bootstrap.Dropdown.getInstance(dropdown);
+                    if (bsDropdown) {
+                        bsDropdown.hide();
+                    }
+                }
+            });
+        });
+        
+        // إضافة تأثيرات للإشعارات في لوحة التحكم
+        const dashboardNotifications = document.querySelectorAll('.alert');
+        dashboardNotifications.forEach(alert => {
+            alert.classList.add('notification-item');
+        });
+        
+        // تحديث تلقائي للإشعارات كل 30 ثانية (اختياري)
+        setInterval(function() {
+            // يمكن إضافة تحديث تلقائي للإشعارات هنا
+            // fetch('/api/notifications/count')
+            //     .then(response => response.json())
+            //     .then(data => {
+            //         // تحديث العداد
+            //     });
+        }, 30000);
+    });
+    </script>
+
+ </body></html>
+
+<script type="module" src="./utils.js"></script>
+<script type="module">
+    import { searchSchool, registerCoordinator } from './utils.js';
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const searchForm = document.getElementById("search-form");
+        const registerForm = document.getElementById("register-form");
+        const statisticalNumberInput = document.getElementById("statistical_number");
+        const entityNameInput = document.getElementById("entity_name");
+        const entityTypeInput = document.getElementById("entity_type");
+        const entityGovernorateInput = document.getElementById("entity_governorate");
+        const entityGenderInput = document.getElementById("entity_gender");
+        const entityTargetsInput = document.getElementById("entity_targets");
+        const searchResultsDiv = document.getElementById("search-results");
+        const registerSection = document.getElementById("register-section");
+
+        if (searchForm) {
+            searchForm.addEventListener("submit", async (event) => {
+                event.preventDefault();
+                const statisticalNumber = statisticalNumberInput.value;
+                searchResultsDiv.innerHTML = 
+                    `<div class="alert alert-info text-center" role="alert">
+                        <div class="spinner-border text-info" role="status">
+                            <span class="visually-hidden">جاري البحث...</span>
+                        </div>
+                        جاري البحث عن الجهة...
+                    </div>`;
+                registerSection.style.display = "none";
+
+                const result = await searchSchool(statisticalNumber);
+
+                if (result.success) {
+                    searchResultsDiv.innerHTML = 
+                        `<div class="alert alert-success" role="alert">
+                            ${result.message}
+                        </div>
+                        <div class="card mt-3">
+                            <div class="card-body">
+                                <h5 class="card-title">${result.display_name}</h5>
+                                <p class="card-text">النوع: ${result.type}</p>
+                                <p class="card-text">المحافظة: ${result.governorate}</p>
+                                <p class="card-text">الجنس: ${result.gender}</p>
+                                <p class="card-text">الأهداف: ${JSON.stringify(result.targets)}</p>
+                            </div>
+                        </div>`;
+                    entityNameInput.value = result.entity.name;
+                    entityTypeInput.value = result.entity.type;
+                    entityGovernorateInput.value = result.entity.governorate;
+                    entityGenderInput.value = result.entity.gender;
+                    entityTargetsInput.value = JSON.stringify(result.entity.targets);
+                    registerSection.style.display = "block";
+                } else {
+                    searchResultsDiv.innerHTML = 
+                        `<div class="alert alert-danger" role="alert">
+                            ${result.message}
+                        </div>`;
+                    registerSection.style.display = "none";
+                }
+            });
+        }
+
+        if (registerForm) {
+            registerForm.addEventListener("submit", async (event) => {
+                event.preventDefault();
+                const formData = new FormData(registerForm);
+                
+                Swal.fire({
+                    title: "جاري التسجيل...",
+                    text: "الرجاء الانتظار بينما يتم تسجيل بياناتك.",
+                    allowOutsideClick: false,
+                    didOpen: () => {
+                        Swal.showLoading();
+                    }
+                });
+
+                const result = await registerCoordinator(formData);
+
+                if (result.success) {
+                    Swal.fire({
+                        icon: "success",
+                        title: result.title,
+                        text: result.message,
+                        showConfirmButton: false,
+                        timer: 1500
+                    }).then(() => {
+                        window.location.href = result.redirect_url;
+                    });
+                } else {
+                    Swal.fire({
+                        icon: "error",
+                        title: "فشل التسجيل!",
+                        text: result.message,
+                    });
+                }
+            });
+        }
+    });
+</script>
+

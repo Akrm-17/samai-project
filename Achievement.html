@@ -1,0 +1,2441 @@
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="csrf-token" content="nsPZT7KBriDvOJOYBwMm4ryzWNLWyM3nMJgnYQ5X">
+    <title>الأوسمة والإنجازات</title>
+    
+    <!-- Bootstrap RTL CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Vite Assets -->
+    <link rel="preload" as="style" href="https://samai-aseer.innozone.in/build/assets/app-_Z9BxLwA.css" /><link rel="modulepreload" as="script" href="https://samai-aseer.innozone.in/build/assets/app-C0G0cght.js" /><link rel="stylesheet" href="https://samai-aseer.innozone.in/build/assets/app-_Z9BxLwA.css" /><script type="module" src="https://samai-aseer.innozone.in/build/assets/app-C0G0cght.js"></script>    
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .navbar {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1000;
+            padding: 0.8rem 0;
+        }
+        
+        .navbar .container-fluid {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        /* تحسينات للأجهزة المحمولة */
+        @media (max-width: 768px) {
+            .navbar .container-fluid {
+                padding: 0 1rem;
+            }
+            
+            .navbar-nav {
+                gap: 0.5rem;
+            }
+            
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+            
+            .nav-link {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.9rem;
+            }
+            
+                    /* إظهار زر القائمة المنسدلة */
+        .navbar-toggler {
+            display: block !important;
+        }
+        
+        /* إخفاء النافبار على الشاشات الصغيرة */
+        .navbar-collapse {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 10px;
+            margin-top: 1rem;
+            padding: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* تنسيق الروابط في القائمة المنسدلة */
+        .navbar-nav .nav-link {
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-nav .nav-link:hover {
+            background: rgba(102, 126, 234, 0.1);
+            transform: translateX(5px);
+        }
+        }
+        
+        /* تحسينات خاصة بـ iPhone */
+        @media (max-width: 414px) {
+            .navbar .container-fluid {
+                padding: 0 0.5rem;
+            }
+            
+            .navbar-brand {
+                font-size: 1rem;
+            }
+            
+            .nav-link {
+                padding: 0.4rem 0.5rem;
+                font-size: 0.8rem;
+            }
+        }
+        
+        /* إعدادات إضافية لضمان عدم التداخل مع الإشعارات */
+        .navbar-nav {
+            position: relative;
+            z-index: 1000;
+        }
+        
+        .navbar-collapse {
+            position: relative;
+            z-index: 1000;
+        }
+        
+        .dropdown-menu {
+            position: relative;
+            z-index: 1000;
+        }
+        
+        /* إعدادات إضافية لضمان عدم التداخل مع الإشعارات */
+        .main-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* إعدادات محسنة للنوافذ المنبثقة */
+        .modal {
+            z-index: 1055 !important;
+        }
+        .modal-dialog {
+            z-index: 1056 !important;
+            position: relative;
+        }
+        
+        .modal-content {
+            z-index: 1057 !important;
+            position: relative;
+            background: #fff;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .modal-backdrop {
+            z-index: 1050 !important;
+            background: transparent !important; /* عدم تعتيم الخلفية */
+        }
+        
+        .modal-backdrop.show {
+            opacity: 0 !important; /* تعطيل تأثير التعتيم بالكامل */
+        }
+        
+        /* إصلاح مشكلة التعتم */
+        .modal.fade .modal-dialog {
+            transition: transform 0.3s ease-out;
+            transform: translate(0, -50px);
+        }
+        
+        .modal.show .modal-dialog {
+            transform: none;
+        }
+        
+        /* إصلاح مشكلة body */
+        body.modal-open {
+            overflow: hidden !important;
+        }
+        
+        /* تنسيق أرقام الهاتف في الفوتر */
+        .footer-phone-number {
+            color: #ffffff !important;
+            font-weight: bold !important;
+            font-size: 16px !important;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            background: rgba(0,0,0,0.3);
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 0 10px;
+        }
+        
+        .footer-phone-number:hover {
+            background: rgba(0,0,0,0.5);
+            transform: scale(1.05);
+            transition: all 0.3s ease;
+        }
+            
+        /* إعدادات إضافية للـ Bootstrap components */
+        .tooltip {
+            z-index: 1070;
+        }
+        
+        .popover {
+            z-index: 1060;
+        }
+        
+        /* إعدادات إضافية لضمان عدم التداخل مع الإشعارات */
+        .container,
+        .container-fluid {
+            position: static;
+        }
+        
+        .row {
+            position: static;
+        }
+        
+        .col,
+        .col-md-4,
+        .col-md-6,
+        .col-md-8,
+        .col-md-12 {
+            position: static;
+        }
+        
+        /* إعدادات Body و HTML */
+        body,
+        html {
+            position: relative;
+        }
+        
+        /* إعدادات إضافية لضمان ظهور الإشعارات */
+        .alert {
+            position: relative;
+            z-index: 9999;
+        }
+        
+        .alert-dismissible {
+            position: relative;
+            z-index: 9999;
+        }
+        
+        /* إعدادات خاصة لإشعارات المنسق */
+        .coordinator-alert,
+        .coordinator-success-alert,
+        .coordinator-error-alert,
+        .coordinator-warning-alert,
+        .coordinator-info-alert {
+            position: relative !important;
+            z-index: 9999 !important;
+            margin-bottom: 1rem !important;
+        }
+        
+        .coordinator-alert.show {
+            display: block !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        
+        /* إعدادات SweetAlert2 لضمان ظهورها فوق جميع العناصر */
+        .swal2-container {
+            z-index: 99999 !important;
+        }
+        
+        .swal2-popup {
+            z-index: 99999 !important;
+        }
+        
+        .swal2-backdrop {
+            z-index: 99998 !important;
+        }
+        
+        /* إعدادات Navbar لضمان عدم التداخل مع الإشعارات */
+        .navbar {
+            position: relative;
+            z-index: 1000;
+        }
+        
+        .navbar-nav {
+            position: relative;
+            z-index: 1000;
+        }
+        
+        .navbar-collapse {
+            position: relative;
+            z-index: 1000;
+        }
+        
+        .dropdown-menu {
+            position: relative;
+            z-index: 1000;
+        }
+        
+        .navbar-nav {
+            flex-direction: row !important;
+            flex-wrap: nowrap !important;
+        }
+        
+        .navbar-nav .nav-item {
+            white-space: nowrap;
+            margin-left: 0.75rem;
+            margin-right: 0.75rem;
+        }
+        
+        .navbar-nav .nav-link {
+            padding: 0.5rem 0.75rem !important;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        
+        .navbar-collapse {
+            flex-basis: auto !important;
+            position: relative;
+            z-index: 1000;
+        }
+
+        /* معالجة مشكلة ظهور جزء من روابط النافبار خارج الشاشة على الجوال
+           نجعل شريط الروابط نفسه قابلاً للتمرير أفقياً بدل تمرير الصفحة كاملة */
+        @media (max-width: 992px) {
+            .navbar { overflow-x: hidden; }
+            .navbar .container-fluid { max-width: 100% !important; }
+            .navbar .navbar-collapse { width: 100% !important; }
+            /* عند فتح زر الثلاثة خطوط تتحول الروابط إلى قائمة عمودية كاملة العرض */
+            .navbar .navbar-nav {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 0.25rem;
+                overflow: visible;
+                max-width: 100%;
+            }
+            .navbar .nav-item { margin-left: 0; margin-right: 0; }
+            .navbar .nav-link { white-space: nowrap; width: 100%; }
+        }
+        
+        @media (min-width: 992px) {
+            .navbar-expand-lg .navbar-nav {
+                flex-direction: row !important;
+            }
+            
+            .navbar-expand-lg .navbar-nav .nav-link {
+                padding-right: 0.5rem !important;
+                padding-left: 0.5rem !important;
+            }
+        }
+        
+        .navbar .container {
+            max-width: 100% !important;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .stat-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* تحسينات إضافية للوحة التحكم */
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .progress {
+            overflow: visible;
+        }
+        
+        .progress-bar {
+            position: relative;
+            overflow: visible;
+        }
+        
+        .badge {
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .display-1, .display-3, .display-4, .display-5 {
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        /* إصلاح شامل لأيقونات الترقيم - يطبق على جميع الصفحات */
+        .pagination .page-link i,
+        .pagination .page-link svg,
+        .pagination-arrow,
+        .pagination .fas,
+        .pagination .fa {
+            font-size: 0.7rem !important;
+            width: 0.7rem !important;
+            height: 0.7rem !important;
+            max-width: 0.7rem !important;
+            max-height: 0.7rem !important;
+            line-height: 0.7rem !important;
+        }
+        
+        /* إصلاح رموز الأسهم في الترقيم */
+        .pagination .page-link {
+            font-size: 0.9rem !important;
+            font-weight: bold !important;
+        }
+        
+        .pagination .page-link {
+            font-size: 0.8rem !important;
+            padding: 0.4rem 0.6rem !important;
+            line-height: 1.2 !important;
+        }
+        
+        .pagination .page-item:first-child .page-link,
+        .pagination .page-item:last-child .page-link {
+            font-size: 0.7rem !important;
+            padding: 0.3rem 0.5rem !important;
+            min-width: auto !important;
+            max-width: none !important;
+        }
+        
+        /* تحسينات الشريط السفلي */
+        footer {
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+        }
+        
+        footer h5 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        footer .text-muted {
+            opacity: 0.8;
+        }
+        
+        footer .btn {
+            transition: all 0.3s ease;
+        }
+        
+        footer .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        footer .badge {
+            font-size: 0.75rem;
+            padding: 0.5rem 0.75rem;
+        }
+        
+        /* أنماط الإشعارات */
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border-radius: 15px;
+        }
+        
+        .dropdown-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px 15px 0 0;
+            margin: -0.5rem -0.5rem 0.5rem -0.5rem;
+            padding: 1rem;
+        }
+        
+        .dropdown-item {
+            border-radius: 8px;
+            margin: 0.25rem 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown-item:hover {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            transform: translateX(5px);
+        }
+        
+        .dropdown-item .badge {
+            font-size: 0.7rem;
+            padding: 0.25rem 0.5rem;
+        }
+        
+        .dropdown-item i {
+            width: 20px;
+            text-align: center;
+        }
+        
+        .dropdown-divider {
+            margin: 0.5rem 0;
+            border-color: #e9ecef;
+        }
+        
+        /* تأثيرات الإشعارات */
+        @keyframes notificationPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .notification-badge {
+            animation: notificationPulse 2s infinite;
+        }
+        
+        .notification-item {
+            transition: all 0.3s ease;
+        }
+        
+        .notification-item:hover {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            transform: translateX(5px);
+        }
+        
+        .notification-item.unread {
+            background: rgba(255, 193, 7, 0.1);
+            border-left: 4px solid #ffc107;
+        }
+        
+        footer hr {
+            opacity: 0.3;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 10px;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .form-control {
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+            padding: 0.75rem 1rem;
+        }
+        
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+        
+        .table {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            font-weight: 600;
+        }
+        /* ضمان استقبال النقرات داخل المودال فقط */
+        .modal { pointer-events: auto !important; }
+        .modal * { pointer-events: auto; }
+        .modal-backdrop { pointer-events: none !important; }
+    </style>
+    
+    </head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid" style="max-width: 1400px; margin: 0 auto; padding: 0 2rem;">
+            <a class="navbar-brand fw-bold" href="https://samai-aseer.innozone.in">
+                <i class="fas fa-chart-line me-2"></i>
+                مبادرة سماي
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto" style="margin-left: 2rem;">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home me-1"></i>
+                            الرئيسية
+                        </a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="login.html">
+                            <i class="fas fa-user-plus me-1"></i>
+                            تسجيل منسق
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="Achievement.html">
+                            <i class="fas fa-trophy me-1"></i>
+                            الأوسمة والإنجازات
+                        </a>
+                    </li>
+                                    </ul>
+                
+                <ul class="navbar-nav" style="margin-right: 2rem;">
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="py-4">
+        <div class="container">
+            
+            
+            <style>
+    .achievements-hero {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 2rem 0;
+        margin-bottom: 2rem;
+        border-radius: 15px;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .achievements-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="50" cy="50" r="1.5" fill="%23ffffff" opacity="0.15"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        opacity: 0.3;
+    }
+    
+    /* تصميم عداد الأوسمة */
+    .achievements-count-badge {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 15px;
+        padding: 12px 20px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .achievements-count-badge:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    .achievements-count-badge .count-number {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #ffd700;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    .achievements-count-badge .count-text {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: white;
+        white-space: nowrap;
+    }
+    
+    .achievements-count-badge i {
+        color: #ffd700;
+        font-size: 1.2rem;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    /* ترتيب مضغوط للأوسمة في الجدول لتقليل الارتفاع */
+    .awards-compact {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        align-items: center;
+        min-height: 40px;
+        padding: 8px 0;
+    }
+
+    /* تحديد ارتفاع مرن لأوسمة المستوى الأول */
+    .awards-compact.first-level {
+        min-height: 40px;
+        max-height: 120px;
+        overflow: hidden;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-start;
+    }
+
+    .awards-compact.first-level .badge {
+        margin-bottom: 4px;
+        margin-right: 4px;
+        flex-shrink: 0;
+    }
+
+    .awards-compact .badge {
+        font-size: 0.75rem;
+        line-height: 1.2;
+        margin-bottom: 4px;
+        display: inline-flex;
+        align-items: center;
+        white-space: nowrap;
+    }
+    
+    /* تحسينات للأجهزة المحمولة */
+    @media (max-width: 768px) {
+        .achievements-hero {
+            padding: 1.5rem 0;
+            margin-bottom: 1rem;
+        }
+        
+        .achievements-hero h1 {
+            font-size: 1.8rem;
+        }
+        
+        .achievements-count-badge {
+            padding: 8px 15px;
+        }
+        
+        .achievements-count-badge .count-number {
+            font-size: 1.2rem;
+        }
+        
+        .achievements-count-badge .count-text {
+            font-size: 0.8rem;
+        }
+        
+        .table-responsive {
+            font-size: 0.85rem;
+        }
+        
+        .btn {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+    }
+    
+    /* تحسينات خاصة بـ iPhone */
+    @media (max-width: 414px) {
+        .achievements-hero {
+            padding: 1rem 0;
+        }
+        
+        .achievements-hero h1 {
+            font-size: 1.5rem;
+        }
+        
+        .achievements-count-badge {
+            padding: 6px 12px;
+        }
+        
+        .achievements-count-badge .count-number {
+            font-size: 1rem;
+        }
+        
+        .achievements-count-badge .count-text {
+            font-size: 0.75rem;
+        }
+        
+        .table-responsive {
+            font-size: 0.8rem;
+        }
+        
+        .btn {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.8rem;
+        }
+        
+        /* إخفاء بعض الأعمدة على الشاشات الصغيرة */
+        .d-none-mobile {
+            display: none !important;
+        }
+
+    }
+   
+
+    /* تنسيق نسب الإنجاز */
+    .achievement-percentages {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .percentage-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        justify-content: space-between;
+    }
+
+    .percentage-row small {
+        font-size: 0.7rem;
+        font-weight: 600;
+    }
+
+    .percentage-row .badge {
+        font-size: 0.75rem;
+        padding: 4px 8px;
+        border-radius: 8px;
+    }
+    
+    .achievement-hierarchy {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+    }
+    
+    .achievement-tier {
+        position: relative;
+        background: white;
+        border-radius: 20px;
+        padding: 1.2rem;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+        overflow: hidden;
+        min-height: 240px;
+        display: flex;
+        flex-direction: column;
+        border-top: 4px solid;
+        /* تصميم عرضي */
+        max-width: 350px;
+        margin: 0 auto;
+        position: relative;
+    }
+    
+    /* إضافة أيقونات مميزة لكل مستوى */
+    .achievement-tier::before {
+        content: '';
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: 30px;
+        height: 30px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        opacity: 0.1;
+        z-index: 1;
+    }
+    
+    .tier-diamond::before {
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2300d4ff"><path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z"/></svg>');
+    }
+    
+    .tier-platinum::before {
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23e5e4e2"><path d="M12 2L15.09 8.26L22 9L15.09 9.74L12 16L8.91 9.74L2 9L8.91 8.26L12 2Z"/></svg>');
+    }
+    
+    .tier-gold::before {
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ffd700"><path d="M12 2L14.09 8.26L20 9L14.09 9.74L12 16L9.91 9.74L4 9L9.91 8.26L12 2Z"/></svg>');
+    }
+    
+    .tier-silver::before {
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23c0c0c0"><path d="M12 2L13.09 8.26L18 9L13.09 9.74L12 16L10.91 9.74L6 9L10.91 8.26L12 2Z"/></svg>');
+    }
+    
+    .tier-bronze::before {
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23cd7f32"><path d="M12 2L12.5 8.26L18 9L12.5 9.74L12 16L11.5 9.74L6 9L11.5 8.26L12 2Z"/></svg>');
+    }
+    
+    .tier-copper::before {
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23b87333"><path d="M12 2L12.3 8.26L17 9L12.3 9.74L12 16L11.7 9.74L7 9L11.7 8.26L12 2Z"/></svg>');
+    }
+    
+    .tier-diamond { border-top-color: #00d4ff; }
+    .tier-platinum { border-top-color: #e5e4e2; }
+    .tier-gold { border-top-color: #ffd700; }
+    .tier-silver { border-top-color: #c0c0c0; }
+    .tier-bronze { border-top-color: #cd7f32; }
+    .tier-copper { border-top-color: #b87333; }
+    
+    .achievement-tier:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    }
+    
+    .tier-header {
+        text-align: center;
+        margin-bottom: 0.8rem;
+        padding-bottom: 0.5rem;
+        position: relative;
+    }
+    
+    .tier-rank {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 0.8rem;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        z-index: 10;
+    }
+    
+    .achievement-emblem {
+        position: relative;
+        margin: 0.5rem 0 1rem 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .emblem-container {
+        position: relative;
+        width: 90px;
+        height: 90px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        transition: all 0.4s ease;
+        cursor: pointer;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+    
+    .emblem-container:hover {
+        transform: scale(1.1) rotate(5deg);
+        box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+    }
+    
+    /* شعار الماسي - ماسة متعددة الأوجه مع توهج أزرق */
+    .emblem-diamond {
+        background: linear-gradient(45deg, #00d4ff 0%, #0099cc 25%, #0066ff 50%, #0099cc 75%, #00d4ff 100%);
+        clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%);
+        box-shadow: 
+            0 8px 25px rgba(0, 212, 255, 0.5), 
+            inset 0 0 25px rgba(255,255,255,0.4),
+            0 0 30px rgba(0, 212, 255, 0.3);
+        position: relative;
+        animation: diamondGlow 3s ease-in-out infinite alternate;
+    }
+    
+    @keyframes diamondGlow {
+        0% { box-shadow: 0 8px 25px rgba(0, 212, 255, 0.5), inset 0 0 25px rgba(255,255,255,0.4), 0 0 30px rgba(0, 212, 255, 0.3); }
+        100% { box-shadow: 0 8px 25px rgba(0, 212, 255, 0.7), inset 0 0 25px rgba(255,255,255,0.6), 0 0 40px rgba(0, 212, 255, 0.5); }
+    }
+    
+    .emblem-diamond::before {
+        content: '';
+        position: absolute;
+        top: 8%; left: 8%; right: 8%; bottom: 8%;
+        background: linear-gradient(45deg, rgba(255,255,255,0.9) 0%, transparent 50%);
+        clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%);
+    }
+    
+    .emblem-diamond::after {
+        content: '';
+        position: absolute;
+        top: 18%; left: 18%; right: 18%; bottom: 18%;
+        background: radial-gradient(circle, rgba(255,255,255,0.7) 0%, transparent 70%);
+        clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%);
+    }
+
+    /* شعار البلاتيني - نجمة متوهجة مع توهج أبيض */
+    .emblem-platinum {
+        background: linear-gradient(45deg, #e5e4e2 0%, #f5f5f5 25%, #ffffff 50%, #f5f5f5 75%, #e5e4e2 100%);
+        clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        box-shadow: 
+            0 8px 25px rgba(229, 228, 226, 0.5), 
+            inset 0 0 25px rgba(255,255,255,0.7),
+            0 0 30px rgba(255,255,255,0.3);
+        position: relative;
+        animation: platinumGlow 4s ease-in-out infinite alternate;
+    }
+    
+    @keyframes platinumGlow {
+        0% { box-shadow: 0 8px 25px rgba(229, 228, 226, 0.5), inset 0 0 25px rgba(255,255,255,0.7), 0 0 30px rgba(255,255,255,0.3); }
+        100% { box-shadow: 0 8px 25px rgba(229, 228, 226, 0.7), inset 0 0 25px rgba(255,255,255,0.9), 0 0 40px rgba(255,255,255,0.5); }
+    }
+    
+    .emblem-platinum::before {
+        content: '';
+        position: absolute;
+        top: 12%; left: 12%; right: 12%; bottom: 12%;
+        background: linear-gradient(45deg, rgba(255,255,255,0.95) 0%, transparent 50%);
+        clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+    
+    .emblem-platinum::after {
+        content: '';
+        position: absolute;
+        top: 22%; left: 22%; right: 22%; bottom: 22%;
+        background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 60%);
+        clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+
+    /* شعار الذهبي - تاج ملكي مع توهج ذهبي */
+    .emblem-gold {
+        background: linear-gradient(45deg, #ffd700 0%, #ffed4e 25%, #ffb347 50%, #ffed4e 75%, #ffd700 100%);
+        clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+        box-shadow: 
+            0 8px 25px rgba(255, 215, 0, 0.5), 
+            inset 0 0 25px rgba(255,255,255,0.4),
+            0 0 30px rgba(255, 215, 0, 0.3);
+        position: relative;
+        animation: goldGlow 3.5s ease-in-out infinite alternate;
+    }
+    
+    @keyframes goldGlow {
+        0% { box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5), inset 0 0 25px rgba(255,255,255,0.4), 0 0 30px rgba(255, 215, 0, 0.3); }
+        100% { box-shadow: 0 8px 25px rgba(255, 215, 0, 0.7), inset 0 0 25px rgba(255,255,255,0.6), 0 0 40px rgba(255, 215, 0, 0.5); }
+    }
+    
+    .emblem-gold::before {
+        content: '';
+        position: absolute;
+        top: 8%; left: 8%; right: 8%; bottom: 8%;
+        background: linear-gradient(45deg, rgba(255,255,255,0.9) 0%, transparent 50%);
+        clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+    }
+    
+    .emblem-gold::after {
+        content: '';
+        position: absolute;
+        top: 18%; left: 18%; right: 18%; bottom: 18%;
+        background: radial-gradient(circle, rgba(255,255,255,0.7) 0%, transparent 60%);
+        clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+    }
+
+    /* شعار الفضي - درع حماية مع توهج فضي */
+    .emblem-silver {
+        background: linear-gradient(45deg, #c0c0c0 0%, #e8e8e8 25%, #f0f0f0 50%, #e8e8e8 75%, #c0c0c0 100%);
+        clip-path: polygon(50% 0%, 100% 0%, 100% 60%, 80% 100%, 20% 100%, 0% 60%, 0% 0%);
+        box-shadow: 
+            0 8px 25px rgba(192, 192, 192, 0.5), 
+            inset 0 0 25px rgba(255,255,255,0.6),
+            0 0 30px rgba(192, 192, 192, 0.3);
+        position: relative;
+        animation: silverGlow 4.5s ease-in-out infinite alternate;
+    }
+    
+    @keyframes silverGlow {
+        0% { box-shadow: 0 8px 25px rgba(192, 192, 192, 0.5), inset 0 0 25px rgba(255,255,255,0.6), 0 0 30px rgba(192, 192, 192, 0.3); }
+        100% { box-shadow: 0 8px 25px rgba(192, 192, 192, 0.7), inset 0 0 25px rgba(255,255,255,0.8), 0 0 40px rgba(192, 192, 192, 0.5); }
+    }
+    
+    .emblem-silver::before {
+        content: '';
+        position: absolute;
+        top: 12%; left: 12%; right: 12%; bottom: 12%;
+        background: linear-gradient(45deg, rgba(255,255,255,0.95) 0%, transparent 50%);
+        clip-path: polygon(50% 0%, 100% 0%, 100% 60%, 80% 100%, 20% 100%, 0% 60%, 0% 0%);
+    }
+    
+    .emblem-silver::after {
+        content: '';
+        position: absolute;
+        top: 22%; left: 22%; right: 22%; bottom: 22%;
+        background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 60%);
+        clip-path: polygon(50% 0%, 100% 0%, 100% 60%, 80% 100%, 20% 100%, 0% 60%, 0% 0%);
+    }
+
+    /* شعار البرونزي - كأس انتصار مع توهج برونزي */
+    .emblem-bronze {
+        background: linear-gradient(45deg, #cd7f32 0%, #daa520 25%, #b8860b 50%, #daa520 75%, #cd7f32 100%);
+        clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+        box-shadow: 
+            0 8px 25px rgba(205, 127, 50, 0.5), 
+            inset 0 0 25px rgba(255,255,255,0.3),
+            0 0 30px rgba(205, 127, 50, 0.3);
+        position: relative;
+        animation: bronzeGlow 5s ease-in-out infinite alternate;
+    }
+    
+    @keyframes bronzeGlow {
+        0% { box-shadow: 0 8px 25px rgba(205, 127, 50, 0.5), inset 0 0 25px rgba(255,255,255,0.3), 0 0 30px rgba(205, 127, 50, 0.3); }
+        100% { box-shadow: 0 8px 25px rgba(205, 127, 50, 0.7), inset 0 0 25px rgba(255,255,255,0.5), 0 0 40px rgba(205, 127, 50, 0.5); }
+    }
+    
+    .emblem-bronze::before {
+        content: '';
+        position: absolute;
+        top: 10%; left: 10%; right: 10%; bottom: 10%;
+        background: linear-gradient(45deg, rgba(255,255,255,0.7) 0%, transparent 50%);
+        clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+    }
+    
+    .emblem-bronze::after {
+        content: '';
+        position: absolute;
+        top: 20%; left: 20%; right: 20%; bottom: 20%;
+        background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, transparent 60%);
+        clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+    }
+
+    /* شعار النحاسي - حلقة انتصار مع توهج نحاسي */
+    .emblem-copper {
+        background: linear-gradient(45deg, #b87333 0%, #cd853f 25%, #daa520 50%, #cd853f 75%, #b87333 100%);
+        clip-path: circle(50% at 50% 50%);
+        box-shadow: 
+            0 8px 25px rgba(184, 115, 51, 0.5), 
+            inset 0 0 25px rgba(255,255,255,0.3),
+            0 0 30px rgba(184, 115, 51, 0.3);
+        position: relative;
+        animation: copperGlow 4s ease-in-out infinite alternate;
+    }
+    
+    @keyframes copperGlow {
+        0% { box-shadow: 0 8px 25px rgba(184, 115, 51, 0.5), inset 0 0 25px rgba(255,255,255,0.3), 0 0 30px rgba(184, 115, 51, 0.3); }
+        100% { box-shadow: 0 8px 25px rgba(184, 115, 51, 0.7), inset 0 0 25px rgba(255,255,255,0.5), 0 0 40px rgba(184, 115, 51, 0.5); }
+    }
+    
+    .emblem-copper::before {
+        content: '';
+        position: absolute;
+        top: 15%; left: 15%; right: 15%; bottom: 15%;
+        background: radial-gradient(circle, rgba(255,255,255,0.6) 0%, transparent 60%);
+        border-radius: 50%;
+    }
+    
+    .emblem-copper::after {
+        content: '';
+        position: absolute;
+        top: 25%; left: 25%; right: 25%; bottom: 25%;
+        background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
+        border-radius: 50%;
+    }
+
+    /* شعار البرونزي - كأس انتصار */
+    .emblem-bronze {
+        background: linear-gradient(45deg, #cd7f32 0%, #d2691e 25%, #b8860b 50%, #d2691e 75%, #cd7f32 100%);
+        clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+        box-shadow: 0 8px 25px rgba(205, 127, 50, 0.4), inset 0 0 20px rgba(255,255,255,0.2);
+        position: relative;
+    }
+    .emblem-bronze::before {
+        content: '';
+        position: absolute;
+        top: 10%; left: 10%; right: 10%; bottom: 10%;
+        background: linear-gradient(45deg, rgba(255,255,255,0.6) 0%, transparent 50%);
+        clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+    }
+    .emblem-bronze::after {
+        content: '';
+        position: absolute;
+        top: 20%; left: 20%; right: 20%; bottom: 20%;
+        background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 60%);
+        clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+    }
+    
+    .tier-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin: 0.3rem 0;
+        color: #2c3e50;
+        line-height: 1.4;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+    
+    .tier-subtitle {
+        font-size: 0.9rem;
+        color: #7f8c8d;
+        margin-bottom: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    .tier-description {
+        font-size: 0.9rem;
+        color: #34495e;
+        margin-bottom: 1rem;
+        line-height: 1.5;
+        background: rgba(0,0,0,0.03);
+        padding: 0.8rem;
+        border-radius: 8px;
+        border-left: 4px solid;
+        flex-grow: 1;
+        text-align: justify;
+        font-weight: 500;
+    }
+    
+    .tier-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.7rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .stat-card {
+        background: #f8f9fa;
+        padding: 0.5rem;
+        border-radius: 8px;
+        text-align: center;
+        border: 1px solid #e9ecef;
+        transition: all 0.3s ease;
+    }
+    
+    .stat-card:hover {
+        transform: scale(1.02);
+        border-color: #007bff;
+        background: #e3f2fd;
+    }
+    
+    .stat-label {
+        font-size: 0.75rem;
+        color: #7f8c8d;
+        margin-bottom: 0.3rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+    }
+    
+    .stat-value {
+        font-size: 1.3rem;
+        font-weight: 800;
+        color: #2c3e50;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+    
+    .tier-actions {
+        display: flex;
+        gap: 0.3rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: auto;
+    }
+    
+    .action-btn {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.85rem;
+        font-weight: 600;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        border: 2px solid transparent;
+    }
+    
+    .action-btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+        text-decoration: none;
+    }
+    
+    .btn-view { background: #17a2b8; color: white; }
+    .btn-edit { background: #007bff; color: white; }
+    .btn-delete { background: #dc3545; color: white; }
+    
+    .no-achievements {
+        text-align: center;
+        padding: 3rem;
+        color: #666;
+        background: #f8f9fa;
+        border-radius: 15px;
+        margin: 2rem 0;
+        grid-column: 1 / -1;
+    }
+    
+    .no-achievements i {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        opacity: 0.5;
+    }
+    
+    .achievements-count {
+        background: rgba(255,255,255,0.2);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        backdrop-filter: blur(10px);
+    }
+    
+    /* ألوان المستويات */
+    .tier-diamond .tier-description { border-left-color: #b9f2ff; }
+    .tier-platinum .tier-description { border-left-color: #e5e4e2; }
+    .tier-gold .tier-description { border-left-color: #ffd700; }
+    .tier-silver .tier-description { border-left-color: #c0c0c0; }
+    .tier-bronze .tier-description { border-left-color: #cd7f32; }
+    
+    .institutions-section, .departments-section {
+        background: white;
+        border-radius: 15px;
+        padding: 2rem;
+        margin: 2rem 0;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+    
+    .section-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 3px solid #f8f9fa;
+    }
+    
+    .section-header h4 {
+        color: #333;
+        font-weight: bold;
+        margin: 0;
+        font-size: 1.5rem;
+    }
+    
+    .section-header i {
+        font-size: 2rem;
+        color: #667eea;
+    }
+    
+    .achievement-level-badge {
+        position: absolute;
+        top: -8px;
+        left: 15px;
+        background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+        color: white;
+        padding: 0.8rem 1.2rem;
+        border-radius: 30px;
+        font-size: 1.1rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+        z-index: 10;
+    }
+    
+    /* أنماط قابلة لإعادة الاستخدام */
+    .achievement-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.4rem 0.8rem;
+        border-radius: 20px;
+        font-weight: 500;
+        font-size: 0.8rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+    }
+    
+    .achievement-badge:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    
+    .badge-diamond { background: linear-gradient(135deg, #b9f2ff, #87ceeb); color: #2c5aa0; }
+    .badge-platinum { background: linear-gradient(135deg, #e5e4e2, #f5f5f5); color: #666; }
+    .badge-gold { background: linear-gradient(135deg, #ffd700, #ffed4e); color: #b8860b; }
+    .badge-silver { background: linear-gradient(135deg, #c0c0c0, #e8e8e8); color: #666; }
+    .badge-bronze { background: linear-gradient(135deg, #cd7f32, #d2691e); color: white; }
+    
+    @media (max-width: 1200px) {
+        .achievement-hierarchy {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .achievement-hierarchy {
+            grid-template-columns: 1fr;
+            gap: 1.2rem;
+        }
+        
+        .tier-stats {
+            grid-template-columns: 1fr;
+        }
+        
+        .achievements-hero {
+            margin: 1rem;
+            padding: 1rem;
+        }
+        
+        .achievement-tier {
+            min-height: auto;
+            padding: 1rem;
+            max-width: 100%;
+        }
+        
+        .emblem-container {
+            width: 65px;
+            height: 65px;
+        }
+        
+        .emblem-icon {
+            font-size: 1.6rem;
+        }
+        
+        .tier-title {
+            font-size: 1.3rem;
+        }
+        
+        .tier-subtitle {
+            font-size: 0.85rem;
+        }
+        
+        .achievement-level-badge {
+            font-size: 0.9rem;
+            padding: 0.5rem 0.8rem;
+        }
+    }
+
+    /* تحديث ألوان البطاقات مع تصميم أجمل */
+    .tier-diamond { 
+        border-top-color: #00d4ff; 
+        background: linear-gradient(135deg, #ffffff 0%, #f0fdff 50%, #e6f9ff 100%);
+        box-shadow: 0 12px 35px rgba(0, 212, 255, 0.2), 0 4px 15px rgba(0,0,0,0.1);
+        border-radius: 20px;
+        position: relative;
+        overflow: hidden;
+    }
+    .tier-diamond::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; height: 3px;
+        background: linear-gradient(90deg, #00d4ff, #0099ff, #00d4ff);
+        animation: shimmer 2s infinite;
+    }
+    
+    .tier-platinum { 
+        border-top-color: #e5e4e2; 
+        background: linear-gradient(135deg, #ffffff 0%, #fafafa 50%, #f5f5f5 100%);
+        box-shadow: 0 12px 35px rgba(229, 228, 226, 0.25), 0 4px 15px rgba(0,0,0,0.1);
+        border-radius: 20px;
+        position: relative;
+        overflow: hidden;
+    }
+    .tier-platinum::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; height: 3px;
+        background: linear-gradient(90deg, #e5e4e2, #d4d4d4, #e5e4e2);
+        animation: shimmer 2s infinite;
+    }
+    
+    .tier-gold { 
+        border-top-color: #ffd700; 
+        background: linear-gradient(135deg, #ffffff 0%, #fffdf0 50%, #fff8dc 100%);
+        box-shadow: 0 12px 35px rgba(255, 215, 0, 0.2), 0 4px 15px rgba(0,0,0,0.1);
+        border-radius: 20px;
+        position: relative;
+        overflow: hidden;
+    }
+    .tier-gold::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; height: 3px;
+        background: linear-gradient(90deg, #ffd700, #ffed4e, #ffd700);
+        animation: shimmer 2s infinite;
+    }
+    
+    .tier-silver { 
+        border-top-color: #c0c0c0; 
+        background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 50%, #f0f0f0 100%);
+        box-shadow: 0 12px 35px rgba(192, 192, 192, 0.2), 0 4px 15px rgba(0,0,0,0.1);
+        border-radius: 20px;
+        position: relative;
+        overflow: hidden;
+    }
+    .tier-silver::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; height: 3px;
+        background: linear-gradient(90deg, #c0c0c0, #d4d4d4, #c0c0c0);
+        animation: shimmer 2s infinite;
+    }
+    
+    .tier-bronze { 
+        border-top-color: #cd7f32; 
+        background: linear-gradient(135deg, #ffffff 0%, #fef8f0 50%, #fdf2e9 100%);
+        box-shadow: 0 12px 35px rgba(205, 127, 50, 0.2), 0 4px 15px rgba(0,0,0,0.1);
+        border-radius: 20px;
+        position: relative;
+        overflow: hidden;
+    }
+    .tier-bronze::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; height: 3px;
+        background: linear-gradient(90deg, #cd7f32, #d2691e, #cd7f32);
+        animation: shimmer 2s infinite;
+    }
+
+    /* تحديث أحجام العناوين لتكون أكبر وأوضح */
+    .tier-title {
+        font-size: 1.5rem;
+        font-weight: 800;
+        margin: 0.4rem 0;
+        color: #1a202c;
+        line-height: 1.2;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+        letter-spacing: -0.5px;
+        text-align: center;
+    }
+    
+    .tier-subtitle {
+        font-size: 0.95rem;
+        color: #4a5568;
+        margin-bottom: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        text-align: center;
+    }
+    
+    .tier-description {
+        font-size: 0.9rem;
+        color: #2d3748;
+        margin-bottom: 1rem;
+        line-height: 1.5;
+        background: rgba(0,0,0,0.03);
+        padding: 0.8rem;
+        border-radius: 12px;
+        border-left: 5px solid;
+        flex-grow: 1;
+        text-align: center;
+        font-weight: 500;
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    /* تحديث أحجام الإحصائيات */
+    .stat-label {
+        font-size: 0.85rem;
+        color: #4a5568;
+        margin-bottom: 0.4rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    .stat-value {
+        font-size: 1.5rem;
+        font-weight: 900;
+        color: #1a202c;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    }
+
+    /* تحديث أحجام الأزرار */
+    .action-btn {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.85rem;
+        font-weight: 700;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        border: 2px solid transparent;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    }
+
+    /* تحديث أحجام الشارات */
+    .achievement-level-badge {
+        font-size: 0.85rem;
+        font-weight: 800;
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    /* تحديث أحجام الشعارات */
+    .emblem-container {
+        position: relative;
+        width: 80px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+        transition: all 0.4s ease;
+        cursor: pointer;
+        border-radius: 50%;
+        margin: 0 auto 0.8rem;
+    }
+
+    .emblem-icon {
+        font-size: 3rem;
+        color: white;
+        text-shadow: 3px 3px 8px rgba(0,0,0,0.6);
+        filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+        position: relative;
+        z-index: 2;
+    }
+
+    /* شعارات فريدة ومميزة لكل وسام - تصميم جديد تماماً */
+    
+    /* شعار الماسي - ماسة متعددة الأوجه مع توهج أزرق */
+    .emblem-diamond {
+        background: linear-gradient(45deg, #00d4ff 0%, #0099ff 25%, #0066ff 50%, #0099ff 75%, #00d4ff 100%);
+        clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%);
+        box-shadow: 0 10px 30px rgba(0, 212, 255, 0.5), inset 0 0 25px rgba(255,255,255,0.5), 0 0 20px rgba(0, 212, 255, 0.3);
+        position: relative;
+        animation: diamond-sparkle 2s ease-in-out infinite alternate;
+    }
+    .emblem-diamond::before {
+        content: '';
+        position: absolute;
+        top: 20%; left: 20%; right: 20%; bottom: 20%;
+        background: linear-gradient(45deg, rgba(255,255,255,0.9) 0%, transparent 50%);
+        clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%);
+    }
+    .emblem-diamond::after {
+        content: '';
+        position: absolute;
+        top: 35%; left: 35%; right: 35%; bottom: 35%;
+        background: radial-gradient(circle, rgba(255,255,255,0.7) 0%, transparent 60%);
+        clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%);
+    }
+
+    /* شعار البلاتيني - تاج ملكي مع توهج فضي */
+    .emblem-platinum {
+        background: linear-gradient(45deg, #e5e4e2 0%, #f5f5f5 20%, #ffffff 40%, #f5f5f5 60%, #e5e4e2 80%, #f5f5f5 100%);
+        clip-path: polygon(25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%, 0% 25%);
+        box-shadow: 0 10px 30px rgba(229, 228, 226, 0.5), inset 0 0 25px rgba(255,255,255,0.7), 0 0 20px rgba(229, 228, 226, 0.3);
+        position: relative;
+        animation: platinum-rotate 4s linear infinite;
+    }
+    .emblem-platinum::before {
+        content: '';
+        position: absolute;
+        top: 15%; left: 15%; right: 15%; bottom: 15%;
+        background: linear-gradient(45deg, rgba(255,255,255,0.95) 0%, transparent 50%);
+        clip-path: polygon(25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%, 0% 25%);
+    }
+    .emblem-platinum::after {
+        content: '';
+        position: absolute;
+        top: 30%; left: 30%; right: 30%; bottom: 30%;
+        background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 60%);
+        clip-path: polygon(25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%, 0% 25%);
+    }
+
+    /* شعار الذهبي - درع انتصار مع توهج ذهبي */
+    .emblem-gold {
+        background: linear-gradient(45deg, #ffd700 0%, #ffed4e 25%, #ffb347 50%, #ffed4e 75%, #ffd700 100%);
+        clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 90% 100%, 50% 85%, 10% 100%, 0% 60%, 10% 20%);
+        box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5), inset 0 0 25px rgba(255,255,255,0.4), 0 0 20px rgba(255, 215, 0, 0.3);
+        position: relative;
+        animation: gold-pulse 2.5s ease-in-out infinite alternate;
+    }
+    .emblem-gold::before {
+        content: '';
+        position: absolute;
+        top: 20%; left: 20%; right: 20%; bottom: 20%;
+        background: linear-gradient(45deg, rgba(255,255,255,0.8) 0%, transparent 50%);
+        clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 90% 100%, 50% 85%, 10% 100%, 0% 60%, 10% 20%);
+    }
+    .emblem-gold::after {
+        content: '';
+        position: absolute;
+        top: 35%; left: 35%; right: 35%; bottom: 35%;
+        background: radial-gradient(circle, rgba(255,255,255,0.6) 0%, transparent 60%);
+        clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 90% 100%, 50% 85%, 10% 100%, 0% 60%, 10% 20%);
+    }
+
+    /* شعار الفضي - كأس انتصار مع توهج فضي */
+    .emblem-silver {
+        background: linear-gradient(45deg, #c0c0c0 0%, #e8e8e8 25%, #f0f0f0 50%, #e8e8e8 75%, #c0c0c0 100%);
+        clip-path: polygon(40% 0%, 60% 0%, 100% 30%, 100% 70%, 60% 100%, 40% 100%, 0% 70%, 0% 30%);
+        box-shadow: 0 10px 30px rgba(192, 192, 192, 0.5), inset 0 0 25px rgba(255,255,255,0.6), 0 0 20px rgba(192, 192, 192, 0.3);
+        position: relative;
+        animation: silver-bounce 3s ease-in-out infinite;
+    }
+    .emblem-silver::before {
+        content: '';
+        position: absolute;
+        top: 15%; left: 15%; right: 15%; bottom: 15%;
+        background: linear-gradient(45deg, rgba(255,255,255,0.95) 0%, transparent 50%);
+        clip-path: polygon(40% 0%, 60% 0%, 100% 30%, 100% 70%, 60% 100%, 40% 100%, 0% 70%, 0% 30%);
+    }
+    .emblem-silver::after {
+        content: '';
+        position: absolute;
+        top: 30%; left: 30%; right: 30%; bottom: 30%;
+        background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 60%);
+        clip-path: polygon(40% 0%, 60% 0%, 100% 30%, 100% 70%, 60% 100%, 40% 100%, 0% 70%, 0% 30%);
+    }
+
+    /* شعار البرونزي - ميدالية مع توهج برونزي */
+    .emblem-bronze {
+        background: linear-gradient(45deg, #cd7f32 0%, #d2691e 25%, #b8860b 50%, #d2691e 75%, #cd7f32 100%);
+        border-radius: 50%;
+        border: 4px solid #a0522d;
+        box-shadow: 0 10px 30px rgba(205, 127, 50, 0.5), inset 0 0 25px rgba(255,255,255,0.3), 0 0 20px rgba(205, 127, 50, 0.3);
+        position: relative;
+        animation: bronze-rotate 5s linear infinite;
+    }
+    .emblem-bronze::before {
+        content: '';
+        position: absolute;
+        top: 20%; left: 20%; right: 20%; bottom: 20%;
+        background: linear-gradient(45deg, rgba(255,255,255,0.6) 0%, transparent 50%);
+        border-radius: 50%;
+    }
+    .emblem-bronze::after {
+        content: '';
+        position: absolute;
+        top: 35%; left: 35%; right: 35%; bottom: 35%;
+        background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 60%);
+        border-radius: 50%;
+    }
+
+    /* تحديث تأثيرات حركية */
+    @keyframes shimmer {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+    }
+
+    @keyframes diamond-pulse {
+        0% { 
+            transform: scale(1) rotate(0deg);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.5), inset 0 0 25px rgba(255,255,255,0.5), 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+        100% { 
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.7), inset 0 0 30px rgba(255,255,255,0.7), 0 0 30px rgba(0, 212, 255, 0.5);
+        }
+    }
+
+    @keyframes platinum-float {
+        0% { transform: translateY(0px) scale(1); }
+        50% { transform: translateY(-8px) scale(1.05); }
+        100% { transform: translateY(0px) scale(1); }
+    }
+
+    @keyframes gold-shield {
+        0% { 
+            transform: scale(1) rotate(0deg);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5), inset 0 0 25px rgba(255,255,255,0.4), 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+        100% { 
+            transform: scale(1.08) rotate(-3deg);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.7), inset 0 0 30px rgba(255,255,255,0.6), 0 0 30px rgba(255, 215, 0, 0.5);
+        }
+    }
+
+    @keyframes silver-cup {
+        0% { transform: scale(1) rotate(0deg); }
+        25% { transform: scale(1.02) rotate(1deg); }
+        50% { transform: scale(1.05) rotate(0deg); }
+        75% { transform: scale(1.02) rotate(-1deg); }
+        100% { transform: scale(1) rotate(0deg); }
+    }
+
+    @keyframes bronze-medal {
+        0% { 
+            transform: scale(1) rotate(0deg);
+            box-shadow: 0 10px 30px rgba(205, 127, 50, 0.5), inset 0 0 25px rgba(255,255,255,0.3), 0 0 20px rgba(205, 127, 50, 0.3);
+        }
+        100% { 
+            transform: scale(1.06) rotate(8deg);
+            box-shadow: 0 15px 40px rgba(205, 127, 50, 0.7), inset 0 0 30px rgba(255,255,255,0.5), 0 0 30px rgba(205, 127, 50, 0.5);
+        }
+    }
+
+    /* تحديث التأثيرات الحركية للشعارات الجديدة */
+    @keyframes diamond-sparkle {
+        0% { 
+            transform: scale(1) rotate(0deg);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.5), inset 0 0 25px rgba(255,255,255,0.5), 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+        100% { 
+            transform: scale(1.15) rotate(8deg);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.7), inset 0 0 30px rgba(255,255,255,0.7), 0 0 30px rgba(0, 212, 255, 0.5);
+        }
+    }
+
+    @keyframes platinum-rotate {
+        0% { transform: rotate(0deg) scale(1); }
+        50% { transform: rotate(180deg) scale(1.1); }
+        100% { transform: rotate(360deg) scale(1); }
+    }
+
+    @keyframes gold-pulse {
+        0% { 
+            transform: scale(1) rotate(0deg);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5), inset 0 0 25px rgba(255,255,255,0.4), 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+        100% { 
+            transform: scale(1.12) rotate(-5deg);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.7), inset 0 0 30px rgba(255,255,255,0.6), 0 0 30px rgba(255, 215, 0, 0.5);
+        }
+    }
+
+    @keyframes silver-bounce {
+        0% { transform: scale(1) translateY(0px); }
+        25% { transform: scale(1.05) translateY(-5px); }
+        50% { transform: scale(1.1) translateY(-10px); }
+        75% { transform: scale(1.05) translateY(-5px); }
+        100% { transform: scale(1) translateY(0px); }
+    }
+
+    @keyframes bronze-rotate {
+        0% { transform: rotate(0deg) scale(1); }
+        25% { transform: rotate(90deg) scale(1.05); }
+        50% { transform: rotate(180deg) scale(1.1); }
+        75% { transform: rotate(270deg) scale(1.05); }
+        100% { transform: rotate(360deg) scale(1); }
+    }
+</style>
+
+<div class="container-fluid">
+    
+    
+    <!-- Hero Section -->
+    <div class="achievements-hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h1 class="display-4 mb-3" style="position: relative; z-index: 1;">
+                        <i class="fas fa-trophy me-3"></i>
+                        الأوسمة والإنجازات
+                    </h1>
+                    <p class="lead mb-0" style="position: relative; z-index: 1;">
+                        نظام تقدير الإنجازات المتميزة للمدارس والأقسام
+                    </p>
+                    <div class="mt-3" style="position: relative; z-index: 1;">
+                        <span class="badge bg-warning me-2">
+                            <i class="fas fa-medal me-1"></i>
+                            المستوى الأول: أوسمة المراتب
+                        </span>
+                        <span class="badge bg-primary">
+                            <i class="fas fa-gem me-1"></i>
+                            المستوى الثاني: الأوسمة الماسية
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-4 text-end">
+                    <div class="achievements-count">
+                        <div class="achievements-count-badge">
+                            <i class="fas fa-medal me-2"></i>
+                            <span class="count-number">8</span>
+                            <span class="count-text">أوسمة متاحة</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card border-0 shadow-lg" style="border-radius: 20px;">
+                <div class="card-header" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 20px 20px 0 0; border: none;">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h3 class="card-title mb-0">
+                            <i class="fas fa-star me-2"></i>
+                            هرم الأوسمة - مقسم إلى مستويين
+                        </h3>
+                                            </div>
+                </div>
+                
+                <div class="card-body" style="padding: 2.5rem;">
+                                            
+                        <!-- المستوى الأول: أوسمة المراتب -->
+                                                    <div class="mb-5">
+                                <div class="text-center mb-4">
+                                    <h4 class="text-warning">
+                                        <i class="fas fa-medal me-2"></i>
+                                        المستوى الأول: أوسمة المراتب
+                                    </h4>
+                                    <p class="text-muted">يتم تحقيقها أولاً حسب نسبة الإنجاز</p>
+                                </div>
+                                <div class="achievement-hierarchy">
+                                                                            <div class="achievement-tier tier-gold" style="border-left: 6px solid #FFD700;">
+                                            <div class="achievement-level-badge">
+                                                الترتيب 1
+                                            </div>
+                                            
+                                            <div class="tier-header">
+                                                <div class="achievement-emblem">
+                                                    <div class="emblem-container emblem-gold">
+                                                        <i class="fas fa-trophy emblem-icon"></i>
+                                                    </div>
+                                                </div>
+                                                
+                                                <h3 class="tier-title">وسام التميز الذهبي</h3>
+                                                <p class="tier-subtitle">تحقيق نسبة إنجاز 100% من المستهدفات</p>
+                                            </div>
+                                            
+                                            <div class="tier-description">
+                                                يُمنح للجهات (مدارس أو أقسام) التي حققت نسبة إنجاز 100% من المستهدفات
+                                            </div>
+                                            
+                                            <div class="tier-stats">
+                                                <div class="stat-card">
+                                                    <div class="stat-label">نسبة الإنجاز</div>
+                                                    <div class="stat-value text-primary">100%</div>
+                                                </div>
+                                                <div class="stat-card">
+                                                    <div class="stat-label">الترتيب</div>
+                                                    <div class="stat-value text-success">1</div>
+                                                </div>
+                                                <div class="stat-card">
+                                                    <div class="stat-label">المدارس</div>
+                                                    <div class="stat-value text-info"></div>
+                                                </div>
+                                                <div class="stat-card">
+                                                    <div class="stat-label">الأقسام</div>
+                                                    <div class="stat-value text-warning">16</div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="tier-actions">
+                                                <a href="" class="action-btn btn-view">
+                                                    <i class="fas fa-eye"></i> عرض
+                                                </a>
+                                                                                            </div>
+                                        </div>
+                                                                            <div class="achievement-tier tier-silver" style="border-left: 6px solid #C0C0C0;">
+                                            <div class="achievement-level-badge">
+                                                الترتيب 2
+                                            </div>
+                                            
+                                            <div class="tier-header">
+                                                <div class="achievement-emblem">
+                                                    <div class="emblem-container emblem-silver">
+                                                        <i class="fas fa-medal emblem-icon"></i>
+                                                    </div>
+                                                </div>
+                                                
+                                                <h3 class="tier-title">وسام الإنجاز الفضي</h3>
+                                                <p class="tier-subtitle">تحقيق نسبة إنجاز 90% من المستهدفات</p>
+                                            </div>
+                                            
+                                            <div class="tier-description">
+                                                يُمنح للجهات (مدارس أو أقسام) التي حققت نسبة إنجاز 90% من المستهدفات
+                                            </div>
+                                            
+                                            <div class="tier-stats">
+                                                <div class="stat-card">
+                                                    <div class="stat-label">نسبة الإنجاز</div>
+                                                    <div class="stat-value text-primary">90%</div>
+                                                </div>
+                                                <div class="stat-card">
+                                                    <div class="stat-label">الترتيب</div>
+                                                    <div class="stat-value text-success">2</div>
+                                                </div>
+                                                <div class="stat-card">
+                                                    <div class="stat-label">المدارس</div>
+                                                    <div class="stat-value text-info"></div>
+                                                </div>
+                                                <div class="stat-card">
+                                                    <div class="stat-label">الأقسام</div>
+                                                    <div class="stat-value text-warning">16</div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="tier-actions">
+                                                <a href="" class="action-btn btn-view">
+                                                    <i class="fas fa-eye"></i> عرض
+                                                </a>
+                                                                                            </div>
+                                        </div>
+                                                                            <div class="achievement-tier tier-bronze" style="border-left: 6px solid #CD7F32;">
+                                            <div class="achievement-level-badge">
+                                                الترتيب 3
+                                            </div>
+                                            
+                                            <div class="tier-header">
+                                                <div class="achievement-emblem">
+                                                    <div class="emblem-container emblem-bronze">
+                                                        <i class="fas fa-award emblem-icon"></i>
+                                                    </div>
+                                                </div>
+                                                
+                                                <h3 class="tier-title">وسام التقدم البرونزي</h3>
+                                                <p class="tier-subtitle">تحقيق نسبة إنجاز 80% من المستهدفات</p>
+                                            </div>
+                                            
+                                            <div class="tier-description">
+                                                يُمنح للجهات (مدارس أو أقسام) التي حققت نسبة إنجاز 80% من المستهدفات
+                                            </div>
+                                            
+                                            <div class="tier-stats">
+                                                <div class="stat-card">
+                                                    <div class="stat-label">نسبة الإنجاز</div>
+                                                    <div class="stat-value text-primary">80%</div>
+                                                </div>
+                                                <div class="stat-card">
+                                                    <div class="stat-label">الترتيب</div>
+                                                    <div class="stat-value text-success">3</div>
+                                                </div>
+                                                 <div class="stat-card">
+                                                    <div class="stat-label">المدارس</div>
+                                                    <div class="stat-value text-info"></div>
+                                                </div>
+                                                <div class="stat-card">
+                                                    <div class="stat-label">الأقسام</div>
+                                                    <div class="stat-value text-warning">16</div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="tier-actions">
+                                                <a href="" class="action-btn btn-view">
+                                                    <i class="fas fa-eye"></i> عرض
+                                                </a>
+                                                                                            </div>
+                                        </div>
+                                                                            <div class="achievement-tier tier-participation" style="border-left: 6px solid #FF6B6B;">
+                                            <div class="achievement-level-badge">
+                                                الترتيب 4
+                                            </div>
+                                            
+                                            <div class="tier-header">
+                                                <div class="achievement-emblem">
+                                                    <div class="emblem-container emblem-participation">
+                                                        <i class="fas fa-star emblem-icon"></i>
+                                                    </div>
+                                                </div>
+                                                
+                                                <h3 class="tier-title">وسام المشاركة</h3>
+                                                <p class="tier-subtitle">تحقيق نسبة إنجاز 70% من المستهدفات</p>
+                                            </div>
+                                            
+                                            <div class="tier-description">
+                                                يُمنح للجهات (مدارس أو أقسام) التي حققت نسبة إنجاز 70% من المستهدفات
+                                            </div>
+                                            
+                                            <div class="tier-stats">
+                                                <div class="stat-card">
+                                                    <div class="stat-label">نسبة الإنجاز</div>
+                                                    <div class="stat-value text-primary">70%</div>
+                                                </div>
+                                                <div class="stat-card">
+                                                    <div class="stat-label">الترتيب</div>
+                                                    <div class="stat-value text-success">4</div>
+                                                </div>
+                                                <div class="stat-card">
+                                                    <div class="stat-label">المدارس</div>
+                                                    <div class="stat-value text-info"></div>
+                                                </div>
+                                                <div class="stat-card">
+                                                    <div class="stat-label">الأقسام</div>
+                                                    <div class="stat-value text-warning">16</div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="tier-actions">
+                                                <a href="" class="action-btn btn-view">
+                                                    <i class="fas fa-eye"></i> عرض
+                                                </a>
+                                                                                            </div>
+                                        </div>
+                                                                            <div class="achievement-tier tier-initiative" style="border-left: 6px solid #FF6B6B;">
+                                            <div class="achievement-level-badge">
+                                                الترتيب 5
+                                            </div>
+                                            
+                                            <div class="tier-header">
+                                                <div class="achievement-emblem">
+                                                    <div class="emblem-container emblem-initiative">
+                                                        <i class="fas fa-rocket emblem-icon"></i>
+                                                    </div>
+                                                </div>
+                                                
+                                                <h3 class="tier-title">وسام المبادرة</h3>
+                                                <p class="tier-subtitle">نسبة إنجاز 50%</p>
+                                            </div>
+                                            
+                                            <div class="tier-description">
+                                                يُمنح للجهات (مدارس أو أقسام) التي بادرت وشاركت في تحقيق الشهادات ووصلت إلى نسبة 50%
+                                            </div>
+                                            
+                                            <div class="tier-stats">
+                                                <div class="stat-card">
+                                                    <div class="stat-label">نسبة الإنجاز</div>
+                                                    <div class="stat-value text-primary">50%</div>
+                                                </div>
+                                                <div class="stat-card">
+                                                    <div class="stat-label">الترتيب</div>
+                                                    <div class="stat-value text-success">5</div>
+                                                </div>
+                                                 <div class="stat-card">
+                                                    <div class="stat-label">المدارس</div>
+                                                    <div class="stat-value text-info"></div>
+                                                </div>
+                                               
+                                                <div class="stat-card">
+                                                    <div class="stat-label">الأقسام</div>
+                                                    <div class="stat-value text-warning">16</div>
+                                                </div>
+                                                
+                                            </div>
+                                            
+                                            <div class="tier-actions">
+                                                <a href="" class="action-btn btn-view">
+                                                    <i class="fas fa-eye"></i> عرض
+                                                </a>
+                                                                                            </div>
+                                        </div>
+                                                                    </div>
+                            </div>
+                        
+                        <!-- المستوى الثاني: الأوسمة الماسية -->
+                                                    <div class="mb-5">
+                                <div class="text-center mb-4">
+                                    <h4 class="text-primary">
+                                        <i class="fas fa-gem me-2"></i>
+                                        المستوى الثاني: الأوسمة الماسية
+                                    </h4>
+                                    <p class="text-muted">يتم تحقيقها حسب نسبة الإنجاز من المستهدفات الافتراضية</p>
+                                </div>
+                                <div class="achievement-hierarchy">
+                                                                            <div class="achievement-tier tier-diamond" style="border-left: 6px solid #000000;">
+                                    <div class="achievement-level-badge">
+                                                الترتيب 1
+                                    </div>
+                                    
+                                    <div class="tier-header">
+                                        <div class="achievement-emblem">
+                                                    <div class="emblem-container emblem-diamond">
+                                                        <i class="fas fa-gem emblem-icon"></i>
+                                            </div>
+                                        </div>
+                                        
+                                        <h3 class="tier-title">الوسام الماسي</h3>
+                                                <p class="tier-subtitle">تحقيق نسبة إنجاز 200% من المستهدفات الافتراضية</p>
+                                    </div>
+                                    
+                                    <div class="tier-description">
+                                        أعلى وسام يُمنح للجهات (مدارس أو أقسام) التي حققت نسبة إنجاز 200% من المستهدفات الافتراضية
+                                    </div>
+                                    
+                                                                                <div class="tier-stats">
+                                                <div class="stat-card">
+                                                    <div class="stat-label">نسبة الإنجاز</div>
+                                                    <div class="stat-value text-primary">200%</div>
+                                                </div>
+                                                <div class="stat-card">
+                                                    <div class="stat-label">الترتيب</div>
+                                                    <div class="stat-value text-success">1</div>
+                                                </div>
+
+                                                <div class="stat-card">
+                                                    <div class="stat-label">المدارس</div>
+                                                    <div class="stat-value text-info"></div>
+                                                </div>
+                                                <div class="stat-card">
+                                                    <div class="stat-label">الأقسام</div>
+                                                    <div class="stat-value text-danger">10</div>
+                                                </div>
+                                            </div>
+                                    
+                                    <div class="tier-actions">
+                                        <a href="" class="action-btn btn-view">
+                                            <i class="fas fa-eye"></i> عرض
+                                        </a>
+                                                                            </div>
+                                </div>
+                                                                    <div class="achievement-tier tier-platinum" style="border-left: 6px solid #E5E4E2;">
+                                    <div class="achievement-level-badge">
+                                                الترتيب 2
+                                    </div>
+                                    
+                                    <div class="tier-header">
+                                        <div class="achievement-emblem">
+                                                    <div class="emblem-container emblem-platinum">
+                                                        <i class="fas fa-crown emblem-icon"></i>
+                                            </div>
+                                        </div>
+                                        
+                                        <h3 class="tier-title">الوسام البلاتيني</h3>
+                                                <p class="tier-subtitle">تحقيق نسبة إنجاز 175% من المستهدفات الافتراضية</p>
+                                    </div>
+                                    
+                                    <div class="tier-description">
+                                        وسام استثنائي يُمنح للجهات (مدارس أو أقسام) التي حققت نسبة إنجاز 175% من المستهدفات الافتراضية
+                                    </div>
+                                    
+                                                                                <div class="tier-stats">
+                                                <div class="stat-card">
+                                                    <div class="stat-label">نسبة الإنجاز</div>
+                                                    <div class="stat-value text-primary">175%</div>
+                                                </div>
+                                                <div class="stat-card">
+                                                    <div class="stat-label">الترتيب</div>
+                                                    <div class="stat-value text-success">2</div>
+                                                </div>
+                                                 <div class="stat-card">
+                                                    <div class="stat-label">المدارس</div>
+                                                    <div class="stat-value text-info"></div>
+                                                </div>
+
+                                               
+                                                <div class="stat-card">
+                                                    <div class="stat-label">الأقسام</div>
+                                                    <div class="stat-value text-danger">10</div>
+                                                </div>
+                                            </div>
+                                    
+                                    <div class="tier-actions">
+                                        <a href="" class="action-btn btn-view">
+                                            <i class="fas fa-eye"></i> عرض
+                                        </a>
+                                                                            </div>
+                                </div>
+                                                                    <div class="achievement-tier tier-crystal" style="border-left: 6px solid #00CED1;">
+                                    <div class="achievement-level-badge">
+                                                الترتيب 3
+                                    </div>
+                                    
+                                    <div class="tier-header">
+                                        <div class="achievement-emblem">
+                                                    <div class="emblem-container emblem-crystal">
+                                                        <i class="fas fa-diamond emblem-icon"></i>
+                                            </div>
+                                        </div>
+                                        
+                                        <h3 class="tier-title">الوسام الكريستالي</h3>
+                                                <p class="tier-subtitle">تحقيق نسبة إنجاز 150% من المستهدفات الافتراضية</p>
+                                    </div>
+                                    
+                                    <div class="tier-description">
+                                        وسام متميز يُمنح للجهات (مدارس أو أقسام) التي حققت نسبة إنجاز 150% من المستهدفات الافتراضية
+                                    </div>
+                                    
+                                                                                <div class="tier-stats">
+                                                <div class="stat-card">
+                                                    <div class="stat-label">نسبة الإنجاز</div>
+                                                    <div class="stat-value text-primary">150%</div>
+                                                </div>
+                                                <div class="stat-card">
+                                                    <div class="stat-label">الترتيب</div>
+                                                    <div class="stat-value text-success">3</div>
+                                                </div>
+                                                 <div class="stat-card">
+                                                    <div class="stat-label">المدارس</div>
+                                                    <div class="stat-value text-info"></div>
+                                                </div>
+
+                                               
+                                                <div class="stat-card">
+                                                    <div class="stat-label">الأقسام</div>
+                                                    <div class="stat-value text-danger">10</div>
+                                                </div>
+                                            </div>
+                                    
+                                    <div class="tier-actions">
+                                        <a href="" class="action-btn btn-view">
+                                            <i class="fas fa-eye"></i> عرض
+                                        </a>
+                                                                            </div>
+                                </div>
+                                                    </div>
+                            </div>
+                                                            </div>
+            </div>
+        </div>
+    </div>
+
+    
+    
+    
+    </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-5" style="background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); border-top: 3px solid #667eea;">
+        <div class="container py-3">
+            <!-- القسم العلوي -->
+            <div class="row mb-3 align-items-center">
+                <div class="col-12 mb-2">
+                    <div class="text-center text-white">
+                        <h6 class="mb-2 fw-bold text-warning">
+                            <i class="fas fa-cogs me-2"></i>
+                            تطوير
+                        </h6>
+                        <p class="mb-1 text-white">
+                            اداره الموارد البشرية - الإدارة العامة للتعليم بمنطقة تبوك
+                        </p>
+                    </div>
+                </div>
+                
+              
+            
+            <!-- الخط الفاصل -->
+            <hr class="border-secondary my-2">
+            
+            <!-- القسم السفلي -->
+            <div class="row align-items-center">
+                <div class="col-12 text-center">
+                    <p class="mb-0 text-white">
+                        جميع الحقوق محفوظة &copy; 2025 مبادرة سماي
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Modal Fix Script -->
+    <script src="https://samai-aseer.innozone.in/js/modal-fix.js"></script>
+    
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+            
+    <!-- JavaScript للإشعارات -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // تفعيل tooltips
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+        // إضافة تأثير النبض للإشعارات
+        const notificationBadge = document.querySelector('.position-relative .badge');
+        if (notificationBadge) {
+            notificationBadge.classList.add('notification-badge');
+        }
+        
+        // إضافة تأثيرات للإشعارات في القائمة المنسدلة
+        const notificationItems = document.querySelectorAll('.dropdown-item');
+        notificationItems.forEach(item => {
+            item.classList.add('notification-item');
+        });
+        
+        // إغلاق الإشعارات عند النقر عليها
+        const notificationLinks = document.querySelectorAll('.dropdown-item[href]');
+        notificationLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                // إغلاق القائمة المنسدلة
+                const dropdown = document.querySelector('.dropdown-menu');
+                if (dropdown) {
+                    const bsDropdown = bootstrap.Dropdown.getInstance(dropdown);
+                    if (bsDropdown) {
+                        bsDropdown.hide();
+                    }
+                }
+            });
+        });
+        
+        // إضافة تأثيرات للإشعارات في لوحة التحكم
+        const dashboardNotifications = document.querySelectorAll('.alert');
+        dashboardNotifications.forEach(alert => {
+            alert.classList.add('notification-item');
+        });
+        
+        // تحديث تلقائي للإشعارات كل 30 ثانية (اختياري)
+        setInterval(function() {
+            // يمكن إضافة تحديث تلقائي للإشعارات هنا
+            // fetch('/api/notifications/count')
+            //     .then(response => response.json())
+            //     .then(data => {
+            //         // تحديث العداد
+            //     });
+        }, 30000);
+    });
+    </script>
+</body>
+</html> 
+
+<script type="module" src="./utils.js"></script>
+<script type="module">
+    import { getAchievements } from './utils.js';
+
+    document.addEventListener("DOMContentLoaded", async () => {
+        const achievementsContainer = document.getElementById("achievements-container");
+        if (achievementsContainer) {
+            achievementsContainer.innerHTML = 
+                `<div class="alert alert-info text-center" role="alert">
+                    <div class="spinner-border text-info" role="status">
+                        <span class="visually-hidden">جاري تحميل الإنجازات...</span>
+                    </div>
+                    جاري تحميل الإنجازات...
+                </div>`;
+            
+            const achievements = await getAchievements();
+
+            if (achievements && achievements.length > 0) {
+                achievementsContainer.innerHTML = 
+                    `<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                        ${achievements.map(achievement => `
+                            <div class="col">
+                                <div class="card h-100 shadow-sm border-0">
+                                    <div class="card-body text-center">
+                                        <i class="fas fa-trophy fa-3x text-warning mb-3"></i>
+                                        <h5 class="card-title">${achievement.name}</h5>
+                                        <p class="card-text text-muted">${achievement.description}</p>
+                                        <span class="badge bg-primary">${achievement.date}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join("")}
+                    </div>`;
+            } else {
+                achievementsContainer.innerHTML = 
+                    `<div class="alert alert-warning text-center" role="alert">
+                        لا توجد إنجازات لعرضها حالياً.
+                    </div>`;
+            }
+        }
+    });
+</script>
+
