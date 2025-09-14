@@ -14,8 +14,7 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
     
-    <!-- Vite Assets -->
-    <link rel="preload" as="style" href="https://samai-aseer.innozone.in/build/assets/app-_Z9BxLwA.css"><link rel="modulepreload" as="script" href="https://samai-aseer.innozone.in/build/assets/app-C0G0cght.js"><link rel="stylesheet" href="https://samai-aseer.innozone.in/build/assets/app-_Z9BxLwA.css"><script type="module" src="https://samai-aseer.innozone.in/build/assets/app-C0G0cght.js"></script>    
+    
     <style>
         body {
             font-family: 'Cairo', sans-serif;
@@ -901,30 +900,11 @@
     </script>
 
  </body></html>
-<script type="module" src="./utils.js"></script>
 
 
 
-<script type="module" src="./utils.js"></script>
-<script type="module">
-    import { getSchools } from './utils.js';
+    <script type="module" src="./app.js"></script>
 
-    document.addEventListener('DOMContentLoaded', async () => {
-        const schools = await getSchools();
-        console.log('Fetched schools:', schools);
-        // You can now use the 'schools' array to populate a dropdown or display them.
-        // For example, if you have a select element with id 'school-select':
-        // const schoolSelect = document.getElementById('school-select');
-        // if (schoolSelect) {
-        //     schools.forEach(school => {
-        //         const option = document.createElement('option');
-        //         option.value = school.statistical_number;
-        //         option.textContent = school.name;
-        //         schoolSelect.appendChild(option);
-        //     });
-        // }
-    });
-</script>
 
 
 
