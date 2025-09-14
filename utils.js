@@ -1,6 +1,8 @@
-import { supabase } from './supabaseClient.js';
+import supabase from './supabaseClient.js';
 
 export async function searchSchool(statisticalNumber) {
+    console.log(`Searching for school with statistical number: ${statisticalNumber}`);
+
     try {
         const { data, error } = await supabase
             .from('schools')
@@ -8,89 +10,78 @@ export async function searchSchool(statisticalNumber) {
             .eq('statistical_number', statisticalNumber)
             .single();
 
-        if (error) {
-            console.error('Error fetching school:', error);
-            return { success: false, message: 'حدث خطأ أثناء البحث.' };
+        if (error && error.code !== 'PGRST116') { // PGRST116 means no rows found
+            throw error;
         }
 
         if (data) {
-            return { success: true, message: 'تم العثور على الجهة', entity: data, display_name: data.name, type: data.education_type, targets: data.targets, governorate: data.governorate, gender: data.gender };
+            return { success: true, message: 'تم العثور على الجهة', entity: data, display_name: data.name, type: 'institution', targets: {}, governorate: data.governorate, gender: data.gender };
         } else {
             return { success: false, message: 'لم يتم العثور على جهة بهذا الرقم الإحصائي.' };
         }
     } catch (error) {
-        console.error('An unexpected error occurred:', error);
-        return { success: false, message: 'حدث خطأ غير متوقع.' };
+        console.error('Error searching school:', error.message);
+        return { success: false, message: 'حدث خطأ أثناء البحث عن الجهة.' };
     }
 }
 
 export async function registerCoordinator(formData) {
-    try {
-        const coordinatorData = {
-            civil_record: formData.get('civil_record'),
-            full_name: formData.get('full_name'),
-            phone: formData.get('phone'),
-            coordinator_type: formData.get('coordinator_type'),
-            entity_name: formData.get('entity_name'),
-            entity_type: formData.get('entity_type'),
-            entity_governorate: formData.get('entity_governorate'),
-            entity_gender: formData.get('entity_gender'),
-            entity_targets: JSON.parse(formData.get('entity_targets') || '{}'),
-        };
+    console.log("Registering coordinator with data:", Object.fromEntries(formData.entries()));
 
+    try {
         const { data, error } = await supabase
-            .from('coordinators')
-            .insert([coordinatorData]);
+            .from("coordinators")
+            .insert([Object.fromEntries(formData.entries())]);
 
         if (error) {
-            console.error('Error registering coordinator:', error);
-            if (error.code === '23505') { // Unique violation
-                return { success: false, message: 'السجل المدني مسجل سابقاً في النظام.' };
+            if (error.code === "23505") { // Unique violation code
+                return { success: false, message: "السجل المدني مسجل سابقاً في النظام." };
             }
-            return { success: false, message: 'حدث خطأ أثناء التسجيل.' };
+            throw error;
         }
 
-        return { success: true, title: 'نجح التسجيل!', message: 'تم تسجيل المنسق بنجاح.', redirect_url: '/' };
+        return { success: true, title: "نجح التسجيل!", message: "تم تسجيل المنسق بنجاح.", redirect_url: "/" };
     } catch (error) {
-        console.error('An unexpected error occurred:', error);
-        return { success: false, message: 'حدث خطأ غير متوقع.' };
+        console.error("Error registering coordinator:", error.message);
+        return { success: false, message: "حدث خطأ أثناء تسجيل المنسق." };
     }
 }
 
 export async function getAchievements() {
+    console.log('Fetching achievements');
+
     try {
         const { data, error } = await supabase
             .from('achievements')
             .select('*');
 
         if (error) {
-            console.error('Error fetching achievements:', error);
-            return [];
+            throw error;
         }
 
         return data;
     } catch (error) {
-        console.error('An unexpected error occurred:', error);
+        console.error('Error fetching achievements:', error.message);
         return [];
     }
 }
 
 export async function getSchools() {
+    console.log("Fetching schools");
+
     try {
         const { data, error } = await supabase
-            .from('schools')
-            .select('*');
+            .from("schools")
+            .select("*");
 
         if (error) {
-            console.error('Error fetching schools:', error);
-            return [];
+            throw error;
         }
 
         return data;
     } catch (error) {
-        console.error('An unexpected error occurred:', error);
+        console.error("Error fetching schools:", error.message);
         return [];
     }
 }
-
 
