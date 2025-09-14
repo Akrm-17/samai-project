@@ -2470,7 +2470,7 @@ function searchEntity() {
     resultDiv.innerHTML = '<div class="text-center"><div class="spinner-border text-primary" role="status"></div><p class="mt-2">جاري البحث...</p></div>';
     resultDiv.style.display = 'block';
     
-  import { searchSchool } from './utils.js';
+  import { searchSchool } from 'utils.js';
 
 async function searchEntity(statisticalNumber) {
     const result = await searchSchool(statisticalNumber);
@@ -2901,6 +2901,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 </script>
+
 
 
 
