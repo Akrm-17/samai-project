@@ -1054,18 +1054,50 @@ function toggleInstructions() {
 // تحميل قائمة الأقسام
 function loadDepartments() {
     console.log('Loading departments...');
-    fetch('/departments/list', {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    // محاكاة بيانات الأقسام بدلاً من استدعاء API
+    const mockDepartments = [
+        {
+            id: 1,
+            name: "قسم الإدارة المدرسية",
+            full_name: "الإدارة العامة للتعليم - قسم الإدارة المدرسية",
+            administration: "الإدارة العامة للتعليم",
+            general_administration: "الشؤون التعليمية",
+            department: "الإدارة المدرسية",
+            section: null,
+            unit: null,
+            can_link: true,
+            coordinator_status: null
+        },
+        {
+            id: 2,
+            name: "قسم الإشراف التربوي",
+            full_name: "الإدارة العامة للتعليم - قسم الإشراف التربوي",
+            administration: "الإدارة العامة للتعليم",
+            general_administration: "الشؤون التعليمية",
+            department: "الإشراف التربوي",
+            section: null,
+            unit: null,
+            can_link: true,
+            coordinator_status: null
+        },
+        {
+            id: 3,
+            name: "قسم الموارد البشرية",
+            full_name: "الإدارة العامة للتعليم - قسم الموارد البشرية",
+            administration: "الإدارة العامة للتعليم",
+            general_administration: "الخدمات المساندة",
+            department: "الموارد البشرية",
+            section: null,
+            unit: null,
+            can_link: true,
+            coordinator_status: null
         }
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
+    ];
+    
+    // محاكاة استجابة ناجحة
+    Promise.resolve({
+        success: true,
+        departments: mockDepartments
     })
     .then(data => {
         console.log('Departments response:', data);
@@ -1936,170 +1968,161 @@ function searchEntity() {
     resultDiv.innerHTML = '<div class="text-center"><div class="spinner-border text-primary" role="status"></div><p class="mt-2">جاري البحث...</p></div>';
     resultDiv.style.display = 'block';
     
-    fetch('/entity/search', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    // محاكاة البحث عن المدرسة
+    setTimeout(() => {
+        // محاكاة نتيجة البحث
+        const mockSchoolData = {
+            success: true,
+            entity: {
+                id: Math.floor(Math.random() * 1000),
+                statistical_number: statisticalNumber,
+                name: `مدرسة تجريبية ${statisticalNumber}`,
+                administration: "الإدارة العامة للتعليم",
+                stage: "ابتدائي",
+                gender: "بنين",
+                governorate: "تبوك"
             },
-        body: JSON.stringify({
-            statistical_number: statisticalNumber
-        })
-    })
-    .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-            currentSearchResult = data;
-        const entity = data.entity;
-        const type = data.type;
-            const displayName = data.display_name;
-            
-            // التحقق من نوع الجهة والمحافظة والنوع إذا كانت هناك جهات مربوطة
-            if (linkedEntities.length > 0) {
-                if (type !== firstEntityType) {
-                    const typeName = type === 'institution' ? 'مدرسة' : 'قسم';
-                    const firstTypeName = firstEntityType === 'institution' ? 'مدرسة' : 'قسم';
-                    resultDiv.innerHTML = `
-                        <div class="alert alert-warning">
-                            <i class="fas fa-exclamation-triangle me-2"></i>
-                            لا يمكن ربط ${typeName} مع ${firstTypeName}. يجب ربط نفس نوع الجهة.
-                        </div>
-                    `;
-            return;
-        }
+            type: "institution",
+            display_name: `مدرسة تجريبية ${statisticalNumber}`,
+            governorate: "تبوك",
+            gender: "بنين",
+            targets: {
+                administrators: 5,
+                teachers: 25,
+                students: 300
+            },
+            message: "تم العثور على المدرسة بنجاح"
+        };
         
-                if (data.governorate !== firstGovernorate) {
-                    resultDiv.innerHTML = `
-                        <div class="alert alert-warning">
-                            <i class="fas fa-exclamation-triangle me-2"></i>
-                            لا يمكن ربط جهة من محافظة مختلفة. الجهة الأولى من محافظة: ${firstGovernorate}
-                        </div>
-                    `;
-                    return;
-                }
-                
-                if (data.gender !== firstGender) {
-                    resultDiv.innerHTML = `
-                        <div class="alert alert-warning">
-                            <i class="fas fa-exclamation-triangle me-2"></i>
-                            لا يمكن ربط جهة من نوع مختلف. الجهة الأولى من نوع: ${firstGender}
-                        </div>
-                    `;
-                    return;
-                }
+        currentSearchResult = mockSchoolData;
+        const entity = mockSchoolData.entity;
+        const type = mockSchoolData.type;
+        const displayName = mockSchoolData.display_name;
+        
+        // التحقق من نوع الجهة والمحافظة والنوع إذا كانت هناك جهات مربوطة
+        if (linkedEntities.length > 0) {
+            if (type !== firstEntityType) {
+                const typeName = type === 'institution' ? 'مدرسة' : 'قسم';
+                const firstTypeName = firstEntityType === 'institution' ? 'مدرسة' : 'قسم';
+                resultDiv.innerHTML = `
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        لا يمكن ربط ${typeName} مع ${firstTypeName}. يجب ربط نفس نوع الجهة.
+                    </div>
+                `;
+                return;
             }
             
-            resultDiv.innerHTML = `
-                <div class="card search-result-card">
-                    <div class="card-header text-white d-flex justify-content-between align-items-center">
-                        <h6 class="mb-0">
-                            <i class="fas fa-check-circle me-2"></i>
-                            تم العثور على الجهة
-                        </h6>
-                        <button type="button" class="btn btn-light btn-sm" onclick="linkEntity()">
-                            <i class="fas fa-link me-1"></i>
-                            ربط الجهة
-                        </button>
+            if (mockSchoolData.governorate !== firstGovernorate) {
+                resultDiv.innerHTML = `
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        لا يمكن ربط جهة من محافظة مختلفة. الجهة الأولى من محافظة: ${firstGovernorate}
+                    </div>
+                `;
+                return;
+            }
+            
+            if (mockSchoolData.gender !== firstGender) {
+                resultDiv.innerHTML = `
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        لا يمكن ربط جهة من نوع مختلف. الجهة الأولى من نوع: ${firstGender}
+                    </div>
+                `;
+                return;
+            }
+        }
+        
+        resultDiv.innerHTML = `
+            <div class="card search-result-card">
+                <div class="card-header text-white d-flex justify-content-between align-items-center">
+                    <h6 class="mb-0">
+                        <i class="fas fa-check-circle me-2"></i>
+                        تم العثور على الجهة
+                    </h6>
+                    <button type="button" class="btn btn-light btn-sm" onclick="linkEntity()">
+                        <i class="fas fa-link me-1"></i>
+                        ربط الجهة
+                    </button>
+                </div>
+                
+                <div class="card-body">
+                    <!-- معلومات الجهة -->
+                    <div class="entity-info mb-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="entity-badge ${type === 'institution' ? 'bg-info' : 'bg-warning'} me-3">
+                                <i class="fas fa-${type === 'institution' ? 'school' : 'sitemap'} me-1"></i>
+                                ${type === 'institution' ? 'مدرسة' : 'قسم'}
+                            </span>
+                            <h5 class="mb-0 text-dark">${displayName}</h5>
+                        </div>
+                        <div class="text-muted">
+                            <i class="fas fa-hashtag me-1"></i>
+                            <strong>الرقم الإحصائي:</strong> ${entity.statistical_number} | 
+                            <i class="fas fa-map-marker-alt me-1"></i>
+                            <strong>الموقع:</strong> ${mockSchoolData.governorate}
+                        </div>
                     </div>
                     
-                    <div class="card-body">
-                        <!-- معلومات الجهة -->
-                        <div class="entity-info mb-4">
-                            <div class="d-flex align-items-center mb-3">
-                                <span class="entity-badge ${type === 'institution' ? 'bg-info' : 'bg-warning'} me-3">
-                                    <i class="fas fa-${type === 'institution' ? 'school' : 'sitemap'} me-1"></i>
-                                    ${type === 'institution' ? 'مدرسة' : 'قسم'}
-                                </span>
-                                <h5 class="mb-0 text-dark">${displayName}</h5>
-                            </div>
-                            <div class="text-muted">
-                                <i class="fas fa-hashtag me-1"></i>
-                                <strong>الرقم الإحصائي:</strong> ${entity.statistical_number} | 
-                                <i class="fas fa-map-marker-alt me-1"></i>
-                                <strong>الموقع:</strong> ${data.governorate}
+                    <!-- المستهدفين -->
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <h6 class="text-dark mb-3">
+                                <i class="fas fa-users me-2"></i>
+                                المستهدفين
+                            </h6>
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <div class="target-box target-card bg-primary bg-opacity-10 border border-primary">
+                                        <div class="target-number text-primary">${mockSchoolData.targets.administrators}</div>
+                                        <div class="text-primary fw-semibold fs-5">إداريين</div>
+                                        <small class="text-muted">الكادر الإداري</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="target-box target-card bg-success bg-opacity-10 border border-success">
+                                        <div class="target-number text-success">${mockSchoolData.targets.teachers}</div>
+                                        <div class="text-success fw-semibold fs-5">معلمين</div>
+                                        <small class="text-muted">هيئة التدريس</small>
+                                    </div>
+                                </div>
+                                ${mockSchoolData.targets.students !== null ? `
+                                <div class="col-md-4">
+                                    <div class="target-box target-card bg-info bg-opacity-10 border border-info">
+                                        <div class="target-number text-info">${mockSchoolData.targets.students}</div>
+                                        <div class="text-info fw-semibold fs-5">طلاب</div>
+                                        <small class="text-muted">الطلاب المستهدفين</small>
+                                    </div>
+                                </div>
+                                ` : `
+                                <div class="col-md-4">
+                                    <div class="target-box target-card bg-secondary bg-opacity-10 border border-secondary">
+                                        <div class="target-number text-secondary">-</div>
+                                        <div class="text-secondary fw-semibold fs-5">لا يوجد</div>
+                                        <small class="text-muted">طلاب</small>
+                                    </div>
+                                </div>
+                                `}
                             </div>
                         </div>
-                        
-                        <!-- المستهدفين -->
-                        <div class="row mb-3">
-                            <div class="col-12">
-                                <h6 class="text-dark mb-3">
-                                    <i class="fas fa-users me-2"></i>
-                                    المستهدفين
-                                </h6>
-                                <div class="row g-3">
-                                    <div class="col-md-4">
-                                        <div class="target-box target-card bg-primary bg-opacity-10 border border-primary">
-                                            <div class="target-number text-primary">${data.targets.administrators}</div>
-                                            <div class="text-primary fw-semibold fs-5">إداريين</div>
-                                            <small class="text-muted">الكادر الإداري</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="target-box target-card bg-success bg-opacity-10 border border-success">
-                                            <div class="target-number text-success">${data.targets.teachers}</div>
-                                            <div class="text-success fw-semibold fs-5">معلمين</div>
-                                            <small class="text-muted">هيئة التدريس</small>
-                                        </div>
-                                    </div>
-                                    ${data.targets.students !== null ? `
-                                    <div class="col-md-4">
-                                        <div class="target-box target-card bg-info bg-opacity-10 border border-info">
-                                            <div class="target-number text-info">${data.targets.students}</div>
-                                            <div class="text-info fw-semibold fs-5">طلاب</div>
-                                            <small class="text-muted">الطلاب المستهدفين</small>
-                                        </div>
-                                    </div>
-                                    ` : `
-                                    <div class="col-md-4">
-                                        <div class="target-box target-card bg-secondary bg-opacity-10 border border-secondary">
-                                            <div class="target-number text-secondary">-</div>
-                                            <div class="text-secondary fw-semibold fs-5">لا يوجد</div>
-                                            <small class="text-muted">طلاب</small>
-                                        </div>
-                                    </div>
-                                    `}
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- رسالة معلومات -->
-                        <div class="alert alert-info mb-0">
-                            <div class="d-flex align-items-start">
-                                <i class="fas fa-info-circle me-2 mt-1 text-info"></i>
-                                <div>
-                                    <strong>معلومة مهمة:</strong>
-                                    <br>
-                                    يمكنك تحديث أعداد المستهدفين لاحقاً من صفحتك الخاصة بالتنسيق بعد اعتمادها من الإدارة.
-                                </div>
+                    </div>
+                    
+                    <!-- رسالة معلومات -->
+                    <div class="alert alert-info mb-0">
+                        <div class="d-flex align-items-start">
+                            <i class="fas fa-info-circle me-2 mt-1 text-info"></i>
+                            <div>
+                                <strong>معلومة مهمة:</strong>
+                                <br>
+                                يمكنك تحديث أعداد المستهدفين لاحقاً من صفحتك الخاصة بالتنسيق بعد اعتمادها من الإدارة.
                             </div>
                         </div>
                     </div>
                 </div>
-            `;
-        } else {
-            resultDiv.innerHTML = `
-                <div class="alert alert-warning">
-                    <i class="fas fa-exclamation-triangle me-2"></i>
-                    ${data.message}
-                    <div class="mt-2">
-                        <small class="text-muted">
-                            <i class="fas fa-info-circle me-1"></i>
-                        </small>
-                    </div>
-                </div>
-            `;
-        }
-    })
-    .catch(error => {
-        resultDiv.innerHTML = `
-            <div class="alert alert-danger">
-                <i class="fas fa-times-circle me-2"></i>
-                حدث خطأ أثناء البحث
             </div>
         `;
-    });
-    }
+    }, 1000);
     
     // ربط الجهة
     function linkEntity() {
@@ -2470,170 +2493,161 @@ function searchEntity() {
     resultDiv.innerHTML = '<div class="text-center"><div class="spinner-border text-primary" role="status"></div><p class="mt-2">جاري البحث...</p></div>';
     resultDiv.style.display = 'block';
     
-    fetch('/entity/search', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    // محاكاة البحث عن المدرسة
+    setTimeout(() => {
+        // محاكاة نتيجة البحث
+        const mockSchoolData = {
+            success: true,
+            entity: {
+                id: Math.floor(Math.random() * 1000),
+                statistical_number: statisticalNumber,
+                name: `مدرسة تجريبية ${statisticalNumber}`,
+                administration: "الإدارة العامة للتعليم",
+                stage: "ابتدائي",
+                gender: "بنين",
+                governorate: "تبوك"
             },
-        body: JSON.stringify({
-            statistical_number: statisticalNumber
-        })
-    })
-    .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-            currentSearchResult = data;
-        const entity = data.entity;
-        const type = data.type;
-            const displayName = data.display_name;
-            
-            // التحقق من نوع الجهة والمحافظة والنوع إذا كانت هناك جهات مربوطة
-            if (linkedEntities.length > 0) {
-                if (type !== firstEntityType) {
-                    const typeName = type === 'institution' ? 'مدرسة' : 'قسم';
-                    const firstTypeName = firstEntityType === 'institution' ? 'مدرسة' : 'قسم';
-                    resultDiv.innerHTML = `
-                        <div class="alert alert-warning">
-                            <i class="fas fa-exclamation-triangle me-2"></i>
-                            لا يمكن ربط ${typeName} مع ${firstTypeName}. يجب ربط نفس نوع الجهة.
-                        </div>
-                    `;
-            return;
-        }
+            type: "institution",
+            display_name: `مدرسة تجريبية ${statisticalNumber}`,
+            governorate: "تبوك",
+            gender: "بنين",
+            targets: {
+                administrators: 5,
+                teachers: 25,
+                students: 300
+            },
+            message: "تم العثور على المدرسة بنجاح"
+        };
         
-                if (data.governorate !== firstGovernorate) {
-                    resultDiv.innerHTML = `
-                        <div class="alert alert-warning">
-                            <i class="fas fa-exclamation-triangle me-2"></i>
-                            لا يمكن ربط جهة من محافظة مختلفة. الجهة الأولى من محافظة: ${firstGovernorate}
-                        </div>
-                    `;
-                    return;
-                }
-                
-                if (data.gender !== firstGender) {
-                    resultDiv.innerHTML = `
-                        <div class="alert alert-warning">
-                            <i class="fas fa-exclamation-triangle me-2"></i>
-                            لا يمكن ربط جهة من نوع مختلف. الجهة الأولى من نوع: ${firstGender}
-                        </div>
-                    `;
-                    return;
-                }
+        currentSearchResult = mockSchoolData;
+        const entity = mockSchoolData.entity;
+        const type = mockSchoolData.type;
+        const displayName = mockSchoolData.display_name;
+        
+        // التحقق من نوع الجهة والمحافظة والنوع إذا كانت هناك جهات مربوطة
+        if (linkedEntities.length > 0) {
+            if (type !== firstEntityType) {
+                const typeName = type === 'institution' ? 'مدرسة' : 'قسم';
+                const firstTypeName = firstEntityType === 'institution' ? 'مدرسة' : 'قسم';
+                resultDiv.innerHTML = `
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        لا يمكن ربط ${typeName} مع ${firstTypeName}. يجب ربط نفس نوع الجهة.
+                    </div>
+                `;
+                return;
             }
             
-            resultDiv.innerHTML = `
-                <div class="card search-result-card">
-                    <div class="card-header text-white d-flex justify-content-between align-items-center">
-                        <h6 class="mb-0">
-                            <i class="fas fa-check-circle me-2"></i>
-                            تم العثور على الجهة
-                        </h6>
-                        <button type="button" class="btn btn-light btn-sm" onclick="linkEntity()">
-                            <i class="fas fa-link me-1"></i>
-                            ربط الجهة
-                        </button>
+            if (mockSchoolData.governorate !== firstGovernorate) {
+                resultDiv.innerHTML = `
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        لا يمكن ربط جهة من محافظة مختلفة. الجهة الأولى من محافظة: ${firstGovernorate}
+                    </div>
+                `;
+                return;
+            }
+            
+            if (mockSchoolData.gender !== firstGender) {
+                resultDiv.innerHTML = `
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        لا يمكن ربط جهة من نوع مختلف. الجهة الأولى من نوع: ${firstGender}
+                    </div>
+                `;
+                return;
+            }
+        }
+        
+        resultDiv.innerHTML = `
+            <div class="card search-result-card">
+                <div class="card-header text-white d-flex justify-content-between align-items-center">
+                    <h6 class="mb-0">
+                        <i class="fas fa-check-circle me-2"></i>
+                        تم العثور على الجهة
+                    </h6>
+                    <button type="button" class="btn btn-light btn-sm" onclick="linkEntity()">
+                        <i class="fas fa-link me-1"></i>
+                        ربط الجهة
+                    </button>
+                </div>
+                
+                <div class="card-body">
+                    <!-- معلومات الجهة -->
+                    <div class="entity-info mb-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="entity-badge ${type === 'institution' ? 'bg-info' : 'bg-warning'} me-3">
+                                <i class="fas fa-${type === 'institution' ? 'school' : 'sitemap'} me-1"></i>
+                                ${type === 'institution' ? 'مدرسة' : 'قسم'}
+                            </span>
+                            <h5 class="mb-0 text-dark">${displayName}</h5>
+                        </div>
+                        <div class="text-muted">
+                            <i class="fas fa-hashtag me-1"></i>
+                            <strong>الرقم الإحصائي:</strong> ${entity.statistical_number} | 
+                            <i class="fas fa-map-marker-alt me-1"></i>
+                            <strong>الموقع:</strong> ${mockSchoolData.governorate}
+                        </div>
                     </div>
                     
-                    <div class="card-body">
-                        <!-- معلومات الجهة -->
-                        <div class="entity-info mb-4">
-                            <div class="d-flex align-items-center mb-3">
-                                <span class="entity-badge ${type === 'institution' ? 'bg-info' : 'bg-warning'} me-3">
-                                    <i class="fas fa-${type === 'institution' ? 'school' : 'sitemap'} me-1"></i>
-                                    ${type === 'institution' ? 'مدرسة' : 'قسم'}
-                                </span>
-                                <h5 class="mb-0 text-dark">${displayName}</h5>
-                            </div>
-                            <div class="text-muted">
-                                <i class="fas fa-hashtag me-1"></i>
-                                <strong>الرقم الإحصائي:</strong> ${entity.statistical_number} | 
-                                <i class="fas fa-map-marker-alt me-1"></i>
-                                <strong>الموقع:</strong> ${data.governorate}
+                    <!-- المستهدفين -->
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <h6 class="text-dark mb-3">
+                                <i class="fas fa-users me-2"></i>
+                                المستهدفين
+                            </h6>
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <div class="target-box target-card bg-primary bg-opacity-10 border border-primary">
+                                        <div class="target-number text-primary">${mockSchoolData.targets.administrators}</div>
+                                        <div class="text-primary fw-semibold fs-5">إداريين</div>
+                                        <small class="text-muted">الكادر الإداري</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="target-box target-card bg-success bg-opacity-10 border border-success">
+                                        <div class="target-number text-success">${mockSchoolData.targets.teachers}</div>
+                                        <div class="text-success fw-semibold fs-5">معلمين</div>
+                                        <small class="text-muted">هيئة التدريس</small>
+                                    </div>
+                                </div>
+                                ${mockSchoolData.targets.students !== null ? `
+                                <div class="col-md-4">
+                                    <div class="target-box target-card bg-info bg-opacity-10 border border-info">
+                                        <div class="target-number text-info">${mockSchoolData.targets.students}</div>
+                                        <div class="text-info fw-semibold fs-5">طلاب</div>
+                                        <small class="text-muted">الطلاب المستهدفين</small>
+                                    </div>
+                                </div>
+                                ` : `
+                                <div class="col-md-4">
+                                    <div class="target-box target-card bg-secondary bg-opacity-10 border border-secondary">
+                                        <div class="target-number text-secondary">-</div>
+                                        <div class="text-secondary fw-semibold fs-5">لا يوجد</div>
+                                        <small class="text-muted">طلاب</small>
+                                    </div>
+                                </div>
+                                `}
                             </div>
                         </div>
-                        
-                        <!-- المستهدفين -->
-                        <div class="row mb-3">
-                            <div class="col-12">
-                                <h6 class="text-dark mb-3">
-                                    <i class="fas fa-users me-2"></i>
-                                    المستهدفين
-                                </h6>
-                                <div class="row g-3">
-                                    <div class="col-md-4">
-                                        <div class="target-box target-card bg-primary bg-opacity-10 border border-primary">
-                                            <div class="target-number text-primary">${data.targets.administrators}</div>
-                                            <div class="text-primary fw-semibold fs-5">إداريين</div>
-                                            <small class="text-muted">الكادر الإداري</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="target-box target-card bg-success bg-opacity-10 border border-success">
-                                            <div class="target-number text-success">${data.targets.teachers}</div>
-                                            <div class="text-success fw-semibold fs-5">معلمين</div>
-                                            <small class="text-muted">هيئة التدريس</small>
-                                        </div>
-                                    </div>
-                                    ${data.targets.students !== null ? `
-                                    <div class="col-md-4">
-                                        <div class="target-box target-card bg-info bg-opacity-10 border border-info">
-                                            <div class="target-number text-info">${data.targets.students}</div>
-                                            <div class="text-info fw-semibold fs-5">طلاب</div>
-                                            <small class="text-muted">الطلاب المستهدفين</small>
-                                        </div>
-                                    </div>
-                                    ` : `
-                                    <div class="col-md-4">
-                                        <div class="target-box target-card bg-secondary bg-opacity-10 border border-secondary">
-                                            <div class="target-number text-secondary">-</div>
-                                            <div class="text-secondary fw-semibold fs-5">لا يوجد</div>
-                                            <small class="text-muted">طلاب</small>
-                                        </div>
-                                    </div>
-                                    `}
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- رسالة معلومات -->
-                        <div class="alert alert-info mb-0">
-                            <div class="d-flex align-items-start">
-                                <i class="fas fa-info-circle me-2 mt-1 text-info"></i>
-                                <div>
-                                    <strong>معلومة مهمة:</strong>
-                                    <br>
-                                    يمكنك تحديث أعداد المستهدفين لاحقاً من صفحتك الخاصة بالتنسيق بعد اعتمادها من الإدارة.
-                                </div>
+                    </div>
+                    
+                    <!-- رسالة معلومات -->
+                    <div class="alert alert-info mb-0">
+                        <div class="d-flex align-items-start">
+                            <i class="fas fa-info-circle me-2 mt-1 text-info"></i>
+                            <div>
+                                <strong>معلومة مهمة:</strong>
+                                <br>
+                                يمكنك تحديث أعداد المستهدفين لاحقاً من صفحتك الخاصة بالتنسيق بعد اعتمادها من الإدارة.
                             </div>
                         </div>
                     </div>
                 </div>
-            `;
-        } else {
-            resultDiv.innerHTML = `
-                <div class="alert alert-warning">
-                    <i class="fas fa-exclamation-triangle me-2"></i>
-                    ${data.message}
-                    <div class="mt-2">
-                        <small class="text-muted">
-                            <i class="fas fa-info-circle me-1"></i>
-                        </small>
-                    </div>
-                </div>
-            `;
-        }
-    })
-    .catch(error => {
-        resultDiv.innerHTML = `
-            <div class="alert alert-danger">
-                <i class="fas fa-times-circle me-2"></i>
-                حدث خطأ أثناء البحث
             </div>
         `;
-    });
-    }
+    }, 1000);
 
 
 
@@ -2798,144 +2812,5 @@ document.addEventListener('DOMContentLoaded', function() {
     </script>
 
  </body></html>
-
-<script type="module" src="./utils.js"></script>
-<script type="module">
-    import { searchSchool, registerCoordinator } from './utils.js';
-
-    document.addEventListener("DOMContentLoaded", () => {
-        const searchForm = document.getElementById("search-form");
-        const registerForm = document.getElementById("register-form");
-        const statisticalNumberInput = document.getElementById("statistical_number");
-        const entityNameInput = document.getElementById("entity_name");
-        const entityTypeInput = document.getElementById("entity_type");
-        const entityGovernorateInput = document.getElementById("entity_governorate");
-        const entityGenderInput = document.getElementById("entity_gender");
-        const entityTargetsInput = document.getElementById("entity_targets");
-        const searchResultsDiv = document.getElementById("search-results");
-        const registerSection = document.getElementById("register-section");
-
-        if (searchForm) {
-            searchForm.addEventListener("submit", async (event) => {
-                event.preventDefault();
-                const statisticalNumber = statisticalNumberInput.value;
-                searchResultsDiv.innerHTML = 
-                    `<div class="alert alert-info text-center" role="alert">
-                        <div class="spinner-border text-info" role="status">
-                            <span class="visually-hidden">جاري البحث...</span>
-                        </div>
-                        جاري البحث عن الجهة...
-                    </div>`;
-                registerSection.style.display = "none";
-
-                const result = await searchSchool(statisticalNumber);
-
-                if (result.success) {
-                    searchResultsDiv.innerHTML = 
-                        `<div class="alert alert-success" role="alert">
-                            ${result.message}
-                        </div>
-                        <div class="card mt-3">
-                            <div class="card-body">
-                                <h5 class="card-title">${result.display_name}</h5>
-                                <p class="card-text">النوع: ${result.type}</p>
-                                <p class="card-text">المحافظة: ${result.governorate}</p>
-                                <p class="card-text">الجنس: ${result.gender}</p>
-                                <p class="card-text">الأهداف: ${JSON.stringify(result.targets)}</p>
-                            </div>
-                        </div>`;
-                    entityNameInput.value = result.entity.name;
-                    entityTypeInput.value = result.entity.type;
-                    entityGovernorateInput.value = result.entity.governorate;
-                    entityGenderInput.value = result.entity.gender;
-                    entityTargetsInput.value = JSON.stringify(result.entity.targets);
-                    registerSection.style.display = "block";
-                } else {
-                    searchResultsDiv.innerHTML = 
-                        `<div class="alert alert-danger" role="alert">
-                            ${result.message}
-                        </div>`;
-                    registerSection.style.display = "none";
-                }
-            });
-        }
-
-        if (registerForm) {
-            registerForm.addEventListener("submit", async (event) => {
-                event.preventDefault();
-                const formData = new FormData(registerForm);
-                
-                Swal.fire({
-                    title: "جاري التسجيل...",
-                    text: "الرجاء الانتظار بينما يتم تسجيل بياناتك.",
-                    allowOutsideClick: false,
-                    didOpen: () => {
-                        Swal.showLoading();
-                    }
-                });
-
-                const result = await registerCoordinator(formData);
-
-                if (result.success) {
-                    Swal.fire({
-                        icon: "success",
-                        title: result.title,
-                        text: result.message,
-                        showConfirmButton: false,
-                        timer: 1500
-                    }).then(() => {
-                        window.location.href = result.redirect_url;
-                    });
-                } else {
-                    Swal.fire({
-                        icon: "error",
-                        title: "فشل التسجيل!",
-                        text: result.message,
-                    });
-                }
-            });
-        }
-    });
-</script>
-
-
-
-<script type="module" src="./app.js"></script>
-<script type="module" src="./utils.js"></script>
-<script type="module" src="./supabaseClient.js"></script>
-<script type="module">
-    import { registerCoordinator } from './utils.js';
-
-    document.addEventListener('DOMContentLoaded', function () {
-        const registrationForm = document.getElementById('registration-form');
-        if (registrationForm) {
-            registrationForm.addEventListener('submit', async function (event) {
-                event.preventDefault();
-                const formData = new FormData(registration-form);
-                const result = await registerCoordinator(formData);
-                if (result.success) {
-                    alert(result.message);
-                    window.location.href = result.redirect_url;
-                } else {
-                    alert(result.message);
-                }
-            });
-        }
-    });
-</script>
-
-
-
-
-<div class="container mt-5">
-    <div class="card p-4">
-        <h2 class="card-title text-center mb-4">البحث عن مدرسة بالرقم الإحصائي</h2>
-        <div class="input-group mb-3">
-            <input type="text" id="statistical_number_input" class="form-control" placeholder="أدخل الرقم الإحصائي للمدرسة">
-            <button class="btn btn-primary" type="button" id="search-school-button">بحث</button>
-        </div>
-        <div id="school-search-result"></div>
-    </div>
-</div>
 
 
