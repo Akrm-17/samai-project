@@ -2755,6 +2755,20 @@ document.getElementById('civil_record').addEventListener('input', function(e) {
 // تهيئة الصفحة
 document.addEventListener('DOMContentLoaded', function() {
     updateLinkedEntitiesDisplay();
+    
+    // إضافة event listener لتغيير نوع المنسق
+    const coordinatorTypeSelect = document.getElementById('coordinator_type');
+    if (coordinatorTypeSelect) {
+        coordinatorTypeSelect.addEventListener('change', handleCoordinatorTypeChange);
+        console.log('Event listener added for coordinator type change');
+    }
+    
+    // إضافة event listener لاختيار القسم
+    const departmentSelect = document.getElementById('department_id');
+    if (departmentSelect) {
+        departmentSelect.addEventListener('change', handleDepartmentSelection);
+        console.log('Event listener added for department selection');
+    }
 });
 </script>
     
